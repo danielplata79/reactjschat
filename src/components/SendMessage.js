@@ -8,23 +8,26 @@ const SendMessage = () => {
   const sendMessage = async (event) => {
     event.preventDefault();
 
+    // Check if message input is empty
     if (message.trim() === "") {
       alert("Enter a valid message");
       return;
     };
 
+    // Get user's personal data when user log in
     const { uid, displayName, photoURL } = auth.currentUser;
 
+    // Sending data to our Backend =>
+    // Create a document inside messages collection in Firebase DB
     await addDoc(collection(db, "messages"), {
       text: message,
       name: displayName,
       avatar: photoURL,
-      createdAt: serverTimestamp(),
+      createdAt: serverTimestamp(), // Storage the time message is created
       uid,
     });
     setMessage("");
   };
-
 
   return (
     <form className="send-message" onSubmit={(event) => sendMessage(event)} >
