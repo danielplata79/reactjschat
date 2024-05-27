@@ -6,6 +6,7 @@ import { query, collection, orderBy, onSnapshot, limit } from "firebase/firestor
 
 const ChatBox = () => {
 
+  // Runs everytime a message is sended or deleted
   useEffect(() => {
     const q = query(
       collection(db, "messages"),
@@ -14,7 +15,10 @@ const ChatBox = () => {
     );
 
     const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
+      // Creates a new empty array for store data from every message
       const fetchedMessages = [];
+      // Loops through all documents (messages) on the collection and saves
+      // the data on the new previous array that we have created before
       QuerySnapshot.forEach((doc) => {
         fetchedMessages.push({ ...doc.data(), id: doc.id });
       });
@@ -30,7 +34,9 @@ const ChatBox = () => {
   return (
     <main className="chat-box">
       <div className="messages-wrapper">
-        <Message />
+        {messages?.map((message) => (
+          <Message key={message.id} message={message} />
+        ))}
       </div>
       <SendMessage />
     </main>
