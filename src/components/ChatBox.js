@@ -5,6 +5,8 @@ import { db } from "../firebase";
 import { query, collection, orderBy, onSnapshot, limit } from "firebase/firestore";
 
 const ChatBox = () => {
+  const [messages, setMessages] = useState([]);
+  //const scroll = useRef();
 
   // Runs everytime a message is sended or deleted
   useEffect(() => {
