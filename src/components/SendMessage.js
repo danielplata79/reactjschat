@@ -34,7 +34,7 @@ const SendMessage = ({ scroll }) => {
     <form className="send-message" onSubmit={(event) => sendMessage(event)} >
       <label htmlFor="messageInput" hidden> Enter Message </label>
       <input
-        id="messageInput" name="messageInput" type="text" className="form-input__input" placeholder="Type message.." value={message} onChange={(e) => setMessage(e.target.value)} />
+        id="messageInput" name="messageInput" type="text" className="form-input__input" placeholder="Type a message.." value={message} onChange={(e) => setMessage(e.target.value)} />
       <button type="submit">Send</button>
     </form>
   );

@@ -131,6 +131,21 @@ input {
   color: black;
 }
 
+@media only screen and (max-width: 600px) {
+  .sign-in-wrapper {
+    width: 340px;
+  }
+
+  .nav-bar button {
+    width:100px;
+    padding: 6px;
+  }
+
+  .nav-bar button>p {
+    display: none;
+  }
+}
+
 .sign-in-wrapper hr {
   color: var(--secondary-col);
 }
