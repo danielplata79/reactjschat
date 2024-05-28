@@ -7,7 +7,7 @@ import { GoogleAuthProvider, signInWithRedirect, signInWithPopup } from "firebas
 
 const NavBar = () => {
   const [user] = useAuthState(auth);
-  
+
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     //signInWithRedirect(auth, provider);
@@ -21,7 +21,10 @@ const NavBar = () => {
 
   return (
     <nav className="nav-bar">
-      <h1>React Chat</h1>
+      <span>
+        <img src="/logodog.png" alt="ReactJs logo" width={50} height={50} />
+        <h1>OpenRChat//</h1>
+      </span>
       {user ? (
         <button onClick={signOut} className="sign-out" type="button">
           Sign Out

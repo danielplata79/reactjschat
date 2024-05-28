@@ -10,7 +10,7 @@ html,
 body {
   max-width: 100vw;
   font-size: 16px;
-  font-family: sans-serif;
+  font-family: "JetBrains Mono", monospace;
 }
 
 button,
@@ -21,7 +21,7 @@ input {
 .App {
   width: 100%;
   min-height: 100vh;
-  background-color: #1c2c4c;
+  background-color: #24242a;
   color: #4c768d;
   padding-top: 60px;
 }
@@ -32,8 +32,8 @@ input {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #4c768d;
-  color: #242443;
+  background-color: #42AECCA6;
+  color: #88DDA0;
   height: 60px;
   position: fixed;
   left: 0;
@@ -41,6 +41,22 @@ input {
   width: 100%;
   z-index: 1;
 }
+
+.nav-bar span{
+  display: flex;
+  color: white;
+}
+
+.nav-bar span>h1 {
+  color: black;
+  margin: auto;
+}
+
+.nav-bar span>img{
+  color: black;
+  margin: auto;
+}
+
 .sign-in {
   border: none;
   background-color: transparent;
@@ -148,3 +164,32 @@ input {
   background-color: #7cc5d9;
   font-weight: 600;
 }
+
+.sign-in-google {
+  display: flex;
+  margin: auto;
+  width: 250px;
+  background: #88DDA0;
+  border-radius: 8px;
+  border: none;
+  padding: 5px;
+}
+
+.sign-in-google:hover {
+  background: #42AECCA6;
+  transition: 0.3s;
+}
+
+.sign-in-google > img {
+  margin: auto; 
+}
+
+.sign-in-google > p {
+  margin: auto; 
+  margin-left: -20px;
+  font-size: 13.5px;
+  font-weight: semi-bold;
+}
+
+
+

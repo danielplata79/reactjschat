@@ -12,16 +12,12 @@ const Welcome = () => {
 
   return (
     <main className="welcome">
-      <h2>Welcome to React Chat.</h2>
-      <img src="/logo512.png" alt="ReactJs logo" width={50} height={50} />
-      <p>Sign in with Google to chat with with your fellow React Developers.</p>
-      <button className="sign-in">
-        <img
-          onClick={googleSignIn}
-          src={GoogleSignin}
-          alt="sign in with google"
-          type="button"
-        />
+      <h2>Welcome to OpenRChat, Developed by Daniel Plata</h2>
+      <img src="/realogo.png" alt="ReactJs logo" width={200} height={200} />
+      <p>Open-Source, Web-based Realtime Chat Application</p>
+      <button className="sign-in-google" onClick={googleSignIn}>
+        <img src="/google-plus-512.png" width={30} />
+        <p>Sign in with Google</p>
       </button>
     </main>
   );
