@@ -6,7 +6,7 @@ import { query, collection, orderBy, onSnapshot, limit } from "firebase/firestor
 
 const ChatBox = () => {
   const [messages, setMessages] = useState([]);
-  //const scroll = useRef();
+  const scroll = useRef();
 
   // Runs everytime a message is sended or deleted
   useEffect(() => {
@@ -40,7 +40,8 @@ const ChatBox = () => {
           <Message key={message.id} message={message} />
         ))}
       </div>
-      <SendMessage />
+      <span ref={scroll}></span>
+      <SendMessage scroll={scroll} />
     </main>
   );
 };

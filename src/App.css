@@ -86,6 +86,7 @@ input {
   margin: 0;
   width: 155px;
   padding-left: 13px;
+  border: none;
 }
 
 
@@ -117,7 +118,7 @@ input {
   width: 40%;
   height: 100%;
   border: 1px solid var(--primary-col);
-  border-radius: 5px;
+  border-radius: 15px;
   display: block;
   padding: 40px;
   padding-top: -30px;
@@ -144,6 +145,7 @@ input {
   padding: 5px;
   color: black;
   font-weight: 15px;
+  border: 2.5px solid #274148D1;
 
   box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.15);
 }
