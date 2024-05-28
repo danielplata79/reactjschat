@@ -30,14 +30,11 @@ const NavBar = () => {
           Sign Out
         </button>
       ) : (
-        <button className="sign-in">
-          <img
-            onClick={googleSignIn}
-            src={GoogleSignin}
-            alt="sign in with google"
-            type="button"
-          />
+        <button className="sign-in-google" onClick={googleSignIn}>
+          <img src="/google-plus-512.png" width={30} />
+          <p>Sign in with Google</p>
         </button>
+
       )}
     </nav>
   );

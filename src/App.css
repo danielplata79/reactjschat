@@ -6,6 +6,12 @@
   padding: 0;
 }
 
+:root {
+  --div-shadows: 0px 5px 5px 0px rgba(0,0,0,0.15);
+  --primary-col: #42AECCA6;
+  --secondary-col: #42AECC70;
+}
+
 html,
 body {
   max-width: 100vw;
@@ -40,6 +46,8 @@ input {
   top: 0;
   width: 100%;
   z-index: 1;
+  box-shadow: var(--div-shadows);
+
 }
 
 .nav-bar span{
@@ -73,17 +81,89 @@ input {
   background-color: #1c2c4c;
   font-weight: 600;
 }
+ 
+.nav-bar > button {
+  margin: 0;
+  width: 155px;
+  padding-left: 13px;
+}
+
+
 
 /* welcome page */
 .welcome {
-  padding: 30px;
+  padding: 0px;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 0px;
   color: #7cc5d9;
 }
-.welcome :is(h2, p, img) {
-  margin-bottom: 20px;
+.welcome :is(h2, h3, img) {
+  margin-bottom: 40px;
+  text-decoration: underline;
 }
+
+.header-div {
+  background: #42AECC70;
+  padding: 30px;
+  width: 100%;
+  height: 30%;
+  box-shadow: var(--div-shadows);
+  margin-bottom: 70px;
+  color: black;
+}
+
+.sign-in-wrapper {
+  margin: auto;
+  width: 40%;
+  height: 100%;
+  border: 1px solid var(--primary-col);
+  border-radius: 5px;
+  display: block;
+  padding: 40px;
+  padding-top: -30px;
+  box-shadow: var(--div-shadows);
+}
+
+.sign-in-wrapper :is(button, hr, a) {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.sign-in-wrapper hr {
+  color: var(--secondary-col);
+}
+
+.sign-in-google {
+  display: flex;
+  margin: auto;
+  width: 250px;
+  background: #88DDA0;
+  border-radius: 8px;
+  border: none;
+  padding: 5px;
+  color: black;
+  font-weight: 15px;
+
+  box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.15);
+}
+
+.sign-in-google:hover {
+  background: #42AECCA6;
+  transition: 0.3s;
+}
+
+.sign-in-google > img {
+  margin: auto; 
+}
+
+.sign-in-google > p {
+  margin: auto; 
+  margin-left: -20px;
+  font-size: 13.5px;
+  font-weight: bold;
+}
+
 
 /* chat component */
 .messages-wrapper {
@@ -165,31 +245,7 @@ input {
   font-weight: 600;
 }
 
-.sign-in-google {
-  display: flex;
-  margin: auto;
-  width: 250px;
-  background: #88DDA0;
-  border-radius: 8px;
-  border: none;
-  padding: 5px;
-}
 
-.sign-in-google:hover {
-  background: #42AECCA6;
-  transition: 0.3s;
-}
-
-.sign-in-google > img {
-  margin: auto; 
-}
-
-.sign-in-google > p {
-  margin: auto; 
-  margin-left: -20px;
-  font-size: 13.5px;
-  font-weight: semi-bold;
-}
 
 
 
