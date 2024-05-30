@@ -1,6 +1,6 @@
 {
-    "name": "Open React Chat",
-    "short_name": "Open React Chat",
+    "name": "OpenRChat",
+    "short_name": "OpenRChat",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
