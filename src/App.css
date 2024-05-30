@@ -5,8 +5,8 @@
 }
 
 :root {
-  --div-shadows: 0px 5px 5px 0px rgba(0,0,0,0.15);
-  --btn-shadows: 0px 0px 3px 1px rgba(0,0,0,0.15);
+  --div-shadows: 0px 5px 5px 0px rgba(0, 0, 0, 0.15);
+  --btn-shadows: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
   --primary-col: #42AECCA6;
   --secondary-col: #42AECC70;
   --third-col: #88DDA0;
@@ -46,7 +46,7 @@ input {
   box-shadow: var(--div-shadows);
 }
 
-.nav-bar span{
+.nav-bar span {
   display: flex;
   color: white;
 }
@@ -56,12 +56,12 @@ input {
   margin: auto;
 }
 
-.nav-bar span>img{
+.nav-bar span>img {
   color: black;
   margin: auto;
 }
- 
-.nav-bar > button {
+
+.nav-bar>button {
   margin: 0;
   margin-right: 50px;
   width: 250px;
@@ -77,6 +77,7 @@ input {
   color: #7cc5d9;
   height: 850px;
 }
+
 .welcome :is(h2, h3, img) {
   margin-bottom: 40px;
   text-decoration: underline;
@@ -113,12 +114,16 @@ input {
 }
 
 @media only screen and (max-width: 600px) {
+  .header-div {
+    height: 60%;
+  }
+
   .sign-in-wrapper {
     width: 340px;
   }
 
   .nav-bar button {
-    width:100px;
+    width: 100px;
     padding: 6px;
   }
 
@@ -149,12 +154,12 @@ input {
   transition: 0.3s;
 }
 
-.sign-in-google > img {
-  margin: auto; 
+.sign-in-google>img {
+  margin: auto;
 }
 
-.sign-in-google > p {
-  margin: auto; 
+.sign-in-google>p {
+  margin: auto;
   margin-left: -20px;
   font-size: 13.5px;
   font-weight: bold;
@@ -166,6 +171,7 @@ input {
   padding: 30px;
   margin-bottom: 60px;
 }
+
 .chat-bubble {
   border-radius: 20px 20px 20px 0;
   padding: 15px;
@@ -178,27 +184,32 @@ input {
   align-items: flex-start;
   margin-bottom: 20px;
 }
+
 .chat-bubble.right {
   margin-left: auto;
   border-radius: 20px 20px 0 20px;
   background-color: #fff;
   box-shadow: -2px 2px 1px 1px #88dded;
 }
+
 .chat-bubble__left {
   width: 35px;
   height: 35px;
   border-radius: 50%;
   margin-right: 10px;
 }
+
 .user-name {
   font-weight: bold;
   margin-bottom: 5px;
   font-size: 0.9rem;
   color: #1c2c4c;
 }
+
 .user-message {
   word-break: break-all;
 }
+
 .message-time {
   display: block;
   text-align: right;
@@ -215,7 +226,8 @@ input {
   box-sizing: border-box;
   box-shadow: var(--div-shadows);
 }
-.send-message > input {
+
+.send-message>input {
   height: 40px;
   padding: 10px 10px;
   box-shadow: var(--div-shadows);
@@ -226,14 +238,17 @@ input {
   color: #1c2c4c;
   font-size: 1rem;
 }
-.send-message > input:placeholder {
+
+.send-message>input:placeholder {
   color: #ddd;
 }
-.send-message > :is(input, button):focus {
+
+.send-message> :is(input, button):focus {
   outline: none;
   border-bottom: 1px solid #7cc5d9;
 }
-.send-message > button {
+
+.send-message>button {
   width: 70px;
   height: 40px;
   padding: 5px 10px;
@@ -244,8 +259,3 @@ input {
   font-weight: 600;
   box-shadow: var(--btn-shadows);
 }
-
-
-
-
-
