@@ -25,6 +25,7 @@ input {
 
 .App {
   width: 100%;
+  height: 100%;
   background-color: #24242a;
   color: #4c768d;
   box-sizing: border-box;
@@ -136,10 +137,10 @@ input {
   color: var(--secondary-col);
 }
 
-.sign-in-google {
+.sign-in-btn {
   display: flex;
   margin: auto;
-  width: 250px;
+  width: 280px;
   background: #88DDA0;
   border-radius: 8px;
   border: none;
@@ -149,16 +150,16 @@ input {
   border: 2.5px solid #274148D1;
 }
 
-.sign-in-google:hover {
+. .sign-in-btn:hover {
   background: #42AECCA6;
   transition: 0.3s;
 }
 
-.sign-in-google>img {
+.sign-in-btn>img {
   margin: auto;
 }
 
-.sign-in-google>p {
+.sign-in-btn>p {
   margin: auto;
   margin-left: -20px;
   font-size: 13.5px;
@@ -258,4 +259,15 @@ input {
   background-color: var(--third-col);
   font-weight: 600;
   box-shadow: var(--btn-shadows);
+}
+
+
+footer {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  background: var(--primary-col);
 }
