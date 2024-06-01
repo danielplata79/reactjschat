@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Login.css";
 import GoogleSignin from "../img/btn_google_signin_dark_pressed_web.png";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -24,12 +25,12 @@ const Navbar = () => {
         <h1>OpenRChat//</h1>
       </span>
       {user ? (
-        <button onClick={signOut} className="sign-in-btn" type="button">
+        <button onClick={signOut} className="sign-in--btn" type="button">
           <img src="/account-logout-512.png" width={30} />
           <p>Sign Out</p>
         </button>
       ) : (
-        <button className="sign-in-btn" onClick={googleSignIn}>
+        <button className="sign-in--btn" onClick={googleSignIn}>
           <img src="/google-plus-512.png" width={30} />
           <p>Sign in with Google</p>
         </button>
