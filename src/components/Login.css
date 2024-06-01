@@ -46,6 +46,7 @@
   color: black;
   margin: auto;
   margin-top: 15px;
+  width: 100%;
 }
 
 .sign-in-wrapper>button:nth-child(1) {
@@ -54,11 +55,15 @@
 
 @media only screen and (max-width: 700px) {
   .header-div {
-    height: 60%;
+    height: 65%;
   }
 
   .sign-in-wrapper {
-    width: 340px;
+    width: 100%;
+  }
+
+  .sign-in-btn>p {
+    font-size: 10px;
   }
 
   .nav-bar button {
@@ -78,13 +83,11 @@
 .sign-in-btn {
   display: flex;
   margin: auto;
-  width: 280px;
   background: #88DDA0;
   border-radius: 8px;
   border: none;
   padding: 5px;
   color: black;
-  font-weight: 15px;
   border: 2.5px solid #274148D1;
 }
 
