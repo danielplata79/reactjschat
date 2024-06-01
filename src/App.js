@@ -1,7 +1,7 @@
 import "./App.css";
-import NavBar from "./components/NavBar";
-import ChatBox from "./components/ChatBox";
-import Welcome from "./components/Welcome";
+import Navbar from "./components/Navbar";
+import Chatbox from "./components/Chatbox";
+import Login from "./components/Login";
 import Footer from "./components/Footer";
 
 import { auth } from "./firebase";
@@ -12,8 +12,8 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
-      {!user ? <Welcome /> : <ChatBox />}
+      <Navbar />
+      {!user ? <Login /> : <Chatbox />}
     </div>
   );
 }

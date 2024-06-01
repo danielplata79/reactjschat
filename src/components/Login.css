@@ -1,0 +1,105 @@
+.welcome {
+  color: #7cc5d9;
+  height: 100%;
+}
+
+.welcome :is(h2, h3, img) {
+  margin-bottom: 40px;
+  text-decoration: underline;
+}
+
+.header-div {
+  background: #42AECC70;
+  padding: 30px;
+  padding-top: 80px;
+  width: 100%;
+  height: 50%;
+  box-shadow: var(--div-shadows);
+  color: black;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+
+
+#sign-in-container {
+  width: 100%;
+  height: 50%;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.sign-in-wrapper {
+  margin: auto;
+  width: 30%;
+  height: auto;
+  border: 1px solid var(--primary-col);
+  border-radius: 15px;
+  display: block;
+  padding: 40px;
+  box-shadow: var(--btn-shadows);
+}
+
+.sign-in-wrapper :is(button, hr, a) {
+  color: black;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.sign-in-wrapper>button:nth-child(1) {
+  margin-top: 0px;
+}
+
+@media only screen and (max-width: 700px) {
+  .header-div {
+    height: 60%;
+  }
+
+  .sign-in-wrapper {
+    width: 340px;
+  }
+
+  .nav-bar button {
+    width: 100px;
+    padding: 6px;
+  }
+
+  .nav-bar button>p {
+    display: none;
+  }
+}
+
+.sign-in-wrapper hr {
+  color: var(--secondary-col);
+}
+
+.sign-in-btn {
+  display: flex;
+  margin: auto;
+  width: 280px;
+  background: #88DDA0;
+  border-radius: 8px;
+  border: none;
+  padding: 5px;
+  color: black;
+  font-weight: 15px;
+  border: 2.5px solid #274148D1;
+}
+
+. .sign-in-btn:hover {
+  background: #42AECCA6;
+  transition: 0.3s;
+}
+
+.sign-in-btn>img {
+  margin: auto;
+}
+
+.sign-in-btn>p {
+  margin: auto;
+  margin-left: -20px;
+  font-size: 13.5px;
+  font-weight: bold;
+}

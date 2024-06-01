@@ -12,6 +12,10 @@
   --third-col: #88DDA0;
 }
 
+#root {
+  height: 100vh;
+}
+
 html,
 body {
   font-size: 16px;
@@ -39,12 +43,13 @@ input {
   justify-content: space-between;
   background-color: #42AECCA6;
   color: #88DDA0;
-  height: 40px;
+  height: 60px;
+  width: 100%;
   position: fixed;
   top: 0;
-  width: 100%;
   z-index: 1;
   box-shadow: var(--div-shadows);
+  box-sizing: border-box;
 }
 
 .nav-bar span {
@@ -71,100 +76,6 @@ input {
   padding: 5px -50px 5px;
 }
 
-
-/* welcome page */
-.welcome {
-  margin-top: 60px;
-  color: #7cc5d9;
-  height: 850px;
-}
-
-.welcome :is(h2, h3, img) {
-  margin-bottom: 40px;
-  text-decoration: underline;
-}
-
-.header-div {
-  background: #42AECC70;
-  padding: 30px;
-  width: 100%;
-  height: 450px;
-  box-shadow: var(--div-shadows);
-  margin-bottom: 70px;
-  color: black;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-.sign-in-wrapper {
-  margin: auto;
-  width: 40%;
-  height: auto;
-  border: 1px solid var(--primary-col);
-  border-radius: 15px;
-  display: block;
-  padding: 40px;
-  padding-top: -30px;
-  box-shadow: var(--btn-shadows);
-}
-
-.sign-in-wrapper :is(button, hr, a) {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  color: black;
-}
-
-@media only screen and (max-width: 600px) {
-  .header-div {
-    height: 60%;
-  }
-
-  .sign-in-wrapper {
-    width: 340px;
-  }
-
-  .nav-bar button {
-    width: 100px;
-    padding: 6px;
-  }
-
-  .nav-bar button>p {
-    display: none;
-  }
-}
-
-.sign-in-wrapper hr {
-  color: var(--secondary-col);
-}
-
-.sign-in-btn {
-  display: flex;
-  margin: auto;
-  width: 280px;
-  background: #88DDA0;
-  border-radius: 8px;
-  border: none;
-  padding: 5px;
-  color: black;
-  font-weight: 15px;
-  border: 2.5px solid #274148D1;
-}
-
-. .sign-in-btn:hover {
-  background: #42AECCA6;
-  transition: 0.3s;
-}
-
-.sign-in-btn>img {
-  margin: auto;
-}
-
-.sign-in-btn>p {
-  margin: auto;
-  margin-left: -20px;
-  font-size: 13.5px;
-  font-weight: bold;
-}
 
 
 /* chat component */

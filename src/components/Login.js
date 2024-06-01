@@ -1,10 +1,10 @@
 import React from "react";
-import Footer from "./Footer";
+import "./Login.css";
 import { auth } from "../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FacebookAuthProvider } from "firebase/auth";
 
-const Welcome = () => {
+const Login = () => {
 
   const googleSignIn = async () => {
     try {
@@ -34,26 +34,28 @@ const Welcome = () => {
         <h3>Open-Source, Cloud Based Realtime Chat Application</h3>
       </div>
 
-      <div className="sign-in-wrapper">
-        <button className="sign-in-btn" onClick={googleSignIn}>
-          <img src="/google-plus-512.png" width={30} />
-          <p>Sign in with Google</p>
-        </button>
-        <hr />
+      <div id="sign-in-container">
+        <div className="sign-in-wrapper">
+          <button className="sign-in-btn" onClick={googleSignIn}>
+            <img src="/google-plus-512.png" width={30} />
+            <p>Sign in with Google</p>
+          </button>
+          <hr />
 
-        <button className="sign-in-btn" onClick={facebookSignIn}>
-          <img src="/facebook-3-512.png" width={30} />
-          <p>Sign in with Facebook</p>
-        </button>
-        <hr />
+          <button className="sign-in-btn" onClick={facebookSignIn}>
+            <img src="/facebook-3-512.png" width={30} />
+            <p>Sign in with Facebook</p>
+          </button>
+          <hr />
 
-        <a className="sign-in-btn" href="https://github.com/danielplata79">
-          <img src="/github-9-512.png" width={30} />
-          <p>See my Github</p>
-        </a>
+          <a className="sign-in-btn" href="https://github.com/danielplata79">
+            <img src="/github-9-512.png" width={30} />
+            <p>See my Github</p>
+          </a>
+        </div>
       </div>
-    </main>
+    </main >
   );
 };
 
-export default Welcome;
+export default Login;

@@ -4,7 +4,7 @@ import SendMessage from "./SendMessage";
 import { db } from "../firebase";
 import { query, collection, orderBy, onSnapshot, limit } from "firebase/firestore";
 
-const ChatBox = () => {
+const Chatbox = () => {
   const [messages, setMessages] = useState([]);
   const scroll = useRef();
 
@@ -46,4 +46,4 @@ const ChatBox = () => {
   );
 };
 
-export default ChatBox;
+export default Chatbox;
