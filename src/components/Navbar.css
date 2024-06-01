@@ -1,0 +1,53 @@
+.nav-bar {
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #42AECCA6;
+  color: #88DDA0;
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  box-shadow: var(--div-shadows);
+  box-sizing: border-box;
+}
+
+.nav-bar span {
+  display: flex;
+  color: white;
+}
+
+.nav-bar span>h1 {
+  color: black;
+  margin: auto;
+}
+
+.nav-bar span>img {
+  color: black;
+  margin: auto;
+}
+
+.nav-bar>button {
+  margin: 0;
+  margin-right: 20px;
+  width: 250px;
+  border: none;
+  text-wrap: break-word;
+  padding: 5px -50px 5px;
+}
+
+
+@media only screen and (max-width: 700px) {
+  .nav-bar button {
+    width: 80px;
+    padding: 6px;
+    position: absolute;
+    right: 0;
+  }
+
+  .nav-bar button>p {
+    display: none;
+  }
+}

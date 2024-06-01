@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import "./Navbar.css";
 import "./Login.css";
-import GoogleSignin from "../img/btn_google_signin_dark_pressed_web.png";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
