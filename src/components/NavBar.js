@@ -4,7 +4,7 @@ import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
-const NavBar = () => {
+const Navbar = () => {
   const [user] = useAuthState(auth);
 
   const googleSignIn = () => {
@@ -38,4 +38,4 @@ const NavBar = () => {
     </nav>
   );
 };
-export default NavBar;
+export default Navbar;
