@@ -6,16 +6,25 @@ import { FacebookAuthProvider } from "firebase/auth";
 
 const Welcome = () => {
 
-  const googleSignIn = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider); //Workaround for Firefox's Coockie enhanced protection
-  };
-
-
-  const facebookSignIn = () => {
-    const provider = new FacebookAuthProvider();
-    signInWithPopup(auth, provider);
+  const googleSignIn = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.log(error);
+    }
   }
+
+  const facebookSignIn = async () => {
+    try {
+      const provider = new FacebookAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+
+      alert("FB User: ", result.user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <main className="welcome">
