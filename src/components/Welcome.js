@@ -5,12 +5,17 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FacebookAuthProvider } from "firebase/auth";
 
 const Welcome = () => {
+
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    const fbProvider = new FacebookAuthProvider();
     signInWithPopup(auth, provider); //Workaround for Firefox's Coockie enhanced protection
-    signInWithPopup(auth, fbProvider);
   };
+
+
+  const facebookSignIn = () => {
+    const provider = new FacebookAuthProvider();
+    signInWithPopup(auth, provider);
+  }
 
   return (
     <main className="welcome">
@@ -27,7 +32,7 @@ const Welcome = () => {
         </button>
         <hr />
 
-        <button className="sign-in-btn" onClick={googleSignIn}>
+        <button className="sign-in-btn" onClick={facebookSignIn}>
           <img src="/facebook-3-512.png" width={30} />
           <p>Sign in with Facebook</p>
         </button>
