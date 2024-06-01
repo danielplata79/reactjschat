@@ -104,6 +104,9 @@
 @media only screen and (max-width: 700px) {
   .header {
     height: 620px;
+    width: 100%;
+    padding: 10px;
+    padding-top: 80px;
   }
 
   .sign-in {
