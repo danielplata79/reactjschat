@@ -1,8 +1,13 @@
+.messages-wrapper {
+  padding: 30px;
+  margin-bottom: 60px;
+}
+
 .send-message {
   position: fixed;
   bottom: 0px;
   width: 100%;
-  padding: 20px 30px;
+  padding: 10px;
   background-color: #4c768d;
   display: flex;
   box-sizing: border-box;
@@ -11,7 +16,7 @@
 
 .send-message>input {
   height: 40px;
-  padding: 10px 10px;
+  padding: 7px;
   box-shadow: var(--div-shadows);
   border-radius: 5px 0 0 5px;
   border: none;

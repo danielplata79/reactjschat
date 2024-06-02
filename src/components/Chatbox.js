@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
-import Message from "./Message";
+import "./SendMessage.css";
+import "./Chatbox.css";
+import MessageBubble from "./MessageBubble";
 import SendMessage from "./SendMessage";
 import { db } from "../firebase";
 import { query, collection, orderBy, onSnapshot, limit } from "firebase/firestore";
@@ -37,7 +39,7 @@ const Chatbox = () => {
     <main className="chat-box">
       <div className="messages-wrapper">
         {messages?.map((message) => (
-          <Message key={message.id} message={message} />
+          <MessageBubble key={message.id} message={message} />
         ))}
       </div>
       <span ref={scroll}></span>

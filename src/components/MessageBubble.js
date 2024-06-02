@@ -1,8 +1,9 @@
 import React from "react";
+import "./MessageBubble.css";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const Message = ({ message }) => {
+const MessageBubble = ({ message }) => {
   const [user] = useAuthState(auth);
 
   return (
@@ -16,4 +17,4 @@ const Message = ({ message }) => {
   );
 };
 
-export default Message;
+export default MessageBubble;
