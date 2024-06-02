@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./SendMessage.css";
 import { auth, db } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
@@ -35,7 +36,8 @@ const SendMessage = ({ scroll }) => {
       <label htmlFor="messageInput" hidden> Enter Message </label>
       <input
         id="messageInput" name="messageInput" type="text" className="form-input__input" placeholder="Type a message.." value={message} onChange={(e) => setMessage(e.target.value)} />
-      <button type="submit">Send</button>
+
+      <button type="submit">SEND</button>
     </form>
   );
 };

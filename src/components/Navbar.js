@@ -26,7 +26,7 @@ const Navbar = () => {
       </span>
       {user ? (
         <button onClick={signOut} className="sign-in--btn" type="button">
-          <img src="/account-logout-512.png" width={30} />
+          <img src="/account-logout-512.png" width={20} />
           <p>Sign Out</p>
         </button>
       ) : (

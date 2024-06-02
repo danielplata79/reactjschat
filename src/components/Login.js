@@ -52,7 +52,7 @@ const Login = () => {
           <hr />
 
           <a className="sign-in--btn" href="https://github.com/danielplata79">
-            <img src="/github-9-512.png" width={20} />
+            <img src="/github-9-512.png" />
             <p>See my Github</p>
           </a>
         </div>
