@@ -15,7 +15,16 @@
   margin-left: auto;
   border-radius: 20px 20px 0 20px;
   background-color: #fff;
+  background: #24242ac2;
   box-shadow: -2px 2px 1px 1px #88dded;
+}
+
+.chat-bubble.right p:nth-child(1) {
+  color: #ffff;
+}
+
+.chat-bubble.right p:nth-child(2) {
+  color: lightskyblue;
 }
 
 .chat-bubble__left {
