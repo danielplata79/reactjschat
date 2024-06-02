@@ -1,6 +1,6 @@
 .messages-wrapper {
   padding: 30px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .send-message {
@@ -14,7 +14,7 @@
   box-shadow: var(--div-shadows);
 }
 
-.send-message>input {
+.form-input__input {
   height: 40px;
   padding: 7px;
   box-shadow: var(--div-shadows);
