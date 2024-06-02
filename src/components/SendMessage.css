@@ -1,8 +1,8 @@
 .messages-wrapper {
   padding: 30px;
-  margin-bottom: 40px !important;
-  background: red;
   background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+  margin-bottom: 300px;
+  background: red;
 }
 
 .send-message {
