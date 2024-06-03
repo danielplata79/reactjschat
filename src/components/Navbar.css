@@ -32,9 +32,8 @@
 .nav-bar>button {
   margin: 0;
   margin-right: 20px;
-  width: 250px;
+  width: 180px;
   border: none;
-  text-wrap: break-word;
   padding: 5px -50px 5px;
 }
 
