@@ -10,7 +10,7 @@
   position: fixed;
   top: 0;
   z-index: 1;
-  box-shadow: var(--div-shadows);
+  box-shadow: var(--div-shadows2);
   box-sizing: border-box;
 }
 

@@ -12,7 +12,7 @@
   background-color: #4c768d;
   display: flex;
   box-sizing: border-box;
-  box-shadow: var(--div-shadows);
+  box-shadow: var(--div-shadows2);
 }
 
 .form-input__input {

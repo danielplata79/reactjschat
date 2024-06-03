@@ -5,7 +5,8 @@
 }
 
 :root {
-  --div-shadows: 0px 5px 5px 0px rgba(0, 0, 0, 0.15);
+  --div-shadows: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+  --div-shadows2: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
   --btn-shadows: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
   --primary-col: #42AECCA6;
   --secondary-col: #42AECC70;
