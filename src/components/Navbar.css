@@ -35,6 +35,7 @@
   width: 180px;
   border: none;
   padding: 5px -50px 5px;
+  box-shadow: var(--btn-shadows);
 }
 
 
@@ -42,8 +43,10 @@
   .nav-bar button {
     width: 80px;
     padding: 6px;
+    padding-left: 0px;
     position: absolute;
     right: 0;
+
   }
 
   .nav-bar button>p {
