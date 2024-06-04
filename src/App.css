@@ -43,4 +43,5 @@ footer {
   bottom: 0;
   text-align: center;
   background: var(--primary-col);
+  display: block;
 }
