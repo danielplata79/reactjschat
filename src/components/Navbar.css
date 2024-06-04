@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #42AECC;
+  background-color: #5EA4FD;
   color: #88DDA0;
   height: 60px;
   width: 100%;
@@ -46,7 +46,10 @@
     padding-left: 0px;
     position: absolute;
     right: 0;
+  }
 
+  .nav-bar button>img {
+    padding-left: 5px;
   }
 
   .nav-bar button>p {
