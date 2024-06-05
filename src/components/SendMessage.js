@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./SendMessage.css";
-import { auth, db } from "../firebase";
+import "./Chatbox.css";
+import { auth, db, uploadFile } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 const SendMessage = ({ scroll }) => {
   const [message, setMessage] = useState("");
+  const [img, setImg] = useState(null);
 
   const sendMessage = async (event) => {
     event.preventDefault();
@@ -27,7 +29,12 @@ const SendMessage = ({ scroll }) => {
       createdAt: serverTimestamp(), // Storage the time message is created
       uid,
     });
+
+    // HandleIMG upload
+    uploadFile(img);
+
     setMessage("");
+    setImg(null);
     scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -36,6 +43,8 @@ const SendMessage = ({ scroll }) => {
       <label htmlFor="messageInput" hidden> Enter Message </label>
       <input
         id="messageInput" name="messageInput" type="text" className="form-input__input" placeholder="Type a message.." value={message} onChange={(e) => setMessage(e.target.value)} />
+
+      <input type="file" onChange={e => setImg(e.target.files[0])} onChange={e => setMessage(e.target.files[0].name)} id="qlq" />
 
       <button type="submit">SEND</button>
     </form>
