@@ -44,7 +44,14 @@ const SendMessage = ({ scroll }) => {
       <input
         id="messageInput" name="messageInput" type="text" className="form-input__input" placeholder="Type a message.." value={message} onChange={(e) => setMessage(e.target.value)} />
 
-      <input type="file" onChange={e => setImg(e.target.files[0])} onChange={e => setMessage(e.target.files[0].name)} id="qlq" />
+      <input
+        type="file"
+        onChange={e => {
+          setImg(e.target.files[0]);
+          setMessage(e.target.files[0].name);
+        }}
+        id="qlq"
+      />
 
       <button type="submit">SEND</button>
     </form>
