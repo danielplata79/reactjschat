@@ -11,6 +11,10 @@
   margin-bottom: 20px;
 }
 
+.chat-bubble__right>img {
+  width: 250px;
+}
+
 .chat-bubble.right {
   margin-left: auto;
   border-radius: 20px 20px 0 20px;
