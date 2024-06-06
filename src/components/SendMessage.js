@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./SendMessage.css";
 import "./Chatbox.css";
-import { auth, db, uploadFile } from "../firebase";
+import { auth, db, storage, uploadFile } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 as uuidv4 } from "uuid";
 
 const SendMessage = ({ scroll }) => {
   const [message, setMessage] = useState("");
@@ -20,18 +22,30 @@ const SendMessage = ({ scroll }) => {
     // Get user's personal data when user log in
     const { uid, displayName, photoURL } = auth.currentUser;
 
+    // HandleIMG upload
+    //const result = await uploadFile(img);
+
     // Sending data to our Backend =>
     // Create a document inside messages collection in Firebase DB
-    await addDoc(collection(db, "messages"), {
-      text: message,
-      name: displayName,
-      avatar: photoURL,
-      createdAt: serverTimestamp(), // Storage the time message is created
-      uid,
-    });
+    if (img) {
+      const storageRef = ref(storage, uuidv4());
+      await uploadBytes(storageRef, img);
 
-    // HandleIMG upload
-    uploadFile(img);
+      const url = await getDownloadURL(storageRef);
+      console.log("url" + url);
+
+      await addDoc(collection(db, "messages"), {
+        text: message,
+        name: displayName,
+        avatar: photoURL,
+        img: url,
+        createdAt: serverTimestamp(), // Storage the time message is created
+        uid,
+      });
+
+    }
+
+
 
     setMessage("");
     setImg(null);
