@@ -14,17 +14,10 @@ const SendMessage = ({ scroll }) => {
     event.preventDefault();
 
     // Check if message input is empty
-    if (message.trim() === "") {
-      alert("Enter a valid message");
-      return;
-    };
+
 
     // Get user's personal data when user log in
     const { uid, displayName, photoURL } = auth.currentUser;
-
-    // HandleIMG upload
-    //const result = await uploadFile(img);
-
     // Sending data to our Backend =>
     // Create a document inside messages collection in Firebase DB
     if (img) {
@@ -35,7 +28,6 @@ const SendMessage = ({ scroll }) => {
       console.log("url" + url);
 
       await addDoc(collection(db, "messages"), {
-        text: message,
         name: displayName,
         avatar: photoURL,
         img: url,
@@ -43,6 +35,19 @@ const SendMessage = ({ scroll }) => {
         uid,
       });
 
+    } else {
+      if (message.trim() === "") {
+        alert("Enter a valid message");
+        return;
+      };
+
+      await addDoc(collection(db, "messages"), {
+        text: message,
+        name: displayName,
+        avatar: photoURL,
+        createdAt: serverTimestamp(),
+        uid
+      });
     }
 
 
@@ -62,7 +67,6 @@ const SendMessage = ({ scroll }) => {
         type="file"
         onChange={e => {
           setImg(e.target.files[0]);
-          setMessage(e.target.files[0].name);
         }}
         id="qlq"
       />
