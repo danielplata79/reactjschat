@@ -13,6 +13,7 @@ const MessageBubble = ({ message }) => {
         <p className="user-name"> {message.name} </p>
         <img src={message.img} />
         <p className="user-message"> {message.text} </p>
+        <p>{message.createdAt.toDate().toDateString()}</p>
       </div>
     </div>
   );

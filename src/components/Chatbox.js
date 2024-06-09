@@ -14,7 +14,7 @@ const Chatbox = () => {
     const q = query(
       collection(db, "messages"),
       orderBy("createdAt", "desc"),
-      limit(100)
+      limit(2)
     );
 
     const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
