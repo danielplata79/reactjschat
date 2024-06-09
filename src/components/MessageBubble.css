@@ -13,7 +13,7 @@
 
 .chat-bubble__right>img {
   width: auto;
-  max-width: 250px;
+  max-width: calc(100% - 50px);
 }
 
 .chat-bubble.right {
