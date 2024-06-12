@@ -10,9 +10,6 @@ const SendMessage = ({ scroll }) => {
   const [message, setMessage] = useState("");
   const [img, setImg] = useState(null);
 
-  useEffect(() => {
-    scroll.current.scrollIntoView({ behavior: "smooth" });
-  });
 
   const sendMessage = async (event) => {
     event.preventDefault();
@@ -56,7 +53,6 @@ const SendMessage = ({ scroll }) => {
 
     setMessage("");
     setImg(null);
-    scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
