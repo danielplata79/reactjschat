@@ -72,3 +72,14 @@
     width: 450px;
   }
 }
+
+
+@media only screen and (max-width: 900px) {
+  .chat-bubble {
+    max-width: calc(100% - 0px);
+  }
+
+  .chat-bubble__right>img {
+    max-width: calc(100% - 0px);
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SendMessage.css";
 import "./Chatbox.css";
-import { auth, db, storage, uploadFile } from "../firebase";
+import { auth, db, storage } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";

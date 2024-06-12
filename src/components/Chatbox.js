@@ -14,8 +14,11 @@ const Chatbox = () => {
     const q = query(
       collection(db, "messages"),
       orderBy("createdAt", "desc"),
-      limit(50)
+      limit(30)
     );
+
+
+    scroll.current.scrollIntoView({ behavior: "smooth" });
 
     const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
       // Creates a new empty array for store data from every message
@@ -31,13 +34,10 @@ const Chatbox = () => {
       );
       setMessages(sortedMessages);
 
-      scroll.current.scrollIntoView({ behavior: "smooth" });
-
       console.log("fetched: " + fetchedMessages.length);
     });
 
 
-    scroll.current.scrollIntoView({ behavior: "smooth" });
     return () => unsubscribe;
   }, []);
 
