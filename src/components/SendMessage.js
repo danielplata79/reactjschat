@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SendMessage.css";
 import "./Chatbox.css";
 import { auth, db, storage, uploadFile } from "../firebase";
@@ -9,6 +9,10 @@ import { v4 as uuidv4 } from "uuid";
 const SendMessage = ({ scroll }) => {
   const [message, setMessage] = useState("");
   const [img, setImg] = useState(null);
+
+  useEffect(() => {
+    scroll.current.scrollIntoView({ behavior: "smooth" });
+  });
 
   const sendMessage = async (event) => {
     event.preventDefault();

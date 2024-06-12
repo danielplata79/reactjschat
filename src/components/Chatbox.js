@@ -11,7 +11,6 @@ const Chatbox = () => {
 
   // Runs everytime a message is sended or deleted
   useEffect(() => {
-    scroll.current.scrollIntoView({ behavior: "smooth" });
     const q = query(
       collection(db, "messages"),
       orderBy("createdAt", "desc"),
@@ -32,8 +31,13 @@ const Chatbox = () => {
       );
       setMessages(sortedMessages);
 
+      scroll.current.scrollIntoView({ behavior: "smooth" });
+
       console.log("fetched: " + fetchedMessages.length);
     });
+
+
+    scroll.current.scrollIntoView({ behavior: "smooth" });
     return () => unsubscribe;
   }, []);
 
@@ -44,8 +48,8 @@ const Chatbox = () => {
           <MessageBubble key={message.id} message={message} />
         ))}
       </div>
-      <span ref={scroll}></span>
       <SendMessage scroll={scroll} />
+      <span ref={scroll}></span>
     </main>
   );
 };
