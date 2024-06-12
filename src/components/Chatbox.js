@@ -11,6 +11,7 @@ const Chatbox = () => {
 
   // Runs everytime a message is sended or deleted
   useEffect(() => {
+    scroll.current.scrollIntoView({ behavior: "smooth" });
     const q = query(
       collection(db, "messages"),
       orderBy("createdAt", "desc"),
