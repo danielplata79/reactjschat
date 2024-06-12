@@ -21,11 +21,14 @@
 
 .nav-bar span>h1 {
   margin: auto;
+  margin-left: 10px;
 }
 
 .nav-bar span>img {
   color: black;
   margin: auto;
+  width: 35px;
+  height: 35px;
 }
 
 .nav-bar>button {
