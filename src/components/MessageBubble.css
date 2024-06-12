@@ -63,3 +63,9 @@
 .message-img {
   cursor: pointer;
 }
+
+@media only screen and (min-width: 1000px) {
+  .chat-bubble__right>img {
+    width: 450px;
+  }
+}

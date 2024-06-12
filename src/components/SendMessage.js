@@ -50,8 +50,6 @@ const SendMessage = ({ scroll }) => {
       });
     }
 
-
-
     setMessage("");
     setImg(null);
     scroll.current.scrollIntoView({ behavior: "smooth" });

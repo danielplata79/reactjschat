@@ -4,7 +4,7 @@ import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import FullScreenImg from "./FullScreenImg";
 
-const MessageBubble = ({ message, imgToFull }) => {
+const MessageBubble = ({ message }) => {
   const [user] = useAuthState(auth);
   const [isFullScreen, setIsFullScreen] = useState(false);
 
@@ -16,6 +16,7 @@ const MessageBubble = ({ message, imgToFull }) => {
     setIsFullScreen(false);
   }
 
+
   return (
     <>
       <div className={`chat-bubble ${message.uid === user.uid ? "right" : ""}`}>
@@ -24,13 +25,15 @@ const MessageBubble = ({ message, imgToFull }) => {
           <p className="user-name"> {message.name} </p>
           <img src={message.img} className="message-img" onClick={handleImgClick} />
           <p className="user-message"> {message.text} </p>
-          <p>{message.createdAt.toDate().toDateString()}</p>
+          {message.createdAt && (
+            <p>{message.createdAt.toDate().toDateString()}</p>
+          )}
         </div>
       </div>
 
       {isFullScreen && (
         <FullScreenImg src={message.img} onClose={handleCloseFullScreen} />
-      )};
+      )}
     </>
   );
 };
