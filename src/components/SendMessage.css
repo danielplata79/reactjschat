@@ -1,7 +1,7 @@
 .messages-wrapper {
-  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
   padding: 75px 40px 75px 40px;
   min-height: 100vh;
+  background-image: linear-gradient(89.4deg, rgba(183, 52, 78, 0.57) 0.8%, rgb(43, 130, 121) 99.4%);
 }
 
 .send-message {
@@ -9,7 +9,7 @@
   bottom: 0px;
   width: 100%;
   padding: 10px;
-  background-color: #4c768d;
+  background-color: #24242a;
   display: flex;
   box-sizing: border-box;
   box-shadow: var(--div-shadows2);

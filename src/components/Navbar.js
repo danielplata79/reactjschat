@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <nav className="nav-bar">
       <span>
-        <img src="/logodog.png" alt="ReactJs logo" width={50} height={50} />
+        <img src="/logodog2.png" alt="ReactJs logo" width={50} height={50} />
         <h1>OpenRChat//</h1>
       </span>
       {user ? (

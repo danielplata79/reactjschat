@@ -3,8 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #5EA4FD;
-  color: #88DDA0;
+  background-color: #24242a;
+  color: #ffffffa6;
   height: 60px;
   width: 100%;
   position: fixed;
@@ -20,7 +20,6 @@
 }
 
 .nav-bar span>h1 {
-  color: black;
   margin: auto;
 }
 
@@ -36,6 +35,7 @@
   border: none;
   padding: 5px -50px 5px;
   box-shadow: var(--btn-shadows);
+  background-color: #ffffffa6;
 }
 
 
