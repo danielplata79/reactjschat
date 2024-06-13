@@ -69,7 +69,7 @@
 
 @media only screen and (min-width: 1000px) {
   .chat-bubble__right>img {
-    width: 450px;
+    max-width: 450px;
   }
 }
 
