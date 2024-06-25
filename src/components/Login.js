@@ -1,9 +1,10 @@
 import React from "react";
 import Footer from "./Footer"
 import "./Login.css";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FacebookAuthProvider } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 const Login = () => {
 
@@ -11,6 +12,11 @@ const Login = () => {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
+
+      const token = result.user.accessToken;
+      const user = result.user;
+
+      await createUserCollection(user);
     } catch (error) {
       console.log(error);
     }
@@ -25,6 +31,19 @@ const Login = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const createUserCollection = async (user) => {
+    const userCollectionRef = doc(db, 'users', user.uid);
+    const userData = {
+      email: user.email,
+      name: user.displayName,
+      createdAt: new Date(),
+    }
+
+    await setDoc(userCollectionRef, userData, {
+      merge: true,
+    })
   };
 
   return (
