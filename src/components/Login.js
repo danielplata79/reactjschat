@@ -4,7 +4,7 @@ import "./Login.css";
 import { auth, db } from "../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FacebookAuthProvider } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 const Login = () => {
 
@@ -13,10 +13,24 @@ const Login = () => {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
 
-      const token = result.user.accessToken;
       const user = result.user;
 
-      await createUserCollection(user);
+      const userDocRef = doc(db, "users, users.uid");
+      const userDoc = await getDoc(userDocRef);
+
+
+      if (!userDoc.exists()) {
+        await setDoc(doc(db, "users, users.uid"), {
+          email: user.email,
+          name: user.displayName,
+          createdAt: new Date(),
+        });
+
+        await createUserCollection(user);
+
+      } else {
+        alert("User Already Exists");
+      }
     } catch (error) {
       console.log(error);
     }
