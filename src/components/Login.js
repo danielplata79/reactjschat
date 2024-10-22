@@ -62,36 +62,22 @@ const Login = () => {
 
   return (
     <main id="main">
-      <div className="header">
-        <div className="header_content">
-          <h1>Welcome to OpenRChat, Developed by Daniel Plata</h1>
-          <img src="/realogo.png" alt="ReactJs logo" width={200} height={200} />
-          <h2>Open-Source, Cloud Based Realtime Chat Application</h2>
-        </div>
-      </div>
-
       <div id="content">
         <div className="sign-in">
           <button className="sign-in--btn" onClick={googleSignIn}>
             <img src="/google-plus-512.png" />
-            <p>Sign in with Google</p>
+            <p>Continue with Google</p>
           </button>
           <hr />
 
           <button className="sign-in--btn" onClick={facebookSignIn}>
             <img src="/facebook-3-512.png" />
-            <p>Sign in with Facebook</p>
+            <p>Continue with Facebook</p>
           </button>
           <hr />
 
-          <a className="sign-in--btn" href="https://github.com/danielplata79">
-            <img src="/github-9-512.png" />
-            <p>See my Github</p>
-          </a>
         </div>
       </div>
-
-      <Footer />
     </main >
 
   );
