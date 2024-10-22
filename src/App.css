@@ -13,9 +13,7 @@
   --third-col: #88DDA0;
 }
 
-#root {
-  height: 100vh;
-}
+#root {}
 
 html,
 body {
