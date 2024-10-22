@@ -24,7 +24,7 @@
   flex-direction: column;
   max-width: 450px;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 10%;
 }
 
 #or-text {
@@ -154,7 +154,7 @@
 
   .sign-in {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 25%;
     padding: 0px;
   }
 
