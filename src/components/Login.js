@@ -64,7 +64,7 @@ const Login = () => {
     <main id="main">
       <div id="content">
         <div className="sign-in">
-          <img src="/logodog3.png" className="logo" />
+          <img src="/logodog5.png" className="logo" />
           <h1>Sign in to OpenRChat</h1>
           <button className="sign-in--btn" onClick={googleSignIn}>
             <img src="/google-plus-5123.png" />
