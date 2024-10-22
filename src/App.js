@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      // {!user ? <Login /> : <Chatbox />}
+
       {!user ? <Login /> : <Chatbox />}
     </div>
   );

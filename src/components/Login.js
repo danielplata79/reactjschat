@@ -64,22 +64,33 @@ const Login = () => {
     <main id="main">
       <div id="content">
         <div className="sign-in">
+          <img src="/logodog3.png" className="logo" />
+          <h1>Sign in to OpenRChat</h1>
           <button className="sign-in--btn" onClick={googleSignIn}>
-            <img src="/google-plus-512.png" />
+            <img src="/google-plus-5123.png" />
             <p>Continue with Google</p>
           </button>
-          <hr />
 
-          <button className="sign-in--btn" onClick={facebookSignIn}>
-            <img src="/facebook-3-512.png" />
+          <button className="sign-in--btn" id="facebook-btn" onClick={facebookSignIn}>
+            <img src="/facebook-4-64.ico" />
             <p>Continue with Facebook</p>
           </button>
+          <p id="or-text">or</p>
+
+          <form>
+            <input name="Email" type="text" placeholder="Email" className="sign-in--input" />
+            <input name="Password" type="text" placeholder="Password" className="sign-in--input" />
+            <button id="submit-btn-login" type="submit" className="sign-in--btn" >Log in </button>
+          </form>
+
           <hr />
 
+          <button className="sign-in--btn" id="create-account-btn" >
+            <p>Create Account</p>
+          </button>
         </div>
       </div>
     </main >
-
   );
 };
 
