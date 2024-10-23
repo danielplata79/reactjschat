@@ -7,14 +7,21 @@ import Home from "./components/Home";
 import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 function App() {
   const [user] = useAuthState(auth);
 
   return (
     <div className="App">
-      <Navbar />
-
-      {!user ? <Login /> : <Chatbox />}
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/chat" element={user ? <Chatbox /> : <Login />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

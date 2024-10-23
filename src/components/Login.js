@@ -6,6 +6,8 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FacebookAuthProvider } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 const Login = () => {
 
   const googleSignIn = async () => {
@@ -17,7 +19,6 @@ const Login = () => {
 
       const userDocRef = doc(db, "users, users.uid");
       const userDoc = await getDoc(userDocRef);
-
 
       if (!userDoc.exists()) {
         await setDoc(doc(db, "users, users.uid"), {
