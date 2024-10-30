@@ -7,7 +7,7 @@ import Home from "./components/Home";
 import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -17,7 +17,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={!user ? <Login /> : <Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/chat" element={user ? <Chatbox /> : <Login />} />
         </Routes>

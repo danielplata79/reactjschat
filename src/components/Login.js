@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "./Footer"
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FacebookAuthProvider } from "firebase/auth";
@@ -9,6 +10,7 @@ import { doc, setDoc, getDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
+  const navigate = useNavigate();
 
   const googleSignIn = async () => {
     try {
@@ -20,6 +22,8 @@ const Login = () => {
       const userDocRef = doc(db, "users, users.uid");
       const userDoc = await getDoc(userDocRef);
 
+      navigate("/chat");
+
       if (!userDoc.exists()) {
         await setDoc(doc(db, "users, users.uid"), {
           email: user.email,
@@ -29,7 +33,10 @@ const Login = () => {
 
         await createUserCollection(user);
 
-      } else {
+        navigate("/chat");
+      }
+
+      else {
         alert("User Already Exists");
       }
     } catch (error) {
@@ -79,7 +86,7 @@ const Login = () => {
           <p id="or-text">or</p>
 
           <form>
-            <input name="Email" type="text" placeholder="Email" className="sign-in--input" />
+            <input name="email" type="text" placeholder="Email" className="sign-in--input" />
             <input name="Password" type="text" placeholder="Password" className="sign-in--input" />
             <button id="submit-btn-login" type="submit" className="sign-in--btn" >Log in </button>
           </form>
