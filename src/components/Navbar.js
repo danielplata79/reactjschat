@@ -13,6 +13,8 @@ const Navbar = () => {
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider); // workaround for firefox enhanced coockie protection
+
+    navigate("/chat");
   };
 
   const signOut = () => {

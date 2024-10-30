@@ -17,9 +17,18 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={!user ? <Login /> : <Navigate to="/login" />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/chat" element={user ? <Chatbox /> : <Login />} />
+          {!user ? (
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="*" element={<Navigate to="/login" />} />
+            </>
+          ) : (
+            <>
+              <Route path="/chat" element={<Chatbox />} />
+              <Route path="*" element={<Navigate to="/chat" />} />
+            </>
+          )
+          }
         </Routes>
       </Router>
     </div>
