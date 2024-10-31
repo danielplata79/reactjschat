@@ -14,10 +14,13 @@ const Navbar = () => {
     navigate("/login");
   };
 
+  const goHome = () => {
+    navigate("/");
+  }
 
   return (
     <nav className="nav-bar">
-      <span>
+      <span onClick={goHome} >
         <img src="/logodog2.png" alt="ReactJs logo" width={50} height={50} />
         <h1>OpenRChat//</h1>
       </span>

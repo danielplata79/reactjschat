@@ -17,6 +17,7 @@
 .nav-bar span {
   display: flex;
   color: white;
+  cursor: pointer;
 }
 
 .nav-bar span>h1 {
