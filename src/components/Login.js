@@ -24,7 +24,9 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
       const user = userCredential.user;
     }).catch((error) => {
-      console.log("error code: " + error.code)
+      if (error.code) {
+        setAlert("Invalid Email or Password");
+      }
     })
   }
 
@@ -116,8 +118,8 @@ const Login = () => {
           <button className="sign-in--btn" id="create-account-btn" onClick={createAccount} >
             <p>Create Account</p>
           </button>
-          <br />
-          {alert && <p>{alert}</p>}
+
+          {alert && <p className="alert-error">{alert}</p>}
         </div>
       </div>
     </main >

@@ -28,6 +28,8 @@ const CreateAccount = () => {
         setAlert("Password is Weak");
       } if (error.code === "auth/email-already-in-use") {
         setAlert("Email already in use");
+      } if (error.code === "auth/invalid-email") {
+        setAlert("Invalid Email");
       }
       console.log(error.code);
     })
@@ -50,7 +52,7 @@ const CreateAccount = () => {
           </form>
           <br />
           <br />
-          {alert && <p>{alert}</p>}
+          {alert && <p className="alert-error">{alert}</p>}
         </div>
       </div>
     </main>
