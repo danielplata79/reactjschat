@@ -11,7 +11,7 @@ const Navbar = () => {
 
   const signOut = () => {
     auth.signOut();
-    navigate("/login");
+    navigate("/Login");
   };
 
   const goHome = () => {
@@ -31,8 +31,6 @@ const Navbar = () => {
         </button>
       ) : (
         <div></div>
-
-
       )}
     </nav>
   );
