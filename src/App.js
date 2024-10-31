@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Chatbox from "./components/Chatbox";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import CreateAccount from "./components/CreateAccount";
 
 import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -19,13 +20,14 @@ function App() {
         <Routes>
           {!user ? (
             <>
-              <Route path="/login" element={<Login />} />
-              <Route path="*" element={<Navigate to="/login" />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Sign-in" element={<CreateAccount />} />
+              <Route path="*" element={<Navigate to="/Login" />} />
             </>
           ) : (
             <>
-              <Route path="/chat" element={<Chatbox />} />
-              <Route path="*" element={<Navigate to="/chat" />} />
+              <Route path="/Chat" element={<Chatbox />} />
+              <Route path="*" element={<Navigate to="/Chat" />} />
             </>
           )
           }

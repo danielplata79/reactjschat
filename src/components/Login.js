@@ -68,6 +68,10 @@ const Login = () => {
     })
   };
 
+  const createAccount = () => {
+    navigate("/Sign-in");
+  }
+
   return (
     <main id="main">
       <div id="content">
@@ -93,7 +97,7 @@ const Login = () => {
 
           <hr />
 
-          <button className="sign-in--btn" id="create-account-btn" >
+          <button className="sign-in--btn" id="create-account-btn" onClick={createAccount}>
             <p>Create Account</p>
           </button>
         </div>
