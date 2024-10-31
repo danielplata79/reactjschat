@@ -38,7 +38,7 @@ const Chatbox = () => {
     if (scrollRef.current) {
       setTimeout(() => {
         scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-      }, 1000); // Delay for the next event loop tick
+      }, 1500); // Delay for the next event loop tick
     }
   }
 
