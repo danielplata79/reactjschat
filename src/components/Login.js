@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "./Footer"
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { FacebookAuthProvider } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithUserAndPassword } from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [alert, setAlert] = useState("");
+
+  const signInEmailAndPassword = (e) => {
+    e.preventDefault();
+    setAlert("");
+
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+      const user = userCredential.user;
+    }).catch((error) => {
+      console.log("error code: " + error.code)
+    })
+  }
 
   const googleSignIn = async () => {
     try {
@@ -69,7 +85,7 @@ const Login = () => {
   };
 
   const createAccount = () => {
-    navigate("/Sign-in");
+    navigate("/Sign-up");
   }
 
   return (
@@ -90,16 +106,18 @@ const Login = () => {
           <p id="or-text">or</p>
 
           <form>
-            <input name="email" type="text" placeholder="Email" className="sign-in--input" />
-            <input name="Password" type="text" placeholder="Password" className="sign-in--input" />
-            <button id="submit-btn-login" type="submit" className="sign-in--btn" >Log in </button>
+            <input name="email" type="text" placeholder="Email" className="sign-in--input" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input name="Password" type="password" placeholder="Password" className="sign-in--input" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <button id="submit-btn-login" type="submit" className="sign-in--btn" onClick={signInEmailAndPassword}>Log in </button>
           </form>
 
           <hr />
 
-          <button className="sign-in--btn" id="create-account-btn" onClick={createAccount}>
+          <button className="sign-in--btn" id="create-account-btn" onClick={createAccount} >
             <p>Create Account</p>
           </button>
+          <br />
+          {alert && <p>{alert}</p>}
         </div>
       </div>
     </main >
