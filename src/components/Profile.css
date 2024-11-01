@@ -16,6 +16,7 @@
   flex-direction: column;
   box-sizing: border-box;
   margin-top: 100px;
+  min-height: 700px;
 }
 
 .profile-img {
@@ -37,7 +38,7 @@
 .profile-info {
   display: flex;
   flex-direction: column;
-  height: 70%;
+  height: 50%;
   background: #24242a;
   border-radius: 5px;
   box-shadow: -2px 2px 1px 1px #00000045;
@@ -50,7 +51,8 @@
 
 
 @media only screen and (max-height: 970px) {
+
   .profile-info {
-    height: 60%;
+    height: 40%;
   }
 }
