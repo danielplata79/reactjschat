@@ -28,11 +28,24 @@ const Navbar = () => {
 
       {user && (
         <div className="user-avatar-container" onClick={toggleDropdown}>
-          <img src={user.photoURL || "/default-avatar.png"} />
+          <img className="user-avatar-img" src={user.photoURL || "/default-avatar.png"} />
           {dropdownVisible && (
             <div className="dropdown-menu">
-              <button onClick={() => navigate("/Profile")} className="dropdown-item">Profile</button>
-              <button onClick={signOut}>Sign Out</button>
+              <button onClick={() => navigate("/Profile")} className="dropdown-item">
+                <img src="/guest-64.png" />
+                <hr />
+                <p>Profile</p>
+              </button>
+              <button >
+                <img src="/settings-25-64.png" />
+                <hr />
+                <p>Settings</p>
+              </button>
+              <button onClick={signOut}>
+                <img src="/account-logout-512.png" />
+                <hr />
+                <p>Sign Out</p>
+              </button>
             </div>
           )}
         </div>

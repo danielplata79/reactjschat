@@ -53,9 +53,8 @@
 .send-message__buttons__img>img {
   box-sizing: border-box;
   position: absolute;
-  padding-top: 11px;
-  margin-left: 10px;
-  width: 30px;
+  padding-top: 9px;
+  width: 35px;
 }
 
 .send-message__buttons__img>input {
