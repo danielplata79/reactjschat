@@ -22,6 +22,10 @@ const Profile = () => {
     fetchUserData();
   }, []);
 
+  if (!userData) {
+    return <p>Loading Profile...</p>;
+  }
+
   return (
     <div className="profile">
       <h1>Your Profile</h1>
