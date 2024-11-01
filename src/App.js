@@ -4,6 +4,7 @@ import Chatbox from "./components/Chatbox";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import CreateAccount from "./components/CreateAccount";
+import Profile from "./components/Profile";
 
 import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -27,6 +28,7 @@ function App() {
           ) : (
             <>
               <Route path="/Chat" element={<Chatbox />} />
+              <Route path="/Profile" element={<Profile />} />
               <Route path="*" element={<Navigate to="/Chat" />} />
             </>
           )
