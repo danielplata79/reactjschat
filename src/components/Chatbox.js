@@ -3,14 +3,13 @@ import "./SendMessage.css";
 import MessageBubble from "./MessageBubble";
 import SendMessage from "./SendMessage";
 import { auth, db } from "../firebase";
-import { useAuthState } from "react-firebase-hooks/auth"
+import { useAuthState } from "react-firebase-hooks/auth";
 import { query, collection, orderBy, onSnapshot, limit } from "firebase/firestore";
 
 const Chatbox = () => {
   const [user] = useAuthState(auth);
-
   const [messages, setMessages] = useState([]);
-  const scrollRef = useRef();
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     const q = query(
@@ -34,13 +33,16 @@ const Chatbox = () => {
     return () => unsubscribe();
   }, []);
 
-  if (user) {
-    if (scrollRef.current) {
-      setTimeout(() => {
-        scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-      }, 1500); // Delay for the next event loop tick
+  useEffect(() => {
+    // Scroll to the bottom whenever messages change or a new message arrives
+    if (user && scrollRef.current) {
+      const timer = setTimeout(() => {
+        scrollRef.current.scrollIntoView({ behavior: "smooth" });
+      }, 1000);
+
+      return () => clearTimeout(timer); // Cleanup to avoid memory leaks
     }
-  }
+  }, [messages, user]); // Dependencies: messages and user
 
   return (
     <main className="chat-box">

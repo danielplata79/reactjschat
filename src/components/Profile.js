@@ -8,38 +8,24 @@ const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [user] = useAuthState(auth);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      const user = auth.currentUser;
-      if (user) {
-        const userDocRef = doc(db, "users", user.uid);
-        const userDoc = await getDoc(userDocRef);
 
-        if (userDoc.exists()) {
-          setUserData(userDoc.data());
-          console.log("user data: " + JSON.stringify(userDoc.data()))
-        }
-      }
-    };
 
-    fetchUserData();
-  }, []);
 
-  if (!userData) {
-    return <p>Loading Profile...</p>;
-  }
+
+  console.log("user data 2 : " + JSON.stringify(user));
 
   return (
     <div className="container">
+      <p>hola</p>
       <div className="profile">
         <span className="profile-img">
           <img src={user.photoURL} />
         </span>
         <div className="profile-info">
-          <p><strong>Username: </strong> {userData.name}</p>
+          <p><strong>Username: </strong> {user.name || user.displayName}</p>
           <p><strong>Status: </strong> Here should be your status..</p>
-          <p><strong>Email: </strong> {userData.email}</p>
-          <p><strong>Key: </strong> {userData.profileKey}</p>
+          <p><strong>Email: </strong> {user.email}</p>
+          <p><strong>Key: </strong> key</p>
         </div>
       </div>
     </div>
