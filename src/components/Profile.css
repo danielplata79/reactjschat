@@ -1,9 +1,8 @@
 .container {
   background: #313135;
   width: 100%;
-  min-height: 100vh;
   height: 100vh;
-  min-height: 900px;
+  min-height: 730px;
   color: lime;
   display: flex;
   flex-direction: column;
@@ -11,11 +10,12 @@
 
 .profile {
   width: 80%;
-  height: 80%;
+  height: 70%;
   margin: auto;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  margin-top: 100px;
 }
 
 .profile-img {
@@ -46,4 +46,11 @@
 .profile-info>p {
   display: block;
   margin: auto;
+}
+
+
+@media only screen and (max-height: 970px) {
+  .profile-info {
+    height: 60%;
+  }
 }
