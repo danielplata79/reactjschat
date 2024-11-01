@@ -51,7 +51,7 @@
   flex-direction: column;
   padding: 5px;
   right: 50px;
-  width: 125px;
+  width: 155px;
   height: auto;
   border-radius: 5px;
   box-shadow: -2px 2px 1px 1px #00000045;
@@ -64,11 +64,11 @@
   display: flex;
   align-items: center;
   background: none;
-  font-size: 0.8rem;
-  font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: inherit;
   width: 100%;
-  height: 35px;
-  padding-left: 11px;
+  height: 45px;
+  padding-left: 10px;
   box-sizing: border-box;
 }
 
@@ -80,6 +80,7 @@
 .dropdown-menu>button>hr {
   height: 20px;
   margin-right: 5px;
+  color: 24242a;
 }
 
 .dropdown-menu>button>img {
@@ -87,6 +88,10 @@
   margin-right: 7px;
 }
 
-.dropdown-menu>hr {}
+.dropdown-menu>hr {
+  color: #1313134d;
+  width: 120px;
+  margin-left: 11px;
+}
 
 @media only screen and (max-width: 700px) {}
