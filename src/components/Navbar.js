@@ -10,9 +10,19 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
-  const signOut = () => {
+  /* const signOut = () => {
     auth.signOut();
     navigate("/Login");
+  } */
+
+  const signOut = async () => {
+    try {
+      await auth.signOut();
+      navigate("/Login");
+    } catch (error) {
+      console.log("Error while signin out..");
+    }
+
   }
 
   const toggleDropdown = () => {
@@ -26,7 +36,7 @@ const Navbar = () => {
         <h1>OpenRChat//</h1>
       </span>
 
-      {user && (
+      {user &&
         <div className="user-avatar-container" onClick={toggleDropdown}>
           <img className="user-avatar-img" src={user.photoURL || "/default-avatar.png"} />
           {dropdownVisible && (
@@ -59,7 +69,7 @@ const Navbar = () => {
             </div>
           )}
         </div>
-      )}
+      }
 
     </nav>
   );

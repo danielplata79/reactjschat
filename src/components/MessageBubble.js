@@ -19,17 +19,20 @@ const MessageBubble = ({ message }) => {
 
   return (
     <>
-      <div className={`chat-bubble ${message.uid === user.uid ? "right" : ""}`}>
-        <img className="chat-bubble__left" src={message.avatar} alt="img avatar" referrerPolicy="no-referrer" />
-        <div className="chat-bubble__right">
-          <p className="user-name"> {message.name} </p>
-          <img src={message.img} className="message-img" onClick={handleImgClick} />
-          <p className="user-message"> {message.text} </p>
-          {message.createdAt && (
-            <p>{message.createdAt.toDate().toDateString()}</p>
-          )}
+      {user &&
+        <div className={`chat-bubble ${message.uid === user.uid ? "right" : ""}`}>
+          <img className="chat-bubble__left" src={message.avatar} alt="img avatar" referrerPolicy="no-referrer" />
+          <div className="chat-bubble__right">
+            <p className="user-name"> {message.name} </p>
+            <img src={message.img} className="message-img" onClick={handleImgClick} />
+            <p className="user-message"> {message.text} </p>
+            {message.createdAt && (
+              <p>{message.createdAt.toDate().toDateString()}</p>
+            )}
+          </div>
         </div>
-      </div>
+
+      }
 
       {isFullScreen && (
         <FullScreenImg src={message.img} onClose={handleCloseFullScreen} />

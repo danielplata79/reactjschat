@@ -17,7 +17,7 @@ const Login = () => {
   const [alert, setAlert] = useState("");
 
   const createUserCollection = async (user) => {
-    const userCollectionRef = doc(db, 'users' / user.uid);
+    const userCollectionRef = doc(db, 'users', user.uid);
     const userData = {
       email: user.email,
       name: user.displayName,
@@ -57,7 +57,7 @@ const Login = () => {
 
 
       if (!userDoc.exists()) {
-        console.log("user dosnt exists");
+        console.log("user dosnt exists on 'users' collection");
 
         await setDoc(userDocRef, {
           email: user.email,
@@ -72,7 +72,7 @@ const Login = () => {
       }
 
       else {
-        alert("User Already Exists");
+        console.log("User Already Exists");
       }
 
       navigate("/chat");

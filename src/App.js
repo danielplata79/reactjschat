@@ -14,11 +14,16 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 
 function App() {
-  const { currentUser, fetchUserInfo } = useUserStore();
+  const { currentUser, fetchUserInfo, isLoading } = useUserStore();
 
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
-      user ? fetchUserInfo(user.uid) : console.log("No user logged");
+      if (user) {
+        fetchUserInfo(user.uid)
+      } else {
+        fetchUserInfo(null);
+      }
+
     });
 
     return () => {
@@ -26,14 +31,14 @@ function App() {
     }
   }, [fetchUserInfo]);
 
-
+  if (isLoading) return <div className="loadingstate">Loading...</div>
 
   return (
     <div className="App">
       <Router>
         <Navbar />
         <Routes>
-          {!currentUser ? (
+          {currentUser === null ? (
             <>
               <Route path="/Login" element={<Login />} />
               <Route path="/Sign-up" element={<CreateAccount />} />

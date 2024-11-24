@@ -43,3 +43,8 @@ footer {
   background: var(--primary-col);
   display: block;
 }
+
+.loadingstate {
+  color: green;
+  font-size: 50px;
+}
