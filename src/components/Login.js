@@ -16,6 +16,21 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState("");
 
+  const createUserCollection = async (user) => {
+    const userCollectionRef = doc(db, 'users' / user.uid);
+    const userData = {
+      email: user.email,
+      name: user.displayName,
+      id: user.uid,
+      createdAt: new Date(),
+    }
+
+    await setDoc(userCollectionRef, userData, {
+      merge: true,
+    })
+  };
+
+
   const signInEmailAndPassword = (e) => {
     e.preventDefault();
     setAlert("");
@@ -37,19 +52,21 @@ const Login = () => {
 
       const user = result.user;
 
-      const userDocRef = doc(db, "users, users.uid");
+      const userDocRef = doc(db, "users", user.uid);
       const userDoc = await getDoc(userDocRef);
 
-      navigate("/chat");
 
       if (!userDoc.exists()) {
-        await setDoc(doc(db, "users, users.uid"), {
+        console.log("user dosnt exists");
+
+        await setDoc(userDocRef, {
           email: user.email,
           name: user.displayName,
-          createdAt: new Date(),
-        });
+          id: user.uid,
+          createdAt: new Date()
+        })
 
-        await createUserCollection(user);
+        //await createUserCollection(user);
 
         navigate("/chat");
       }
@@ -57,6 +74,8 @@ const Login = () => {
       else {
         alert("User Already Exists");
       }
+
+      navigate("/chat");
     } catch (error) {
       console.log(error);
     }
@@ -73,18 +92,6 @@ const Login = () => {
     }
   };
 
-  const createUserCollection = async (user) => {
-    const userCollectionRef = doc(db, 'users', user.uid);
-    const userData = {
-      email: user.email,
-      name: user.displayName,
-      createdAt: new Date(),
-    }
-
-    await setDoc(userCollectionRef, userData, {
-      merge: true,
-    })
-  };
 
   const createAccount = () => {
     navigate("/Sign-up");
