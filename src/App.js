@@ -7,7 +7,6 @@ import Profile from "./components/Profile";
 import Contacts from "./components/Contacts";
 
 import { auth } from "./firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useUserStore } from "../src/lib/userStore";
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
@@ -15,14 +14,11 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 
 function App() {
-  const [user] = useAuthState(auth);
   const { currentUser, fetchUserInfo } = useUserStore();
 
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
-      fetchUserInfo(user.uid);
-      //console.log(`user from useEffect: ${JSON.stringify(user)}`);
-      console.log(`user from currentUser: ${JSON.stringify(currentUser)}`);
+      user ? fetchUserInfo(user.uid) : console.log("No user logged");
     });
 
     return () => {
