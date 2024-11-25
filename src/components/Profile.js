@@ -8,19 +8,14 @@ const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [user] = useAuthState(auth);
 
-
-
-
-
-  console.log("user data 2 : " + JSON.stringify(user));
-
   return (
     <div className="container">
       <p>hola</p>
       <div className="profile">
-        <span className="profile-img">
-          <img src={user.photoURL} />
-        </span>
+        <div className="profile-img">
+          <span> <img src={user.photoURL || "/guest-500.png"} /> </span>
+
+        </div >
         <div className="profile-info">
           <p><strong>Username: </strong> {user.name || user.displayName}</p>
           <p><strong>Status: </strong> Here should be your status..</p>

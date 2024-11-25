@@ -31,7 +31,7 @@ function App() {
     }
   }, [fetchUserInfo]);
 
-  if (isLoading) return <div className="loadingstate">Loading...</div>
+  if (isLoading) return <div className="loadingstate"><img src="/loadingspinner.gif" /></div>
 
   return (
     <div className="App">

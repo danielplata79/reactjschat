@@ -31,7 +31,6 @@ const CreateAccount = () => {
 
       await updateProfile(user, {
         displayName: username,
-        photoURL: "https://www.iconsdb.com/icons/preview/white/contacts-xxl.png"
       });
 
       const userRef = doc(db, "users", user.uid);
