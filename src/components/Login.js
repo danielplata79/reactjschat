@@ -6,12 +6,13 @@ import { auth, db } from "../firebase";
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { FacebookAuthProvider } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
+import { useUserStore } from "../lib/userStore";
 
 import { getAuth, signInWithUserAndPassword } from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate();
-
+  const { fetchUserInfo } = useUserStore();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState("");
@@ -38,6 +39,7 @@ const Login = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
       const user = userCredential.user;
+
     }).catch((error) => {
       if (error.code) {
         setAlert("Invalid Email or Password");
@@ -66,16 +68,15 @@ const Login = () => {
           createdAt: new Date()
         })
 
-        //await createUserCollection(user);
-
-        navigate("/chat");
+        fetchUserInfo(user.uid);
+        navigate("/Chat");
       }
 
       else {
         console.log("User Already Exists");
       }
 
-      navigate("/chat");
+      navigate("/Chat");
     } catch (error) {
       console.log(error);
     }
