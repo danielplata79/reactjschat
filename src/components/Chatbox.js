@@ -5,11 +5,14 @@ import SendMessage from "./SendMessage";
 import { auth, db } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { query, collection, orderBy, onSnapshot, limit } from "firebase/firestore";
+import { useUserStore } from "../lib/userStore";
 
 const Chatbox = () => {
   const [user] = useAuthState(auth);
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef(null);
+  const { currentUser } = useUserStore();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const q = query(
@@ -28,6 +31,7 @@ const Chatbox = () => {
         (a, b) => a.createdAt - b.createdAt
       );
       setMessages(sortedMessages);
+      setLoading(false);
     });
 
     return () => unsubscribe();
@@ -38,23 +42,36 @@ const Chatbox = () => {
     if (user && scrollRef.current) {
       const timer = setTimeout(() => {
         scrollRef.current.scrollIntoView({ behavior: "smooth" });
+        setLoading(false);
       }, 1000);
 
       return () => clearTimeout(timer); // Cleanup to avoid memory leaks
     }
+
   }, [messages, user]); // Dependencies: messages and user
+
+
 
   return (
     <main className="chat-box">
       <div className="messages-wrapper">
-        {messages.map((message) => (
-          <MessageBubble key={message.id} message={message} />
-        ))}
-        <div ref={scrollRef} />
+        {loading ? (
+          <div className="loadingstate">
+            <img src="/loadingspinner.gif" alt="Loading..." />
+          </div>
+        ) : (
+          <>
+            {messages.map((message) => (
+              <MessageBubble key={message.id} message={message} />
+            ))}
+            <div ref={scrollRef}></div>
+          </>
+        )}
       </div>
       <SendMessage />
     </main>
   );
+
 };
 
 export default Chatbox;

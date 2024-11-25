@@ -6,11 +6,14 @@
   color: lime;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .profile {
   width: 80%;
-  height: 70%;
+  height: 100vh;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -64,9 +67,4 @@
 }
 
 
-@media only screen and (max-height: 970px) {
-
-  .profile-info {
-    height: 40%;
-  }
-}
+@media only screen and (max-height: 970px) {}
