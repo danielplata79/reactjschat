@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useUserStore } from "../lib/userStore";
+import { setDoc, doc } from "firebase/firestore";
+import { db } from "../firebase";
 
 import "./Login.css";
 
@@ -9,8 +12,9 @@ const CreateAccount = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [alert, setAlert] = useState("");
+  const { currentUser, fetchUserInfo } = useUserStore();
 
-  const createNewUser = (e) => {
+  const createNewUser = async (e) => {
     e.preventDefault();
     setAlert("");
 
@@ -19,11 +23,28 @@ const CreateAccount = () => {
       return;
     }
 
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+    try {
+      const auth = getAuth();
+
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+
+      await updateProfile(user, {
+        displayName: username,
+        photoURL: "https://www.iconsdb.com/icons/preview/white/contacts-xxl.png"
+      });
+
+      const userRef = doc(db, "users", user.uid);
+      await setDoc(userRef, {
+        email: user.email,
+        id: user.uid,
+        name: username,
+        createdAt: new Date()
+      });
+
       setAlert("User Created Succesfully!");
-    }).catch((error) => {
+      fetchUserInfo(user.uid);
+    } catch (error) {
       if (error.code === "auth/weak-password") {
         setAlert("Password is Weak");
       } if (error.code === "auth/email-already-in-use") {
@@ -32,7 +53,7 @@ const CreateAccount = () => {
         setAlert("Invalid Email");
       }
       console.log(error.code);
-    })
+    };
   }
 
   return (

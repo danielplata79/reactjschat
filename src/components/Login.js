@@ -12,7 +12,7 @@ import { getAuth, signInWithUserAndPassword } from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { fetchUserInfo } = useUserStore();
+  const { currentUser, fetchUserInfo } = useUserStore();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState("");
@@ -39,6 +39,9 @@ const Login = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
       const user = userCredential.user;
+      fetchUserInfo(user.uid);
+      console.log("signed with email and password" + JSON.stringify(user.displayName));
+
 
     }).catch((error) => {
       if (error.code) {
@@ -57,6 +60,7 @@ const Login = () => {
       const userDocRef = doc(db, "users", user.uid);
       const userDoc = await getDoc(userDocRef);
 
+      console.log(`google user data: ${JSON.stringify(user)}`);
 
       if (!userDoc.exists()) {
         console.log("user dosnt exists on 'users' collection");
