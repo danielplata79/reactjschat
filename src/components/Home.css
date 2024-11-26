@@ -6,25 +6,32 @@
   align-items: flex-start;
   justify-content: flex-start;
   margin-top: 0px;
+  background-color: var(--dark-bg-theme);
+}
 
+.container h2 {
+  color: #020202;
 }
 
 .container h3 {
-  color: #b9ffaa;
+  color: #e2eabc;
 }
 
 .container p {
-  color: #ffffff
+  color: #6d5a5a;
 }
 
 
 
 .profile--container {
   height: 200px;
-  background: #2a2a31;
   border-bottom: 2px solid #7dc8815e;
   width: 100%;
   display: flex;
+  margin-top: 60px;
+  background-color: #FFFB7D;
+  background-image: linear-gradient(45deg, #FFFB7D 0%, #85FFBD 100%);
+  box-shadow: var(--div-shadows3);
   margin-top: 60px;
 }
 
@@ -38,7 +45,13 @@
   border-bottom: 2px solid #164e57;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
   border-radius: 10px;
+  box-shadow: var(--div-shadows);
+}
+
+.chat-list--container p {
+  color: #cfe4ea;
 }
 
 @media only screen and (max-width: 543px) {
@@ -60,6 +73,7 @@
   width: 100px;
   height: 100px;
   border-radius: 5px;
+  border: 2px solid green;
 }
 
 .card-info {

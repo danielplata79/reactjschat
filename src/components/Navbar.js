@@ -51,15 +51,20 @@ const Navbar = () => {
                 <hr />
                 <p>Settings</p>
               </button>
+              <button onClick={() => navigate("/Home")}>
+                <img src="/book-2-64.png" />
+                <hr />
+                <p>Home</p>
+              </button>
               <button onClick={() => navigate("/Chat")}>
                 <img src="/chat-2-64.png" />
                 <hr />
                 <p>Chats</p>
               </button>
-              <button onClick={() => navigate("/Home")}>
-                <img src="/book-2-64.png" />
+              <button onClick={() => navigate("/NewContact")}>
+                <img src="/addnewuser.png" />
                 <hr />
-                <p>Home</p>
+                <p>Add Contacts</p>
               </button>
               <button onClick={signOut}>
                 <img src="/account-logout-512.png" />

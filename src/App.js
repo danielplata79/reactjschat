@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import CreateAccount from "./components/CreateAccount";
 import Profile from "./components/Profile";
 import Home from "./components/Home";
+import NewContact from "./components/NewContact"
 import { auth } from "./firebase";
 import { useUserStore } from "../src/lib/userStore";
 
@@ -48,6 +49,7 @@ function App() {
               <Route path="/Chat" element={<Chatbox />} />
               <Route path="/Home" element={<Home />} />
               <Route path="/Profile" element={<Profile />} />
+              <Route path="/NewContact" element={<NewContact />} />
               <Route path="*" element={<Navigate to="/Chat" />} />
             </>
           )

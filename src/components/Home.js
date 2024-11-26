@@ -1,7 +1,10 @@
 import React from "react";
 import "./Home.css"
+import { useUserStore } from "../lib/userStore"
 
 const Home = () => {
+  const { currentUser } = useUserStore();
+  console.log(currentUser);
 
   return (
     <div className="container">
@@ -10,7 +13,7 @@ const Home = () => {
           <img src="./Component 5opt4.png" className="card-img" />
         </span>
         <div className="card-info">
-          <h2>Tommy Plata</h2>
+          <h2>{currentUser.name}</h2>
           <p>This is some text</p>
         </div>
         <div className="card-settings">

@@ -7,10 +7,13 @@
 :root {
   --div-shadows: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
   --div-shadows2: 0px 0px 3px 5px rgba(0, 0, 0, 0.3);
-  --btn-shadows: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
+  --btn-shadows3: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
+  --div-shadows3: -2px 2px 1px 1px #00000045;
   --primary-col: #42AECCA6;
   --secondary-col: #42AECC70;
   --third-col: #88DDA0;
+  --lime-green-color: #88dda0;
+  --dark-bg-theme: #34343a;
 }
 
 #root {}
