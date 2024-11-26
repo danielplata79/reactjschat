@@ -88,6 +88,10 @@
     margin-top: -150px;
     font-size: calc(1vw + 0.9rem);
   }
+
+  #search-input {
+    width: 67%;
+  }
 }
 
 @media only screen and (min-width: 1600px) {
