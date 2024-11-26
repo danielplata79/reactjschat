@@ -4,6 +4,9 @@ import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import FullScreenImg from "./FullScreenImg";
 
+import { db } from "../firebase";
+import { query, where, collection, getDocs } from "firebase/firestore";
+
 const MessageBubble = ({ message }) => {
   const [user] = useAuthState(auth);
   const [isFullScreen, setIsFullScreen] = useState(false);

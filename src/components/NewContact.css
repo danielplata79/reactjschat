@@ -34,12 +34,20 @@
   box-shadow: var(--div-shadows3);
 }
 
+.search--container label {
+  position: absolute;
+  font-style: italic;
+}
+
 #search-input {
   width: 80%;
   height: 50px;
   border-radius: 4px 0px 0px 4px;
   border: none;
   box-shadow: var(--btn-shadows);
+  text-align: center;
+  font-style: italic;
+  font-size: large;
 }
 
 #search-input-btn {
