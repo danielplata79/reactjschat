@@ -4,8 +4,7 @@ import Chatbox from "./components/Chatbox";
 import Login from "./components/Login";
 import CreateAccount from "./components/CreateAccount";
 import Profile from "./components/Profile";
-import Contacts from "./components/Contacts";
-
+import Home from "./components/Home";
 import { auth } from "./firebase";
 import { useUserStore } from "../src/lib/userStore";
 
@@ -47,7 +46,7 @@ function App() {
           ) : (
             <>
               <Route path="/Chat" element={<Chatbox />} />
-              <Route path="/Contacts" element={<Contacts />} />
+              <Route path="/Home" element={<Home />} />
               <Route path="/Profile" element={<Profile />} />
               <Route path="*" element={<Navigate to="/Chat" />} />
             </>
