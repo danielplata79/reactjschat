@@ -9,7 +9,7 @@ const NewContact = () => {
         <div className="search--container">
           <h1 id="search--title">Type User invitational Code Below!</h1>
           <input type="search" name="contact-search" id="search-input" />
-          <input type="submit" value="Search" id="search-input-btn" />
+          <input type="submit" value="SEARCH" id="search-input-btn" />
         </div>
 
         <div className="search-results--container">
@@ -20,7 +20,7 @@ const NewContact = () => {
               <p>This is some text</p>
             </div>
             <div className="card-settings">
-              <img src="addnewuser.png" />
+              <img src="addnewuser2.png" />
             </div>
           </div>
         </div>
