@@ -23,6 +23,19 @@ const CreateAccount = () => {
       return;
     }
 
+    // New Number Function thanks ChatGPT
+    function generateUnique4Digit(existingNumbers) {
+      let randomNumber;
+      do {
+        randomNumber = Math.floor(1000 + Math.random() * 9000);
+      } while (existingNumbers.has(randomNumber));
+
+      existingNumbers.add(randomNumber);
+      return randomNumber;
+    }
+    const existingNumbers = new Set(); // Keep track of unique numbers
+    const newNumber = generateUnique4Digit(existingNumbers);
+
     try {
       const auth = getAuth();
 
@@ -37,6 +50,9 @@ const CreateAccount = () => {
       await setDoc(userRef, {
         email: user.email,
         id: user.uid,
+        avatar: user.photoURL,
+        codetag: "#" + newNumber,
+        status: "Available",
         name: username,
         createdAt: new Date()
       });
@@ -54,6 +70,7 @@ const CreateAccount = () => {
       console.log(error.code);
     };
   }
+
 
   return (
     <main id="main">

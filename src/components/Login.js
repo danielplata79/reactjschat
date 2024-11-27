@@ -31,6 +31,19 @@ const Login = () => {
     })
   };
 
+  // New Number Function thanks ChatGPT
+  function generateUnique4Digit(existingNumbers) {
+    let randomNumber;
+    do {
+      randomNumber = Math.floor(1000 + Math.random() * 9000);
+    } while (existingNumbers.has(randomNumber));
+
+    existingNumbers.add(randomNumber);
+    return randomNumber;
+  }
+  const existingNumbers = new Set(); // Keep track of unique numbers
+  const newNumber = generateUnique4Digit(existingNumbers);
+
 
   const signInEmailAndPassword = (e) => {
     e.preventDefault();
@@ -69,6 +82,9 @@ const Login = () => {
           email: user.email,
           name: user.displayName,
           id: user.uid,
+          codetag: "#" + newNumber,
+          avatar: user.photoURL,
+          status: "Available",
           createdAt: new Date()
         })
 
