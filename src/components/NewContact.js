@@ -41,7 +41,7 @@ const NewContact = () => {
           <span>
             <input type="search" placeholder={`Example: ${currentUser.name}#3322 `} name="contact-search" id="search-input" value={searchUser} onChange={(e) => setSearchUser(e.target.value)} />
 
-            <button type="submit" id="search-input-btn" onClick={fetchNewContactData} >SEARCH</button>
+            <button type="submit" id="search-input-btn" onClick={fetchNewContactData} >Search</button>
           </span>
         </div>
 

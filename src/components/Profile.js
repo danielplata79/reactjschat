@@ -37,11 +37,11 @@ const Profile = () => {
           </span>
           <span>
             <span><img src="./numsign.png" /></span>
-            <p><strong className="strong--txt">CodeTag: </strong>{currentUser.codetag} </p>
+            <p><strong className="strong--txt">CodeTag: </strong> {currentUser.codetag} </p>
           </span>
           <span>
             <span><img src="./date.png" /></span>
-            <p><strong className="strong--txt">MemberSince: </strong>{currentUser.createdAt.toDate().toDateString()} </p>
+            <p><strong className="strong--txt">Member Since: </strong> {currentUser.createdAt.toDate().toDateString()} </p>
           </span>
         </div>
       </div>
