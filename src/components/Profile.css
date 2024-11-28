@@ -82,7 +82,7 @@
   background: #24242a;
   border-radius: 5px;
   box-shadow: -2px 2px 1px 1px #00000045;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .profile-component--info p {
