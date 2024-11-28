@@ -25,7 +25,7 @@ const Profile = () => {
 
       </div >
       <div className="profile-component--info">
-        <h2>{currentUser.name}</h2>
+        <h1>{currentUser.name}</h1>
         <div className="profile-component--info-data">
           <span>
             <span><StatusIcon style={{ fill: '#80D999', height: '30px', width: '30px' }} /> </span>

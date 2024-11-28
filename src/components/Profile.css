@@ -24,9 +24,10 @@
   display: flex;
   width: 100%;
   height: 300px;
-  background-image: radial-gradient(circle 815px at 23.4% -21.8%, rgba(9, 29, 85, 1) 0.2%, rgba(0, 0, 0, 1) 100.2%);
-  box-shadow: -2px 2px 1px 1px #00000045;
   margin-top: 60px;
+  background: var(--gradient-color2);
+  background: rgb(49, 49, 53);
+  background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
 }
 
 .profile-component--img>span {
@@ -80,7 +81,7 @@
   height: 50%;
   width: 90%;
   background: #24242a;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: -2px 2px 1px 1px #00000045;
   overflow: auto;
 }
@@ -90,10 +91,11 @@
   text-align: left;
 }
 
-.profile-component--info h2 {
-  color: var(--third-col);
+.profile-component--info h1 {
+  color: #24242a;
+  border-radius: 10px;
   font-weight: bolder;
-
+  background: var(--third-col);
   margin: auto;
   text-align: center;
   height: 20%;
