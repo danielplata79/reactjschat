@@ -16,6 +16,7 @@
   --dark-bg-theme: #34343a;
   --text-color: #cfe4ea;
   --title-color: #e2eabc;
+  --gradient-color: linear-gradient(45deg, #FFFB7D 0%, #85FFBD 100%);
 }
 
 #root {}

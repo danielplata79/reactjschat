@@ -1,24 +1,11 @@
-.container {
+.home--container {
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-top: 0px;
   background-color: var(--dark-bg-theme);
-}
-
-.container h2 {
-  color: #020202;
-}
-
-.container h3 {
-  color: #e2eabc;
-}
-
-.container p {
-  color: #6d5a5a;
 }
 
 
@@ -30,9 +17,17 @@
   display: flex;
   margin-top: 60px;
   background-color: #FFFB7D;
-  background-image: linear-gradient(45deg, #FFFB7D 0%, #85FFBD 100%);
+  background-image: var(--gradient-color);
   box-shadow: var(--div-shadows3);
   margin-top: 60px;
+}
+
+.profile--container h2 {
+  color: #020202;
+}
+
+.profile--container p {
+  color: #6d5a5a;
 }
 
 
@@ -52,6 +47,10 @@
 
 .chat-list--container p {
   color: #cfe4ea;
+}
+
+.chat-list--container h3 {
+  color: #e2eabc;
 }
 
 @media only screen and (max-width: 543px) {

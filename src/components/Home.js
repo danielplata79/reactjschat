@@ -7,7 +7,7 @@ const Home = () => {
   console.log(currentUser);
 
   return (
-    <div className="container">
+    <div className="home--container">
       <div className="profile--container">
         <span className="card-img--container">
           <img src="./Component 5opt4.png" className="card-img" />
