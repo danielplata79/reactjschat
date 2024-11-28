@@ -4,6 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { useUserStore } from "../lib/userStore"
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Profile.css";
+import { ReactComponent as StatusIcon } from './status2.svg';
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -24,7 +25,7 @@ const Profile = () => {
         <h2>{currentUser.name}</h2>
         <div className="profile-component--info-data">
           <span>
-            <span><img src="./status.png" /></span>
+            <span><StatusIcon style={{ fill: '#80D999', height: '30px', width: '30px' }} /> </span>
             <p><strong className="strong--txt">Status: </strong> {currentUser.status}</p>
           </span>
           <span>
@@ -41,7 +42,7 @@ const Profile = () => {
           </span>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

@@ -112,6 +112,7 @@
 .profile-component--info-data img {
   height: 30px;
   width: 30px;
+  fill: red;
 }
 
 .profile-component--info-data p {
