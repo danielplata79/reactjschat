@@ -74,7 +74,7 @@ const CreateAccount = () => {
 
   return (
     <main id="main">
-      <div id="content">
+      <div id="login--container">
         <div className="sign-in">
           <img src="/logodog5.png" className="logo" />
           <h1>Create your OpenRChat Account</h1>
