@@ -9,6 +9,13 @@
   background: #34343a;
 }
 
+.NewContact-chat-list--container {
+  width: 100%;
+  margin-top: 0px;
+  border-bottom: none;
+  box-shadow: var(--div-shadows3);
+}
+
 .main-block {
   width: 80%;
   height: 70%;
@@ -16,7 +23,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
   box-sizing: border-box;
   max-width: 800px;
 }
@@ -25,8 +31,9 @@
 .search--container {
   background: #24242a;
   width: 100%;
-  height: 60%;
+  height: 40%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
@@ -34,12 +41,29 @@
   box-shadow: var(--div-shadows3);
 }
 
-.search--container label {
-  position: absolute;
-  font-style: italic;
+
+.search--container h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+  text-align: center;
+  color: var(--third-col);
+  font-size: calc(1.5vw + 1rem);
+  white-space: nowrap;
+  transition: font-size 0.3s ease;
 }
 
-#search-input {
+.search--container>span {
+  display: flex;
+  height: 50%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.search--container input {
   width: 80%;
   height: 50px;
   border-radius: 4px 0px 0px 4px;
@@ -48,19 +72,29 @@
   text-align: center;
   font-style: italic;
   font-size: large;
+  background: lightgray;
 }
 
-#search-input-btn {
+.search--container input::placeholder {
+  font-size: smaller;
+}
+
+.search--container input:focus {
+  outline: none;
+  border: 1px solid black;
+}
+
+.search--container button {
   height: 50px;
   width: 70px;
   border: none;
   border-radius: 0px 4px 4px 0px;
   background: var(--third-col);
-  font-weight: 550;
+  font-weight: inherit;
   border-left: 0.1px solid #24242a3d;
 }
 
-#search-input-btn:hover {
+.search--container button:hover {
   background: #C5EACF;
 }
 
@@ -73,27 +107,13 @@
   background: #24242a82;
 }
 
-#search--title {
-  position: absolute;
-  margin-top: -200px;
-  text-align: center;
-  color: var(--third-col);
-  font-size: calc(1.5vw + 1rem);
-  /* Responsive formula */
-  white-space: nowrap;
-  /* Prevent breaking into multiple lines */
-  transition: font-size 0.3s ease;
-  /* Smooth resizing */
-}
 
 @media only screen and (max-width: 580px) {
   .main-block {
     width: 93%;
-    margin-top: 0px;
   }
 
-  #search--title {
-    margin-top: -150px;
+  .search--container>h1 {
     font-size: calc(1vw + 0.9rem);
   }
 
@@ -103,16 +123,7 @@
 }
 
 @media only screen and (min-width: 1600px) {
-  #search--title {
+  .search--container>h1 {
     font-size: xx-large;
-
   }
-
-}
-
-.NewContact-chat-list--container {
-  width: 100%;
-  margin-top: 0px;
-  border-bottom: none;
-  box-shadow: var(--div-shadows3);
 }

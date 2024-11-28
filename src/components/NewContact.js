@@ -36,15 +36,13 @@ const NewContact = () => {
       <div className="main-block">
 
         <div className="search--container">
-          <h1 id="search--title">Type User invitational Code Below!</h1>
-          <>
-            {searchUser == "" || 0 ? (
-              < label htmlFor="contact-seacrh">Example: {currentUser.name}#3399 </label>
-            ) : null
-            }
-          </>
-          <input type="search" name="contact-search" id="search-input" value={searchUser} onChange={(e) => setSearchUser(e.target.value)} />
-          <input type="submit" value="SEARCH" id="search-input-btn" onClick={fetchNewContactData} />
+          <h1>Type User invitational Code Below!</h1>
+
+          <span>
+            <input type="search" placeholder={`Example: ${currentUser.name}#3322 `} name="contact-search" id="search-input" value={searchUser} onChange={(e) => setSearchUser(e.target.value)} />
+
+            <button type="submit" id="search-input-btn" onClick={fetchNewContactData} >SEARCH</button>
+          </span>
         </div>
 
         <>
@@ -61,11 +59,8 @@ const NewContact = () => {
                 </div>
               </div>
             </div>
-
-
           ))
           }
-
         </>
       </div>
     </div >
