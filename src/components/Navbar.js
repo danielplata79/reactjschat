@@ -4,25 +4,21 @@ import "./Login.css";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { useUserStore } from "../lib/userStore";
 
 const Navbar = () => {
-  const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const [dropdownVisible, setDropdownVisible] = useState(false);
-
-  /* const signOut = () => {
-    auth.signOut();
-    navigate("/Login");
-  } */
+  const { currentUser, fetchUserInfo } = useUserStore();
 
   const signOut = async () => {
     try {
       await auth.signOut();
+
       navigate("/Login");
     } catch (error) {
       console.log("Error while signin out..");
     }
-
   }
 
   const toggleDropdown = () => {
@@ -36,9 +32,9 @@ const Navbar = () => {
         <h1>OpenRChat//</h1>
       </span>
 
-      {user &&
+      {currentUser &&
         <div className="user-avatar-container" onClick={toggleDropdown}>
-          <img className="user-avatar-img" src={user.photoURL || "/default-avatar.png"} />
+          <img className="user-avatar-img" src={currentUser.avatar || "/default-avatar.png"} />
           {dropdownVisible && (
             <div className="dropdown-menu">
               <button onClick={() => navigate("/Profile")} className="dropdown-item">
