@@ -10,15 +10,18 @@ const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [user] = useAuthState(auth);
   const { currentUser } = useUserStore();
+  const { profileImg, setProfileImg } = useState();
 
-  console.log("photoURL: ", currentUser.photoURL);
-
-  console.log("all user: ", currentUser);
+  const handleChangeImg = async () => {
+  }
 
   return (
     <div className="profile-component--container">
       <div className="profile-component--img">
-        <span> <img src={currentUser.avatar || "/guest-500.png"} /> </span>
+        <span>
+          <img src={currentUser.avatar || "/guest-500.png"} />
+          <button onClick={handleChangeImg}><img src="./img.png" /></button>
+        </span>
 
       </div >
       <div className="profile-component--info">

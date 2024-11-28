@@ -51,6 +51,27 @@
   background: #000000;
 }
 
+.profile-component--img button {
+  background: var(--third-col);
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  margin: 150px 0px 0px 150px;
+  border-radius: 50px;
+  display: flex;
+  border: none;
+}
+
+.profile-component--img button:hover {
+  background: #ffff;
+}
+
+.profile-component--img button>img {
+  width: 30px;
+  height: 30px;
+  margin: auto;
+}
+
 .profile-component--info {
   display: flex;
   flex-direction: column;
@@ -61,6 +82,7 @@
   background: #24242a;
   border-radius: 5px;
   box-shadow: -2px 2px 1px 1px #00000045;
+  overflow: scroll;
 }
 
 .profile-component--info p {
@@ -127,5 +149,12 @@
 @media only screen and (min-width: 1000px) {
   .profile-component--info {
     width: 500px;
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .profile-component--info p {
+    font-size: smaller;
+    text-overflow: clip;
   }
 }
