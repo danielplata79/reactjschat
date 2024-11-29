@@ -6,7 +6,8 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  background: #34343a;
+  background: rgb(49, 49, 53);
+  background: linear-gradient(0deg, rgba(49, 49, 53, 1) 52%, rgba(136, 221, 160, 1) 100%);
 }
 
 .NewContact-chat-list--container {
@@ -50,7 +51,6 @@
   width: 100%;
   text-align: center;
   color: #24242a;
-  font-size: calc(1.5vw + 1rem);
   white-space: nowrap;
   transition: font-size 0.3s ease;
   background: #88dda0;
@@ -120,6 +120,10 @@
 
   #search-input {
     width: 67%;
+  }
+
+  .search--container>h1 {
+    font-size: x-large;
   }
 }
 
