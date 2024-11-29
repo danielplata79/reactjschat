@@ -51,8 +51,6 @@
   width: 100%;
   text-align: center;
   color: #24242a;
-  white-space: nowrap;
-  transition: font-size 0.3s ease;
   background: #88dda0;
   text-wrap: auto;
   border-radius: 10px;
