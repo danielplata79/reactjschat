@@ -52,25 +52,39 @@
   background: #000000;
 }
 
-.profile-component--img button {
+.upload-image {
   background: var(--third-col);
   position: absolute;
   height: 50px;
   width: 50px;
   margin: 150px 0px 0px 150px;
   border-radius: 50px;
-  display: flex;
   border: none;
+  box-sizing: border-box;
+
 }
 
-.profile-component--img button:hover {
-  background: #ffff;
+.upload-image input {
+  background: var(--third-col);
+  height: 100%;
+  width: 100%;
+  opacity: 0;
 }
 
-.profile-component--img button>img {
+
+.upload-image img {
   width: 30px;
   height: 30px;
-  margin: auto;
+  position: absolute;
+  border-radius: 50px;
+  border: none;
+  padding: -50px 20px 0px 10px;
+  margin: 11px 0px 0px -39px;
+}
+
+
+.upload-image:hover {
+  background: #ffff;
 }
 
 .profile-component--info {

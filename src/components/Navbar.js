@@ -34,7 +34,7 @@ const Navbar = () => {
 
       {currentUser &&
         <div className="user-avatar-container" onClick={toggleDropdown}>
-          <img className="user-avatar-img" src={currentUser.avatar || "/default-avatar.png"} />
+          <img className="user-avatar-img" src={currentUser.avatarUrl || currentUser.avatar || "/default-avatar.png"} />
           {dropdownVisible && (
             <div className="dropdown-menu">
               <button onClick={() => navigate("/Profile")} className="dropdown-item">
