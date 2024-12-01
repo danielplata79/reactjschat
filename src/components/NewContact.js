@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import "./NewContact.css"
 import { useUserStore } from "../lib/userStore";
 import { db } from "../firebase";
-import { query, where, collection, getDocs } from "firebase/firestore";
+import { updateDoc, setDoc, query, where, collection, getDocs, arrayUnion } from "firebase/firestore";
+import { ref } from "firebase/storage";
+import { doc } from "firebase/firestore";
+import { getDoc } from "firebase/firestore";
 
 
 const NewContact = () => {
   const { currentUser } = useUserStore();
   const [searchUser, setSearchUser] = useState("");
   const [searchResultData, setSearchResultData] = useState(null);
+  const [newUser, setNewUser] = useState(null);
 
   const fetchNewContactData = async () => {
     const codeTagRef = collection(db, "users");
@@ -26,10 +30,37 @@ const NewContact = () => {
     setSearchResultData(result);
   }
 
+  const handleAddUser = async () => {
+    const userRef = doc(db, "users", currentUser.id);
+    const selectedUser = searchResultData[0];
+    const contactRef = doc(db, "users", selectedUser.id);
 
+    try {
+      const userDoc = await getDoc(userRef);
 
-  console.log(`searchresultdata: ${JSON.stringify(searchResultData)}`);
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        const userContacts = userData.contacts || [];
 
+        if (userContacts.includes(selectedUser.id)) {
+          console.log(`User already added in your friend list! ${userContacts}`);
+        }
+      } else {
+        console.log(`User not found`);;
+      }
+
+      await updateDoc(userRef, {
+        contacts: arrayUnion(selectedUser.id),
+      });
+
+      await updateDoc(contactRef, {
+        contacts: arrayUnion(currentUser.id),
+      });
+
+      console.log(`Adding ${selectedUser.id} to your friend list!`);
+
+    } catch (err) { console.log(err) }
+  }
 
   return (
     <div className="NewContact-container">
@@ -46,21 +77,24 @@ const NewContact = () => {
         </div>
 
         <>
-          {searchResultData && searchResultData.map((newuser, index) => (
-            <div className="search-results--container">
+          <div className="search-results--container">
+            {searchResultData && searchResultData.map((newuser, index) => (
               <div className="NewContact-chat-list--container chat-list--container" key={newuser.id} >
-                <span className="card-img--container"><img src={newuser.avatar || "./Component 5opt4.png"} className="card-img" /></span>
+                <span className="card-img--container"><img alt="User" src={newuser.avatar || "./Component 5opt4.png"} className="card-img" /></span>
                 <div className="card-info">
                   <h3>{newuser.name}</h3>
                   <p>Disponible</p>
                 </div>
                 <div className="card-settings">
-                  <img src="addnewuser2.png" />
+                  <button onClick={handleAddUser}>
+                    <img src="addnewuser2.png" alt="add" />
+                  </button>
                 </div>
               </div>
-            </div>
-          ))
-          }
+            ))
+            }
+          </div>
+
         </>
       </div>
     </div >
