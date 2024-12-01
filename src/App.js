@@ -47,7 +47,7 @@ function App() {
           ) : (
             <>
               <Route path="/Chat" element={<Chatbox />} />
-              <Route path="/Home" element={<Home />} />
+              <Route path="/Contacts" element={<Home />} />
               <Route path="/Profile" element={<Profile />} />
               <Route path="/NewContact" element={<NewContact />} />
               <Route path="*" element={<Navigate to="/Chat" />} />

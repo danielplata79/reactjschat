@@ -34,6 +34,7 @@ const Home = () => {
           setIsLoading(false);
         } else {
           console.log("No contacts array found in user document.");
+          setIsLoading(false);
         }
       } catch (err) {
         console.error("Error fetching contacts:", err);
@@ -42,6 +43,8 @@ const Home = () => {
 
     fetchContacts();
   }, [currentUser]);
+
+  if (isLoading) return <div className="loadingstate"><img src="/loadingspinner.gif" /></div>
 
   return (
     <div className="home--container">
@@ -82,7 +85,7 @@ const Home = () => {
           </div>
         ))
       ) : (
-        <p>No contacts found</p>
+        <p className="nocontacts-text">You have no contacts!.. 😶</p>
       )}
     </div>
   );

@@ -5,30 +5,29 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  background-color: var(--dark-bg-theme);
+  background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
 }
 
 
 
 .profile--container {
   height: 200px;
-  border-bottom: 2px solid #7dc8815e;
   width: 100%;
   display: flex;
   margin-top: 60px;
-  background-color: #FFFB7D;
-  background-image: var(--gradient-color);
-  box-shadow: var(--div-shadows3);
-  margin-top: 60px;
+  margin-bottom: 20px;
+  background: #24242a8f;
+
 }
 
 .profile--container h2 {
-  color: #020202;
+  color: #88dda0;
 }
 
 .profile--container p {
-  color: #6d5a5a;
+  color: #fff;
 }
+
 
 
 
@@ -36,12 +35,11 @@
   background: #24242a;
   height: 150px;
   width: 70%;
+  max-width: 700px;
   display: flex;
-  border-bottom: 2px solid #164e57;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
-  border-radius: 10px;
+  margin-top: 10px;
   box-shadow: var(--div-shadows);
 }
 
@@ -72,7 +70,7 @@
   width: 100px;
   height: 100px;
   border-radius: 5px;
-  border: 2px solid green;
+  box-shadow: var(--div-shadows);
 }
 
 .card-info {
@@ -80,6 +78,7 @@
   flex-direction: column;
   margin: auto;
   width: 60%;
+  overflow: auto;
 
 }
 
@@ -101,5 +100,12 @@
     margin-right: 15px;
 
   }
+
+}
+
+.nocontacts-text {
+  color: #fff;
+  margin: auto;
+  display: block;
 
 }
