@@ -8,13 +8,13 @@
 }
 
 .messages-wrapper {
-  padding: 75px 40px 75px 40px;
+  padding: 20px 40px 20px 40px;
   height: 100%;
   overflow: auto;
   background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
   width: 100%;
   box-sizing: border-box;
-
+  margin-top: 60px;
   background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
 }
 
@@ -37,8 +37,9 @@
   border: none;
   background-color: white;
   color: #1c2c4c;
-  font-size: 1rem;
+  font-size: initial;
   width: 100%;
+  overflow: auto;
 }
 
 .send-message>input:placeholder {
@@ -67,7 +68,7 @@
 .send-message__buttons__img>img {
   box-sizing: border-box;
   position: absolute;
-  padding-top: 9px;
+  padding-top: 11px;
   width: 35px;
 }
 
@@ -84,8 +85,9 @@
   padding: 5px 10px;
   border-radius: 0 5px 5px 0;
   color: #242443;
-  border: 1px solid #7cc5d9;
   background-color: var(--third-col);
-  font-weight: 600;
+  border: none;
+  font-size: initial;
+  font-weight: bold;
   box-shadow: var(--btn-shadows);
 }
