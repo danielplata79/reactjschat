@@ -1,11 +1,25 @@
-.messages-wrapper {
-  padding: 75px 40px 75px 40px;
-  min-height: 100vh;
-  background-image: linear-gradient(89.4deg, rgba(183, 52, 78, 0.57) 0.8%, rgb(43, 130, 121) 99.4%);
+.chat-box {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-sizing: border-box;
 }
 
+.messages-wrapper {
+  padding: 75px 40px 75px 40px;
+  height: 100%;
+  overflow: auto;
+  background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
+  width: 100%;
+  box-sizing: border-box;
+
+  background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
+}
+
+
 .send-message {
-  position: fixed;
   bottom: 0px;
   width: 100%;
   padding: 10px;
@@ -13,10 +27,10 @@
   display: flex;
   box-sizing: border-box;
   box-shadow: var(--div-shadows2);
+  height: 90px;
 }
 
 .form-input__input {
-  height: 40px;
   padding: 7px;
   box-shadow: var(--div-shadows);
   border-radius: 5px 0 0 5px;
