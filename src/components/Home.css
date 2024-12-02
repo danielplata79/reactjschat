@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 60px;
-  background: #37363b;
+  background: #322f40;
   box-shadow: var(--div-shadows3);
 }
 
@@ -71,40 +71,7 @@
   color: #e2eabc;
 }
 
-@media only screen and (max-width: 750px) {
-  .home-contacts--container {
-    width: 100%;
-    box-shadow: var(--div-shadows3);
-  }
 
-  .chat-list--container {
-    width: 100%;
-    max-width: none;
-    margin-top: 0px;
-    border-bottom: 1px solid #3a3a44;
-  }
-
-  .card-img--container {
-    width: 20%;
-  }
-
-  .card-imga--container img {
-    height: 10px;
-    background: red;
-  }
-
-  .home-search--container {
-    margin-bottom: 0px;
-    height: 140px;
-
-  }
-
-  .card-info {
-    padding: 10px;
-    font-size: math;
-
-  }
-}
 
 .card-img--container {
   width: 30%;
@@ -169,4 +136,36 @@
   color: #fff;
   margin: auto;
   display: block;
+}
+
+@media only screen and (max-width: 750px) {
+  .home-contacts--container {
+    width: 100%;
+    box-shadow: var(--div-shadows3);
+  }
+
+  .chat-list--container {
+    width: 100%;
+    max-width: none;
+    margin-top: 0px;
+    border-bottom: 1px solid #3a3a44;
+  }
+
+  .card-img--container {
+    width: 30%;
+  }
+
+
+
+  .home-search--container {
+    margin-bottom: 0px;
+    height: 140px;
+
+  }
+
+  .card-info {
+    padding: 10px;
+    font-size: math;
+
+  }
 }
