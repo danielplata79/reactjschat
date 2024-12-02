@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 60px;
-  background: var(--five-col);
+  background: #363b3b;
   box-shadow: var(--div-shadows3);
 }
 
@@ -27,7 +27,7 @@
   outline: none;
   border-radius: 3px;
   border: none;
-  padding-left: 10px;
+  padding-left: 15px;
   font-size: initial;
   box-shadow: var(--div-shadows3);
   color: #fff;
@@ -47,6 +47,7 @@
   width: 700px;
   max-width: 700px;
   margin: auto;
+  box-shadow: var(--div-shadows);
 }
 
 
@@ -123,13 +124,10 @@
 .card-info p {
   display: inline-block;
   overflow: hidden;
-  /* Hide text outside the bounds */
   white-space: nowrap;
-  /* Prevent text from wrapping */
   text-overflow: ellipsis;
-  /* Add ellipsis for non-animated text */
   animation: none;
-  /* Default: No animation */
+  text-wrap: nowrap;
 }
 
 @keyframes scroll-left {
