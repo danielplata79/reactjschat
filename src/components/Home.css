@@ -8,33 +8,52 @@
   background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
 }
 
-
-
-.profile--container {
-  height: 200px;
+.home-search--container {
+  height: 180px;
   width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 60px;
-  margin-bottom: 20px;
-  background: #24242a8f;
-
+  background: var(--five-col);
+  box-shadow: var(--div-shadows3);
 }
 
-.profile--container h2 {
-  color: #88dda0;
-}
-
-.profile--container p {
+.home-search--container input {
+  width: 90%;
+  max-width: 700px;
+  height: 50px;
+  background: #24242a;
+  outline: none;
+  border-radius: 3px;
+  border: none;
+  padding-left: 10px;
+  font-size: initial;
+  box-shadow: var(--div-shadows3);
   color: #fff;
 }
 
+.home-search--container input::placeholder {
+  color: #fff;
+}
 
+.home-contacts--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: #24242a;
+  height: 100%;
+  width: 700px;
+  max-width: 700px;
+  margin: auto;
+}
 
 
 .chat-list--container {
   background: #24242a;
   height: 150px;
-  width: 70%;
+  width: 100%;
   max-width: 700px;
   display: flex;
   margin-left: auto;
@@ -51,14 +70,31 @@
   color: #e2eabc;
 }
 
-@media only screen and (max-width: 543px) {
+@media only screen and (max-width: 750px) {
+  .home-contacts--container {
+    width: 100%;
+  }
+
   .chat-list--container {
-    width: 90%;
+    width: 100%;
+    max-width: none;
+    margin-top: 0px;
+    border-bottom: 1px solid #3a3a44;
+  }
+
+  .card-img--container {
+    width: 20%;
+  }
+
+  .home-search--container {
+    margin-bottom: 0px;
+    height: 140px;
+
   }
 }
 
 .card-img--container {
-  width: 50%;
+  width: 30%;
   height: 100%;
   display: flex;
   margin: auto;
@@ -78,8 +114,32 @@
   flex-direction: column;
   margin: auto;
   width: 60%;
-  overflow: auto;
+  overflow: hidden;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+}
 
+.card-info p {
+  display: inline-block;
+  overflow: hidden;
+  /* Hide text outside the bounds */
+  white-space: nowrap;
+  /* Prevent text from wrapping */
+  text-overflow: ellipsis;
+  /* Add ellipsis for non-animated text */
+  animation: none;
+  /* Default: No animation */
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 .card-settings {
@@ -97,15 +157,19 @@
 
 @media only screen and (max-width: 489px) {
   .card-settings {
-    margin-right: 15px;
-
+    margin-right: 10px;
   }
-
 }
 
 .nocontacts-text {
   color: #fff;
   margin: auto;
   display: block;
+}
 
+.loadingstate img {
+  display: block;
+  margin: auto;
+  height: 50px;
+  width: 50px;
 }

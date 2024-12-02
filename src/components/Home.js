@@ -44,49 +44,47 @@ const Home = () => {
     fetchContacts();
   }, [currentUser]);
 
-  if (isLoading) return <div className="loadingstate"><img src="/loadingspinner.gif" /></div>
+  useEffect(() => {
+    const cardInfoElements = document.querySelectorAll(".card-info p");
+    cardInfoElements.forEach((el) => {
+      if (el.scrollWidth > el.clientWidth) {
+        el.style.animation = "scroll-left 10s linear infinite";
+      }
+    });
+  }, [fetchedContacts]);
+
+  if (isLoading) return <div className="loadingstate"> <img src="/loadingspinner.gif" alt="Loading..." /> </div>;
 
   return (
     <div className="home--container">
-      <div className="profile--container">
-        <span className="card-img--container">
-          <img
-            src={currentUser.avatarUrl}
-            className="card-img"
-            alt="Profile"
-          />
-        </span>
-        <div className="card-info">
-          <h2>{currentUser.name}</h2>
-          <p>{currentUser.status}</p>
-        </div>
-        <div className="card-settings">
-          <img src="edit.png" alt="Settings" />
-        </div>
+      <div className=" home-search--container ">
+        <input type="search" placeholder="Search in your list of contacts..." />
       </div>
+      <div className="home-contacts--container">
 
-      {fetchedContacts.length > 0 ? (
-        fetchedContacts.map((contact) => (
-          <div className="chat-list--container" key={contact.id}>
-            <span className="card-img--container">
-              <img
-                src={contact.avatarUrl || contact.avatar || "./default-avatar.png"}
-                className="card-img"
-                alt="Contact"
-              />
-            </span>
-            <div className="card-info">
-              <h3>{contact.name}</h3>
-              <p>{contact.email}</p>
+        {fetchedContacts.length > 0 ? (
+          fetchedContacts.map((contact) => (
+            <div className="chat-list--container" key={contact.id}>
+              <span className="card-img--container">
+                <img
+                  src={contact.avatarUrl || contact.avatar || "./default-avatar.png"}
+                  className="card-img"
+                  alt="Contact"
+                />
+              </span>
+              <div className="card-info">
+                <h3>{contact.name}</h3>
+                <p>{contact.email}</p>
+              </div>
+              <div className="card-settings">
+                <img src="showmore.png" alt="More" />
+              </div>
             </div>
-            <div className="card-settings">
-              <img src="showmore.png" alt="More" />
-            </div>
-          </div>
-        ))
-      ) : (
-        <p className="nocontacts-text">You have no contacts!.. 😶</p>
-      )}
+          ))
+        ) : (
+          <p className="nocontacts-text">You have no contacts!.. 😶</p>
+        )}
+      </div>
     </div>
   );
 };
