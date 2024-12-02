@@ -74,6 +74,7 @@
 @media only screen and (max-width: 750px) {
   .home-contacts--container {
     width: 100%;
+    box-shadow: var(--div-shadows3);
   }
 
   .chat-list--container {
@@ -97,6 +98,12 @@
     height: 140px;
 
   }
+
+  .card-info {
+    padding: 10px;
+    font-size: math;
+
+  }
 }
 
 .card-img--container {
@@ -117,6 +124,7 @@
 
 .card-info {
   display: flex;
+  box-sizing: border-box;
   flex-direction: column;
   margin: auto;
   width: 60%;
@@ -129,11 +137,9 @@
 
 .card-info p {
   display: inline-block;
-  overflow: hidden;
   white-space: nowrap;
   animation: none;
   text-wrap: nowrap;
-  width: 300px;
 }
 
 @keyframes scroll-left {
@@ -147,8 +153,7 @@
 }
 
 .card-settings {
-  margin-right: 50px;
-  width: 50px;
+  width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
