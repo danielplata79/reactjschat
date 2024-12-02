@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 60px;
-  background: #322f40;
+  background: #2f3640;
   box-shadow: var(--div-shadows3);
 }
 
@@ -121,7 +121,7 @@
 }
 
 .card-settings {
-  width: 130px;
+  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,7 +152,7 @@
   }
 
   .card-img--container {
-    width: 30%;
+    width: 40%;
   }
 
 
