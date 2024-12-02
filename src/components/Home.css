@@ -133,6 +133,7 @@
   justify-content: center;
   position: relative;
   white-space: nowrap;
+  padding: 20px;
 }
 
 .card-info p {
@@ -153,7 +154,7 @@
 }
 
 .card-settings {
-  width: 100px;
+  width: 130px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,12 +163,6 @@
 .card-settings>img {
   width: 28px;
   cursor: pointer;
-}
-
-@media only screen and (max-width: 489px) {
-  .card-settings {
-    margin-right: 10px;
-  }
 }
 
 .nocontacts-text {
