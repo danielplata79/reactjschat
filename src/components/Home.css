@@ -21,7 +21,7 @@
 
 .home-search--container input {
   width: 90%;
-  max-width: 700px;
+  max-width: 1200px;
   height: 50px;
   background: #24242a;
   outline: none;
@@ -44,8 +44,7 @@
   align-items: flex-start;
   background: #24242a;
   height: 100%;
-  width: 700px;
-  max-width: 700px;
+  width: 1200px;
   margin: auto;
   box-shadow: var(--div-shadows);
 }
@@ -55,11 +54,11 @@
   background: #24242a;
   height: 150px;
   width: 100%;
-  max-width: 700px;
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10px;
+  margin-top: 0px;
+  border-bottom: 1px solid #3a3a44;
   box-shadow: var(--div-shadows);
 }
 
@@ -138,7 +137,7 @@
   display: block;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 1200px) {
   .home-contacts--container {
     width: 100%;
     box-shadow: var(--div-shadows3);
@@ -147,8 +146,7 @@
   .chat-list--container {
     width: 100%;
     max-width: none;
-    margin-top: 0px;
-    border-bottom: 1px solid #3a3a44;
+
   }
 
   .card-img--container {

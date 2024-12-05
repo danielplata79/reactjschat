@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useUserStore } from "../lib/userStore";
-import { onSnapshot, doc, getDoc, collection } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import Fuse from "fuse.js";
 import { db } from "../firebase";
 
