@@ -8,7 +8,6 @@ import { db } from "../firebase";
 const Home = () => {
   const { currentUser } = useUserStore();
   const [fetchedContacts, setFetchedContacts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -54,7 +53,6 @@ const Home = () => {
 
   const handleSearch = (e) => {
     const query = e.target.value;
-    setSearchQuery(query);
 
     if (query.trim() === "") {
       setSearchResults(fetchedContacts);
@@ -63,6 +61,11 @@ const Home = () => {
 
       setSearchResults(results);
     }
+  }
+
+  const handleChat = (contactName) => {
+    console.log(`Starting a chat with ${contactName}`);
+
   }
 
   useEffect(() => {
@@ -79,7 +82,7 @@ const Home = () => {
   return (
     <div className="home--container">
       <div className=" home-search--container ">
-        <input type="search" value={searchQuery} onChange={handleSearch} placeholder="Search in your list of contacts..." />
+        <input type="search" onChange={handleSearch} placeholder="Search in your list of contacts..." />
       </div>
       <div className="home-contacts--container">
 
@@ -98,7 +101,9 @@ const Home = () => {
                 <p>{contact.email}</p>
               </div>
               <div className="card-settings">
-                <img src="showmore.png" alt="More" />
+                <button onClick={() => handleChat(contact.name)}>
+                  <img src="chat-512-white.png" alt="More" />
+                </button>
               </div>
             </div>
           ))

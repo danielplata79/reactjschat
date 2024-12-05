@@ -6,6 +6,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
+  overflow: auto;
 }
 
 .home-search--container {
@@ -126,8 +127,13 @@
   align-items: center;
 }
 
-.card-settings>img {
-  width: 28px;
+.card-settings button {
+  background: none;
+  border: none;
+}
+
+.card-settings button>img {
+  width: 35px;
   cursor: pointer;
 }
 
