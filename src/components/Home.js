@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useUserStore } from "../lib/userStore";
-import { doc, getDoc } from "firebase/firestore";
+import { onSnapshot, doc, getDoc, collection } from "firebase/firestore";
+import Fuse from "fuse.js";
 import { db } from "../firebase";
 
 const Home = () => {
   const { currentUser } = useUserStore();
   const [fetchedContacts, setFetchedContacts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,34 +18,52 @@ const Home = () => {
         const userRef = doc(db, "users", currentUser.id);
         const userDoc = await getDoc(userRef);
 
-        const userData = userDoc.data();
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          const contactsDetails = [];
 
-        if (userData.contacts) {
-          const contactDetails = [];
-
-          for (const contactId of userData.contacts) {
+          for (const contactId of userData.contacts || []) {
             const contactRef = doc(db, "users", contactId);
-            const contactSnap = await getDoc(contactRef);
+            const contactDoc = await getDoc(contactRef);
 
-            contactDetails.push({
-              id: contactId,
-              ...contactSnap.data(),
-            });
+            if (contactDoc.exists()) {
+              contactsDetails.push({
+                id: contactId,
+                ...contactDoc.data()
+              });
+            }
           }
 
-          setFetchedContacts(contactDetails);
-          setIsLoading(false);
-        } else {
-          console.log("No contacts array found in user document.");
-          setIsLoading(false);
+          setFetchedContacts(contactsDetails);
+          setSearchResults(contactsDetails);
         }
       } catch (err) {
-        console.error("Error fetching contacts:", err);
+        console.log("error fetching contacts data..", err);
+      } finally {
+        setIsLoading(false);
       }
-    };
+    }
 
     fetchContacts();
-  }, [currentUser]);
+  }, [currentUser.id]);
+
+  const fuse = new Fuse(fetchedContacts, {
+    keys: ["name", "email"],
+    threshold: 0.3
+  });
+
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    if (query.trim() === "") {
+      setSearchResults(fetchedContacts);
+    } else {
+      const results = fuse.search(query).map((result) => result.item);
+
+      setSearchResults(results);
+    }
+  }
 
   useEffect(() => {
     const cardInfoElements = document.querySelectorAll(".card-info p");
@@ -51,19 +72,19 @@ const Home = () => {
         el.style.animation = "scroll-left 10s linear infinite";
       }
     });
-  }, [fetchedContacts]);
+  }, [searchResults]);
 
   if (isLoading) return <div className="loadingstate"> <img src="/loadingspinner.gif" alt="Loading..." /> </div>;
 
   return (
     <div className="home--container">
       <div className=" home-search--container ">
-        <input type="search" placeholder="Search in your list of contacts..." />
+        <input type="search" value={searchQuery} onChange={handleSearch} placeholder="Search in your list of contacts..." />
       </div>
       <div className="home-contacts--container">
 
-        {fetchedContacts.length > 0 ? (
-          fetchedContacts.map((contact) => (
+        {searchResults.length > 0 ? (
+          searchResults.map((contact) => (
             <div className="chat-list--container" key={contact.id}>
               <span className="card-img--container">
                 <img
