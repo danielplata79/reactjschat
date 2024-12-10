@@ -12,7 +12,12 @@ export const fetchContacts = async (userId) => {
       return [];
     }
 
-    return contactDocs.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    return contactDocs.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }
+    ));
+
   } catch (error) {
     console.log("Error fetching contacts: ", error);
     return [];
