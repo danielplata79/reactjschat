@@ -8,7 +8,6 @@ import { query, collection, orderBy, onSnapshot, limit } from "firebase/firestor
 import { useUserStore } from "../lib/userStore";
 
 const Chatbox = () => {
-  const [user] = useAuthState(auth);
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef(null);
   const { currentUser } = useUserStore();
@@ -39,7 +38,7 @@ const Chatbox = () => {
 
   useEffect(() => {
     // Scroll to the bottom whenever messages change or a new message arrives
-    if (user && scrollRef.current) {
+    if (currentUser && scrollRef.current) {
       const timer = setTimeout(() => {
         scrollRef.current.scrollIntoView({ behavior: "smooth" });
         setLoading(false);
@@ -48,7 +47,7 @@ const Chatbox = () => {
       return () => clearTimeout(timer); // Cleanup to avoid memory leaks
     }
 
-  }, [messages, user]); // Dependencies: messages and user
+  }, [messages, currentUser]); // Dependencies: messages and user
 
 
 

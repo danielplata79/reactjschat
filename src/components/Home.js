@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useUserStore } from "../lib/userStore";
+import { useContactStore } from "../lib/contactStore";
 import { doc, addDoc, query, getDoc, collection, getDocs, where } from "firebase/firestore";
 import Fuse from "fuse.js";
 import { db } from "../firebase";
 
 const Home = () => {
   const { currentUser } = useUserStore();
+  const { currentContact, fetchContactInfo } = useContactStore();
   const [fetchedContacts, setFetchedContacts] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -65,7 +67,6 @@ const Home = () => {
   }
 
   const handleChat = async (contact) => {
-    console.log(`Starting a chat with ${contact.name}`);
 
     try {
       // Chat Collection reference
@@ -77,8 +78,10 @@ const Home = () => {
 
       for (const docs of chatDocs.docs) {
         const chatSnap = docs.data();
-        if (chatSnap.participants.includes(contact.id));
-        existingChat = docs;
+        if (chatSnap.participants.includes(contact.id)) {
+          existingChat = true;
+          break;
+        };
       }
 
       if (existingChat) {
@@ -132,10 +135,14 @@ const Home = () => {
 
   if (isLoading) return <div className="loadingstate"> <img src="/loadingspinner.gif" alt="Loading..." /> </div>;
 
+
   return (
     <div className="home--container">
       <div className=" home-search--container ">
-        <input type="search" onChange={handleSearch} placeholder="Search in your list of contacts..." />
+        <input type="search"
+          onChange={handleSearch}
+          placeholder="Search in your list of contacts..."
+        />
       </div>
       <div className="home-contacts--container">
 
@@ -154,7 +161,10 @@ const Home = () => {
                 <p>{contact.email}</p>
               </div>
               <div className="card-settings">
-                <button onClick={() => handleChat(contact)}>
+                <button onClick={() => {
+                  handleChat(contact);
+                  fetchContactInfo(contact.id)
+                }}>
                   <img src="chat-512-white.png" alt="More" />
                 </button>
               </div>
