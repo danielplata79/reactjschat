@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useUserStore } from "../lib/userStore";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, addDoc, query, getDoc, collection, getDocs, where } from "firebase/firestore";
 import Fuse from "fuse.js";
 import { db } from "../firebase";
 
@@ -11,6 +11,7 @@ const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+
   useEffect(() => {
     const fetchContacts = async () => {
       try {
@@ -18,35 +19,35 @@ const Home = () => {
         const userDoc = await getDoc(userRef);
 
         if (userDoc.exists()) {
-          const userData = userDoc.data();
           const contactsDetails = [];
+          const userData = userDoc.data();
 
-          for (const contactId of userData.contacts || []) {
+          for (const contactId of userData.contacts) {
             const contactRef = doc(db, "users", contactId);
             const contactDoc = await getDoc(contactRef);
 
-            if (contactDoc.exists()) {
-              contactsDetails.push({
-                id: contactId,
-                ...contactDoc.data()
-              });
-            }
-          }
+            contactsDetails.push({
+              id: contactId,
+              ...contactDoc.data(),
+            });
 
+          }
           setFetchedContacts(contactsDetails);
           setSearchResults(contactsDetails);
+        } else {
+          console.log(`Error fetching user data`);
         }
       } catch (err) {
-        console.log("error fetching contacts data..", err);
+        console.log(err);
       } finally {
         setIsLoading(false);
       }
-    }
 
+    }
     fetchContacts();
   }, [currentUser.id]);
 
-  const fuse = new Fuse(fetchedContacts, {
+  const fuse = new Fuse(searchResults, {
     keys: ["name", "email"],
     threshold: 0.3
   });
@@ -63,8 +64,60 @@ const Home = () => {
     }
   }
 
-  const handleChat = (contactName) => {
-    console.log(`Starting a chat with ${contactName}`);
+  const handleChat = async (contact) => {
+    console.log(`Starting a chat with ${contact.name}`);
+
+    try {
+      // Chat Collection reference
+      const chatCollectionRef = collection(db, "chats");
+
+      const q = query(chatCollectionRef, where("participants", "array-contains", currentUser.id));
+      const chatDocs = await getDocs(q);
+      let existingChat = null;
+
+      for (const docs of chatDocs.docs) {
+        const chatSnap = docs.data();
+        if (chatSnap.participants.includes(contact.id));
+        existingChat = docs;
+      }
+
+      if (existingChat) {
+        console.log(`Chat Already Exists!`);
+        return;
+      }
+
+      const newChatRef = await addDoc(chatCollectionRef, {
+        lastMessage: "last message",
+        timeStamp: Date.now(),
+        participants: [currentUser.id, contact.id]
+      })
+
+      console.log(`Creted Chat collection document! ${newChatRef.id}`);
+
+      // User Chat reference
+      const userChatRef = collection(db, "users", currentUser.id, "privates");
+      await addDoc(userChatRef, {
+        chatId: newChatRef.id,
+        name: contact.name,
+        contactId: contact.id,
+        timeStamp: Date.now(),
+      });
+
+      console.log(`Created User Chat collection document!`);
+
+      // Contact Chat reference
+      const contactChatRef = collection(db, "users", contact.id, "privates");
+      await addDoc(contactChatRef, {
+        chatId: newChatRef.id,
+        name: currentUser.name,
+        contactId: currentUser.id,
+        timeStamp: Date.now()
+      });
+      console.log(`Created Contact Chat collection document!`);
+
+    } catch (err) {
+      console.log(err);
+    }
 
   }
 
@@ -101,19 +154,23 @@ const Home = () => {
                 <p>{contact.email}</p>
               </div>
               <div className="card-settings">
-                <button onClick={() => handleChat(contact.name)}>
+                <button onClick={() => handleChat(contact)}>
                   <img src="chat-512-white.png" alt="More" />
                 </button>
               </div>
             </div>
           ))
         ) : (
-          <p className="nocontacts-text">You have no contacts!.. 😶</p>
-        )}
+          <div className="no-contacts--container">
+            <img src="dust-68-white.png" alt="nocontacts" />
+            <p className="nocontacts-text">No contacts found!.. 😶</p>
+          </div>
+        )
+        }
+
       </div>
     </div>
   );
 };
 
 export default Home;
-

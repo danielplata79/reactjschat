@@ -6,6 +6,8 @@
   justify-content: flex-start;
   background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
   overflow: auto;
+  height: 100vh;
+  min-height: 1100px;
 }
 
 .home-search--container {
@@ -171,4 +173,22 @@
     font-size: math;
 
   }
+}
+
+.no-contacts--container {
+  margin: auto;
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: var(--third-col);
+}
+
+.no-contacts--container>img {
+  height: 80px;
+  width: 80px;
+  margin-bottom: 20px;
+
 }
