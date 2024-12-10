@@ -5,6 +5,7 @@ import { useContactStore } from "../lib/contactStore";
 import { doc, addDoc, query, getDoc, collection, getDocs, where } from "firebase/firestore";
 import Fuse from "fuse.js";
 import { db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { currentUser } = useUserStore();
@@ -12,6 +13,7 @@ const Home = () => {
   const [fetchedContacts, setFetchedContacts] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -86,7 +88,8 @@ const Home = () => {
 
       if (existingChat) {
         console.log(`Chat Already Exists!`);
-        return;
+        await fetchContactInfo(contact.id);
+        navigate('/Chat');
       }
 
       const newChatRef = await addDoc(chatCollectionRef, {
@@ -118,6 +121,9 @@ const Home = () => {
       });
       console.log(`Created Contact Chat collection document!`);
 
+      await fetchContactInfo(contact.id);
+
+      navigate('/Chat');
     } catch (err) {
       console.log(err);
     }
@@ -163,7 +169,6 @@ const Home = () => {
               <div className="card-settings">
                 <button onClick={() => {
                   handleChat(contact);
-                  fetchContactInfo(contact.id)
                 }}>
                   <img src="chat-512-white.png" alt="More" />
                 </button>

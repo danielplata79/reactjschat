@@ -5,10 +5,18 @@ import { auth, db, storage } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
+import { useContactStore } from "../lib/contactStore";
 
 const SendMessage = ({ scroll }) => {
   const [message, setMessage] = useState("");
   const [img, setImg] = useState(null);
+  const { currentContact } = useContactStore;
+
+  const handleChatContact = async () => {
+    return console.log(`currentContact at chatbox: ${currentContact.name}`);
+  }
+
+
 
 
   const sendMessage = async (event) => {
