@@ -11,11 +11,7 @@ import { updateDoc } from "firebase/firestore";
 import { storage } from "../firebase";
 
 const Profile = () => {
-  const [userData, setUserData] = useState(null);
-  const [user] = useAuthState(auth);
   const { currentUser } = useUserStore();
-  const [profileImg, setProfileImg] = useState(null);
-
 
   const updateAvatar = async (e) => {
 
@@ -42,6 +38,8 @@ const Profile = () => {
         avatarUrl: newAvatarUrl,
         avatarPath: newAvatarPath
       });
+
+      window.location.reload();
 
     } catch (err) {
       console.log(err)

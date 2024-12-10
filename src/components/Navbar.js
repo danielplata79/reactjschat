@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import "./Login.css";
 import { auth } from "../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../lib/userStore";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const { currentUser, fetchUserInfo } = useUserStore();
+  const { currentUser } = useUserStore();
 
   const signOut = async () => {
     try {
@@ -34,36 +33,36 @@ const Navbar = () => {
 
       {currentUser &&
         <div className="user-avatar-container" onClick={toggleDropdown}>
-          <img className="user-avatar-img" src={currentUser.avatarUrl || currentUser.avatar || "/default-avatar.png"} />
+          <img className="user-avatar-img" src={currentUser.avatarUrl || currentUser.avatar || "/default-avatar.png"} alt="User" />
           {dropdownVisible && (
             <div className="dropdown-menu">
               <button onClick={() => navigate("/Profile")} className="dropdown-item">
-                <img src="/guest-64.png" />
+                <img src="/guest-64.png" alt="Profile" />
                 <hr />
                 <p>Profile</p>
               </button>
               <button onClick={() => navigate("/Chat")}>
-                <img src="/chat-2-64.png" />
+                <img src="/chat-2-64.png" alt="Chat" />
                 <hr />
                 <p>Chats</p>
               </button>
               <button onClick={() => navigate("/Contacts")}>
-                <img src="/book-2-64.png" />
+                <img src="/book-2-64.png" alt="Contacts" />
                 <hr />
                 <p>Contacts</p>
               </button>
               <button onClick={() => navigate("/NewContact")}>
-                <img src="/addnewuser.png" />
+                <img src="/addnewuser.png" alt="Add User" />
                 <hr />
                 <p>Add Contacts</p>
               </button>
               <button >
-                <img src="/settings-25-64.png" />
+                <img src="/settings-25-64.png" alt="Settings" />
                 <hr />
                 <p>Settings</p>
               </button>
               <button onClick={signOut}>
-                <img src="/account-logout-512.png" />
+                <img src="/account-logout-512.png" alt="Sign Out" />
                 <hr />
                 <p>Sign Out</p>
               </button>
