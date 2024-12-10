@@ -88,6 +88,7 @@
   height: 90px;
   border-radius: 5px;
   box-shadow: var(--div-shadows);
+  object-fit: cover;
 }
 
 .card-info {
