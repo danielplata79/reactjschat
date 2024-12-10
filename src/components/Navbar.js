@@ -4,11 +4,22 @@ import "./Login.css";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../lib/userStore";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const { currentUser } = useUserStore();
+
+  const routeTitles = {
+    "/Sign-up": "Create Account//",
+    "/Profile": "Profile//",
+    "/Contacts": "Contacts//",
+    "/NewContact": "New Contact//",
+  };
+
+  const location = useLocation();
+  const currentTitle = routeTitles[location.pathname] || "OpenRChat//";
 
   const signOut = async () => {
     try {
@@ -28,7 +39,7 @@ const Navbar = () => {
     <nav className="nav-bar">
       <span onClick={() => navigate("/")} >
         <img src="/logodog2.png" alt="ReactJs logo" width={50} height={50} />
-        <h1>OpenRChat//</h1>
+        <h1>{currentTitle}</h1>
       </span>
 
       {currentUser &&

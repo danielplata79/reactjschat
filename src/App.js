@@ -6,9 +6,9 @@ import CreateAccount from "./components/CreateAccount";
 import Profile from "./components/Profile";
 import Home from "./components/Home";
 import NewContact from "./components/NewContact"
+
 import { auth } from "./firebase";
 import { useUserStore } from "../src/lib/userStore";
-
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
@@ -23,7 +23,6 @@ function App() {
       } else {
         fetchUserInfo(null);
       }
-
     });
 
     return () => {
