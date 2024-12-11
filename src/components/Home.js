@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { currentUser } = useUserStore();
-  const { currentContact, fetchContactInfo } = useContactStore();
+  const { fetchContactInfo } = useContactStore();
   const [fetchedContacts, setFetchedContacts] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +34,6 @@ const Home = () => {
               id: contactId,
               ...contactDoc.data(),
             });
-
           }
           setFetchedContacts(contactsDetails);
           setSearchResults(contactsDetails);

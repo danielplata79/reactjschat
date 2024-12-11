@@ -4,12 +4,14 @@ import "./Login.css";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../lib/userStore";
+import { useContactStore } from "../lib/contactStore";
 import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const { currentUser } = useUserStore();
+  const { currentContact } = useContactStore();
 
   const routeTitles = {
     "/Sign-up": "Create Account//",
@@ -35,11 +37,33 @@ const Navbar = () => {
     setDropdownVisible(!dropdownVisible);
   }
 
+
   return (
     <nav className="nav-bar">
-      <span onClick={() => navigate("/")} >
-        <img src="/logodog2.png" alt="ReactJs logo" width={50} height={50} />
-        <h1>{currentTitle}</h1>
+      <span >
+        {currentContact && location.pathname === "/Chat" ? (
+          <>
+            <div onClick={() => console.log(`hola`)} className="contact-navbar--container">
+              <img className="user-avatar-img" src={currentContact.avatarUrl || currentContact.avatar || "/default-avatar.png"} alt="User" />
+              <span>
+                <h3>{currentContact.name}</h3>
+                <p>{currentContact.status}</p>
+              </span>
+            </div>
+          </>
+        ) : location.pathname === "Groups" ? (
+          <>
+            <img src="/logodog2.png" alt="ReactJs logo" width={50} height={50} />
+            <h1>Groups</h1>
+          </>
+        ) : (
+          <>
+            <div onClick={() => navigate("/Contacts")} className="logo-default--container">
+              <img src="/logodog2.png" alt="ReactJs logo" width={50} height={50} />
+              <h1>{currentTitle}</h1>
+            </div>
+          </>
+        )}
       </span>
 
       {currentUser &&
