@@ -10,25 +10,15 @@ import { useContactStore } from "../lib/contactStore";
 const SendMessage = ({ scroll }) => {
   const [message, setMessage] = useState("");
   const [img, setImg] = useState(null);
-  const { currentContact } = useContactStore;
-
-  const handleChatContact = async () => {
-    return console.log(`currentContact at chatbox: ${currentContact.name}`);
-  }
-
-
+  const { currentContact } = useContactStore();
 
 
   const sendMessage = async (event) => {
     event.preventDefault();
 
-    // Check if message input is empty
-
-
     // Get user's personal data when user log in
     const { uid, displayName, photoURL } = auth.currentUser;
-    // Sending data to our Backend =>
-    // Create a document inside messages collection in Firebase DB
+
     if (img) {
       const storageRef = ref(storage, uuidv4());
       await uploadBytes(storageRef, img);

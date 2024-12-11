@@ -6,23 +6,26 @@ import { db } from "../firebase";
 import { query, collection, orderBy, onSnapshot, limit } from "firebase/firestore";
 import { useUserStore } from "../lib/userStore";
 import { useContactStore } from "../lib/contactStore";
+import { useNavigate } from "react-router-dom";
 
 const Chatbox = () => {
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef(null);
   const { currentUser } = useUserStore();
   const [loading, setLoading] = useState(true);
-  const { currentContact } = useContactStore();
+  const { currentContact, chatId } = useContactStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentContact) {
       console.log(`currentContact name from chatbox: ${currentContact.name}`)
+      console.log(`ChatID at Chatbox: ${chatId}`);
       setLoading(false);
     } else {
-      console.log(`no contact found`);
+      navigate("/Contacts");
     }
 
-  }, [currentContact]);
+  }, [currentContact, chatId]);
 
 
   /* 

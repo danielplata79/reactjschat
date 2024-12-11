@@ -5,23 +5,28 @@ import { db } from '../firebase';
 export const useContactStore = create((set) => ({
   currentContact: null,
   isLoading: true,
+  chatId: null,
 
-  fetchContactInfo: async (uid) => {
-    if (!uid) return set({ currentContact: null, isLoading: false });
+  fetchContactInfo: async (uid, chatId) => {
+    if (!uid) return set({ currentContact: null, isLoading: false, chatId: null });
 
     try {
       const docRef = doc(db, "users", uid);
       const docSnap = await getDoc(docRef);
 
+      console.log(`chatId at zustand: ${chatId}`);
+
+      set({ chatId: chatId });
+
       if (docSnap.exists()) {
-        set({ currentContact: docSnap.data(), isLoading: false });
+        set({ currentContact: docSnap.data(), isLoading: false, chatId: chatId });
       } else {
-        set({ currentContact: null, isLoading: false });
+        set({ currentContact: null, isLoading: false, chatId: null });
       }
 
     } catch (err) {
       console.log(`Error fetching contact info: ${err}`);
-      return set({ currentContact: null, isLoading: false });
+      return set({ currentContact: null, isLoading: false, chatId: null });
     }
   }
 }));

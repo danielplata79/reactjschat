@@ -77,9 +77,12 @@ const Home = () => {
       const q = query(chatCollectionRef, where("participants", "array-contains", currentUser.id));
       const chatDocs = await getDocs(q);
       let existingChat = null;
+      let chatId = null;
 
       for (const docs of chatDocs.docs) {
         const chatSnap = docs.data();
+        chatId = docs.id;
+        console.log(`chatId: ${chatId}`);
         if (chatSnap.participants.includes(contact.id)) {
           existingChat = true;
           break;
@@ -88,8 +91,12 @@ const Home = () => {
 
       if (existingChat) {
         console.log(`Chat Already Exists!`);
-        await fetchContactInfo(contact.id);
+
+        console.log(`chatId at home.js ${chatId}`);
+
+        await fetchContactInfo(contact.id, chatId);
         navigate('/Chat');
+        return;
       }
 
       const newChatRef = await addDoc(chatCollectionRef, {
@@ -121,7 +128,7 @@ const Home = () => {
       });
       console.log(`Created Contact Chat collection document!`);
 
-      await fetchContactInfo(contact.id);
+      await fetchContactInfo(contact.id, chatId);
 
       navigate('/Chat');
     } catch (err) {
