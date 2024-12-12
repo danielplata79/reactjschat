@@ -8,6 +8,7 @@ import { useUserStore } from "../lib/userStore";
 const MessageBubble = ({ message }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const { currentUser } = useUserStore();
+  const [user] = useAuthState(auth);
 
   const handleImgClick = () => {
     setIsFullScreen(true);
@@ -17,11 +18,10 @@ const MessageBubble = ({ message }) => {
     setIsFullScreen(false);
   }
 
-
   return (
     <>
       {currentUser &&
-        <div className={`chat-bubble ${message.uid === currentUser.id ? "right" : ""}`}>
+        <div className={`chat-bubble ${message.uid === user.uid ? "right" : ""}`}>
           <img className="chat-bubble__left" src={message.avatar} referrerPolicy="no-referrer" />
           <div className="chat-bubble__right">
             <p className="user-name"> {message.name} </p>

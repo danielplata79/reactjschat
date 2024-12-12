@@ -32,7 +32,7 @@ const SendMessage = ({ scroll }) => {
         avatar: currentUser.avatarUrl,
         img: url,
         createdAt: serverTimestamp(), // Storage the time message is created
-        id: currentUser.id
+        uid
       });
 
     } else {
@@ -46,7 +46,7 @@ const SendMessage = ({ scroll }) => {
         name: currentUser.name,
         avatar: currentUser.avatarUrl,
         createdAt: serverTimestamp(),
-        id: currentUser.id
+        uid
       });
     }
 
