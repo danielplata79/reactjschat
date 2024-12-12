@@ -70,6 +70,7 @@ const Home = () => {
   const handleChat = async (contact) => {
 
     try {
+      setIsLoading(true);
       // Chat Collection reference
       const chatCollectionRef = collection(db, "chats");
 
@@ -81,7 +82,6 @@ const Home = () => {
       for (const docs of chatDocs.docs) {
         const chatSnap = docs.data();
         chatId = docs.id;
-        console.log(`chatId: ${chatId}`);
         if (chatSnap.participants.includes(contact.id)) {
           existingChat = true;
           break;
@@ -89,11 +89,8 @@ const Home = () => {
       }
 
       if (existingChat) {
-        console.log(`Chat Already Exists!`);
-
-        console.log(`chatId at home.js ${chatId}`);
-
         await fetchContactInfo(contact.id, chatId);
+
         navigate('/Chat');
         return;
       }

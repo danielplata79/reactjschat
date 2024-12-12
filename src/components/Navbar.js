@@ -10,8 +10,8 @@ import { useLocation } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const { currentUser } = useUserStore();
-  const { currentContact } = useContactStore();
+  const { currentUser, fetchUserInfo } = useUserStore();
+  const { currentContact, fetchContactInfo } = useContactStore();
 
   const routeTitles = {
     "/Sign-up": "Create Account//",
@@ -25,9 +25,12 @@ const Navbar = () => {
 
   const signOut = async () => {
     try {
+      await fetchContactInfo(null);
+      await fetchUserInfo(null);
       await auth.signOut();
 
       navigate("/Login");
+      window.location.reload();
     } catch (error) {
       console.log("Error while signin out..");
     }

@@ -9,12 +9,14 @@ import NewContact from "./components/NewContact"
 
 import { auth } from "./firebase";
 import { useUserStore } from "../src/lib/userStore";
+import { useContactStore } from "./lib/contactStore";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 
 function App() {
   const { currentUser, fetchUserInfo, isLoading } = useUserStore();
+  const { currentContact } = useContactStore();
 
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
@@ -49,7 +51,7 @@ function App() {
               <Route path="/Contacts" element={<Home />} />
               <Route path="/Profile" element={<Profile />} />
               <Route path="/NewContact" element={<NewContact />} />
-              <Route path="*" element={<Navigate to="/Chat" />} />
+              <Route path="*" element={<Navigate to="/Contacts" />} />
             </>
           )
           }

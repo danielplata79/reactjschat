@@ -3,13 +3,11 @@ import "./MessageBubble.css";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import FullScreenImg from "./FullScreenImg";
-
-import { db } from "../firebase";
-import { query, where, collection, getDocs } from "firebase/firestore";
+import { useUserStore } from "../lib/userStore";
 
 const MessageBubble = ({ message }) => {
-  const [user] = useAuthState(auth);
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const { currentUser } = useUserStore();
 
   const handleImgClick = () => {
     setIsFullScreen(true);
@@ -22,12 +20,12 @@ const MessageBubble = ({ message }) => {
 
   return (
     <>
-      {user &&
-        <div className={`chat-bubble ${message.uid === user.uid ? "right" : ""}`}>
+      {currentUser &&
+        <div className={`chat-bubble ${message.uid === currentUser.id ? "right" : ""}`}>
           <img className="chat-bubble__left" src={message.avatar} alt="img avatar" referrerPolicy="no-referrer" />
           <div className="chat-bubble__right">
             <p className="user-name"> {message.name} </p>
-            <img src={message.img} className="message-img" onClick={handleImgClick} />
+            <img src={message.img} className="message-img" onClick={handleImgClick} alt="msj-img" />
             <p className="user-message"> {message.text} </p>
             {message.createdAt && (
               <p>{message.createdAt.toDate().toDateString()}</p>

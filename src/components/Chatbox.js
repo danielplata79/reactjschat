@@ -18,54 +18,53 @@ const Chatbox = () => {
 
   useEffect(() => {
     if (currentContact) {
-      console.log(`currentContact name from chatbox: ${currentContact.name}`)
-      console.log(`ChatID at Chatbox: ${chatId}`);
       setLoading(false);
     } else {
       navigate("/Contacts");
     }
 
-  }, [currentContact, chatId]);
+  }, [currentContact, chatId, navigate]);
 
 
-  /* 
-    useEffect(() => {
-      const q = query(
-        collection(db, "messages"),
-        orderBy("createdAt", "desc"),
-        limit(130)
-      );
-  
-      const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
-        const fetchedMessages = [];
-        QuerySnapshot.forEach((doc) => {
-          fetchedMessages.push({ ...doc.data(), id: doc.id });
-        });
-  
-        const sortedMessages = fetchedMessages.sort(
-          (a, b) => a.createdAt - b.createdAt
-        );
-        setMessages(sortedMessages);
-        setLoading(false);
+  useEffect(() => {
+    if (!chatId) {
+      return;
+    }
+
+    const q = query(
+      collection(db, "messages", chatId, "messages"),
+      orderBy("createdAt", "desc"),
+      limit(130)
+    );
+
+    const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
+      const fetchedMessages = [];
+      QuerySnapshot.forEach((doc) => {
+        fetchedMessages.push({ ...doc.data(), id: doc.id });
       });
-  
-      return () => unsubscribe();
-    }, []);
-  
-    useEffect(() => {
-      // Scroll to the bottom whenever messages change or a new message arrives
-      if (currentUser && scrollRef.current) {
-        const timer = setTimeout(() => {
-          scrollRef.current.scrollIntoView({ behavior: "smooth" });
-          setLoading(false);
-        }, 1000);
-  
-        return () => clearTimeout(timer); // Cleanup to avoid memory leaks
-      }
-  
-    }, [messages, currentUser]); // Dependencies: messages and user
-   */
 
+      const sortedMessages = fetchedMessages.sort(
+        (a, b) => a.createdAt - b.createdAt
+      );
+      setMessages(sortedMessages);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, [messages, chatId]);
+
+  useEffect(() => {
+    // Scroll to the bottom whenever messages change or a new message arrives
+    if (currentUser && scrollRef.current) {
+      const timer = setTimeout(() => {
+        scrollRef.current.scrollIntoView({ behavior: "smooth" });
+        setLoading(false);
+      }, 1000);
+
+      return () => clearTimeout(timer); // Cleanup to avoid memory leaks
+    }
+
+  }, [messages, currentUser]); // Dependencies: messages and user
 
   return (
     <main className="chat-box">
@@ -90,4 +89,3 @@ const Chatbox = () => {
 };
 
 export default Chatbox;
-

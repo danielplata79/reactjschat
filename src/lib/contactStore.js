@@ -14,8 +14,6 @@ export const useContactStore = create((set) => ({
       const docRef = doc(db, "users", uid);
       const docSnap = await getDoc(docRef);
 
-      console.log(`chatId at zustand: ${chatId}`);
-
       set({ chatId: chatId });
 
       if (docSnap.exists()) {

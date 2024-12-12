@@ -89,7 +89,7 @@ const Login = () => {
         })
 
         fetchUserInfo(user.uid);
-        navigate("/Chat");
+        navigate("/Contacts");
       }
 
       else {

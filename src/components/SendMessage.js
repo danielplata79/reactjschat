@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./SendMessage.css";
 import "./Chatbox.css";
 import { auth, db, storage } from "../firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { addDoc, setDoc, collection, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { useContactStore } from "../lib/contactStore";
@@ -10,7 +10,7 @@ import { useContactStore } from "../lib/contactStore";
 const SendMessage = ({ scroll }) => {
   const [message, setMessage] = useState("");
   const [img, setImg] = useState(null);
-  const { currentContact } = useContactStore();
+  const { currentContact, chatId } = useContactStore();
 
 
   const sendMessage = async (event) => {
@@ -24,9 +24,8 @@ const SendMessage = ({ scroll }) => {
       await uploadBytes(storageRef, img);
 
       const url = await getDownloadURL(storageRef);
-      console.log("url" + url);
 
-      await addDoc(collection(db, "messages"), {
+      await addDoc(collection(db, "messages", "chatId", chatId, "messages"), {
         name: displayName,
         avatar: photoURL,
         img: url,
@@ -40,7 +39,7 @@ const SendMessage = ({ scroll }) => {
         return;
       };
 
-      await addDoc(collection(db, "messages"), {
+      await addDoc(collection(db, "messages", chatId, "messages"), {
         text: message,
         name: displayName,
         avatar: photoURL,
@@ -61,7 +60,7 @@ const SendMessage = ({ scroll }) => {
 
       <span className="send-message__buttons">
         <span className="send-message__buttons__img">
-          <img src="/photo-64.png" />
+          <img src="/photo-64.png" alt="upload-img" />
           <input type="file"
             onChange={(e) => {
               setImg(e.target.files[0])
