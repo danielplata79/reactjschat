@@ -33,7 +33,7 @@ const Chatbox = () => {
 
     const q = query(
       collection(db, "messages", chatId, "messages"),
-      orderBy("createdAt", "desc"),
+      orderBy("createdAt", "asc"),
       limit(130)
     );
 
@@ -43,10 +43,8 @@ const Chatbox = () => {
         fetchedMessages.push({ ...doc.data(), id: doc.id });
       });
 
-      const sortedMessages = fetchedMessages.sort(
-        (a, b) => a.createdAt - b.createdAt
-      );
-      setMessages(sortedMessages);
+
+      setMessages(fetchedMessages);
     });
 
     return () => unsubscribe();
@@ -58,12 +56,12 @@ const Chatbox = () => {
       const timer = setTimeout(() => {
         scrollRef.current.scrollIntoView({ behavior: "smooth" });
         setLoading(false);
-      }, 1000);
+      }, 0);
 
       return () => clearTimeout(timer); // Cleanup to avoid memory leaks
     }
 
-  }, [messages, currentUser]); // Dependencies: messages and user
+  }, [messages]); // Dependencies: messages and user
 
   return (
     <main className="chat-box">
