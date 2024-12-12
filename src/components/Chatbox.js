@@ -47,11 +47,10 @@ const Chatbox = () => {
         (a, b) => a.createdAt - b.createdAt
       );
       setMessages(sortedMessages);
-      setLoading(false);
     });
 
     return () => unsubscribe();
-  }, [messages, chatId]);
+  }, [chatId]);
 
   useEffect(() => {
     // Scroll to the bottom whenever messages change or a new message arrives

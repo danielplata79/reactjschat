@@ -22,10 +22,10 @@ const MessageBubble = ({ message }) => {
     <>
       {currentUser &&
         <div className={`chat-bubble ${message.uid === currentUser.id ? "right" : ""}`}>
-          <img className="chat-bubble__left" src={message.avatar} alt="img avatar" referrerPolicy="no-referrer" />
+          <img className="chat-bubble__left" src={message.avatar} referrerPolicy="no-referrer" />
           <div className="chat-bubble__right">
             <p className="user-name"> {message.name} </p>
-            <img src={message.img} className="message-img" onClick={handleImgClick} alt="msj-img" />
+            <img src={message.img} className="message-img" onClick={handleImgClick} />
             <p className="user-message"> {message.text} </p>
             {message.createdAt && (
               <p>{message.createdAt.toDate().toDateString()}</p>

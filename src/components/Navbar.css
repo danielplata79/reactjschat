@@ -111,7 +111,17 @@
   display: flex;
   flex-direction: column;
   justify-items: center;
-  overflow: auto;
+  overflow: hidden;
+}
+
+.contact-navbar--container h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+}
+
+.contact-navbar--container p {
+  color: var(--sixth-col);
 }
 
 .logo-default--container {

@@ -6,11 +6,13 @@ import { addDoc, setDoc, collection, serverTimestamp } from "firebase/firestore"
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { useContactStore } from "../lib/contactStore";
+import { useUserStore } from "../lib/userStore";
 
 const SendMessage = ({ scroll }) => {
   const [message, setMessage] = useState("");
   const [img, setImg] = useState(null);
   const { currentContact, chatId } = useContactStore();
+  const { currentUser } = useUserStore();
 
 
   const sendMessage = async (event) => {
@@ -25,12 +27,12 @@ const SendMessage = ({ scroll }) => {
 
       const url = await getDownloadURL(storageRef);
 
-      await addDoc(collection(db, "messages", "chatId", chatId, "messages"), {
-        name: displayName,
-        avatar: photoURL,
+      await addDoc(collection(db, "messages", chatId, "messages"), {
+        name: currentUser.name,
+        avatar: currentUser.avatarUrl,
         img: url,
         createdAt: serverTimestamp(), // Storage the time message is created
-        uid,
+        id: currentUser.id
       });
 
     } else {
@@ -41,10 +43,10 @@ const SendMessage = ({ scroll }) => {
 
       await addDoc(collection(db, "messages", chatId, "messages"), {
         text: message,
-        name: displayName,
-        avatar: photoURL,
+        name: currentUser.name,
+        avatar: currentUser.avatarUrl,
         createdAt: serverTimestamp(),
-        uid
+        id: currentUser.id
       });
     }
 
