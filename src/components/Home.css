@@ -69,7 +69,7 @@
 }
 
 .chat-list--container h3 {
-  color: #e2eabc;
+  color: var(--sixth-col);
 }
 
 
@@ -139,9 +139,7 @@
   display: flex;
 }
 
-.card-settings button:hover {
-  background: var(--third-col);
-}
+.card-settings button:hover {}
 
 .card-settings button>img {
   width: 25px;
@@ -201,4 +199,73 @@
   width: 80px;
   margin-bottom: 20px;
 
+}
+
+@media only screen and (max-width: 400px) {
+
+  .home-search--container {
+    height: 80px;
+  }
+
+  .home-search--container input {
+    height: 40px;
+    border-radius: 50px;
+    width: 95%;
+    background: #35353c;
+  }
+
+  .home-search--container input::placeholder {
+    color: darkgray;
+  }
+
+  .home-contacts--container {
+    box-shadow: none;
+  }
+
+  .chat-list--container {
+    height: 90px;
+    border: none;
+    box-shadow: none;
+  }
+
+  .card-img--container {
+    width: 25%;
+  }
+
+  .card-img--container span {
+    display: flex;
+    border-radius: 50px;
+    height: 55px;
+    width: 55px;
+  }
+
+  .card-img--container span>img {
+    object-fit: cover;
+    height: 100%;
+    border-radius: 50px;
+
+  }
+
+  .card-info {
+    margin-left: 0px;
+    width: 75%;
+    font-size: small;
+  }
+
+  .card-settings {
+    width: 0%;
+  }
+
+  .card-settings button {
+    position: absolute;
+    left: 0;
+    height: 90px;
+    width: 100%;
+    border: none;
+    border-radius: 0px;
+  }
+
+  .card-settings img {
+    display: none;
+  }
 }

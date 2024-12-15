@@ -159,11 +159,13 @@ const Home = () => {
           searchResults.map((contact) => (
             <div className="chat-list--container" key={contact.id}>
               <span className="card-img--container">
-                <img
-                  src={contact.avatarUrl || contact.avatar || "./default-avatar.png"}
-                  className="card-img"
-                  alt="Contact"
-                />
+                <span>
+                  <img
+                    src={contact.avatarUrl || contact.avatar || "./default-avatar.png"}
+                    className="card-img"
+                    alt="Contact"
+                  />
+                </span>
               </span>
               <div className="card-info">
                 <h3>{contact.name}</h3>
