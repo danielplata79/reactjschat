@@ -33,7 +33,7 @@ const Chatbox = () => {
 
     const q = query(
       collection(db, "messages", chatId, "messages"),
-      orderBy("createdAt", "asc"),
+      orderBy("createdAt", "desc"),
       limit(130)
     );
 
@@ -53,19 +53,16 @@ const Chatbox = () => {
   useEffect(() => {
     // Scroll to the bottom whenever messages change or a new message arrives
     if (currentUser && scrollRef.current) {
-      const timer = setTimeout(() => {
-        scrollRef.current.scrollIntoView({ behavior: "smooth" });
-        setLoading(false);
-      }, 0);
-
-      return () => clearTimeout(timer); // Cleanup to avoid memory leaks
+      scrollRef.current.scrollTo({
+        top: scrollRef.current.scrollHeight,
+        behavior: "smooth"
+      });
     }
-
   }, [messages]); // Dependencies: messages and user
 
   return (
     <main className="chat-box">
-      <div className="messages-wrapper">
+      <div className="messages-wrapper" ref={scrollRef}>
         {loading ? (
           <div className="loadingstate">
             <img src="/loadingspinner.gif" alt="Loading..." />
@@ -75,7 +72,6 @@ const Chatbox = () => {
             {messages.map((message) => (
               <MessageBubble key={message.id} message={message} />
             ))}
-            <div ref={scrollRef}></div>
           </>
         )}
       </div>

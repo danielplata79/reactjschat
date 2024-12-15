@@ -10,12 +10,14 @@
 .messages-wrapper {
   padding: 20px 40px 20px 40px;
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
   background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
   width: 100%;
   box-sizing: border-box;
   margin-top: 60px;
   background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 
