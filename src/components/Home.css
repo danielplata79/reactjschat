@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 60px;
-  background: #2f3640;
+  background: #24242a;
   box-shadow: var(--div-shadows3);
 }
 
@@ -25,18 +25,18 @@
   width: 90%;
   max-width: 1200px;
   height: 50px;
-  background: #24242a;
+  background: darkgray;
   outline: none;
   border-radius: 3px;
   border: none;
   padding-left: 15px;
   font-size: initial;
   box-shadow: var(--div-shadows3);
-  color: #fff;
+  color: #24242a;
 }
 
 .home-search--container input::placeholder {
-  color: #fff;
+  color: #24242a;
 }
 
 .home-contacts--container {
@@ -132,10 +132,19 @@
 .card-settings button {
   background: none;
   border: none;
+  border: 2px solid white;
+  border-radius: 50px;
+  padding: 8px;
+  padding-top: 10px;
+  display: flex;
+}
+
+.card-settings button:hover {
+  background: var(--third-col);
 }
 
 .card-settings button>img {
-  width: 35px;
+  width: 25px;
   cursor: pointer;
 }
 
