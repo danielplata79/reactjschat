@@ -6,6 +6,7 @@
   justify-content: flex-start;
   background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
   height: 100%;
+  overflow-y: hidden;
 }
 
 .home-search--container {
@@ -51,6 +52,7 @@
   margin: auto;
   margin-top: 0px;
   box-shadow: var(--div-shadows);
+  position: relative;
   overflow-y: auto;
 }
 
@@ -155,7 +157,8 @@
   display: block;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1200px),
+only screen and (max-height: 700px) {
 
   .home-search--container {
     margin-top: 60px;
@@ -232,6 +235,7 @@
 
   .home-contacts--container {
     box-shadow: none;
+    height: 100%;
   }
 
   .chat-list--container {
@@ -273,6 +277,7 @@
     position: absolute;
     left: 0;
     height: 90px;
+    min-height: 90px;
     width: 100%;
     border: none;
     border-radius: 0px;
