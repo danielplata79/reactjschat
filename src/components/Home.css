@@ -12,13 +12,15 @@
 
 .home-search--container {
   height: 180px;
-  width: 100%;
+  width: 1200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 60px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 0px;
   background: #24242a;
-  box-shadow: var(--div-shadows3);
+  box-shadow: var(--div-shadows);
 }
 
 .home-search--container input {
@@ -45,9 +47,10 @@
   justify-content: flex-start;
   align-items: flex-start;
   background: #24242a;
-  height: 100%;
+  height: 70%;
   width: 1200px;
   margin: auto;
+  margin-top: 0px;
   box-shadow: var(--div-shadows);
 }
 
@@ -60,8 +63,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 0px;
-  border-bottom: 1px solid #3a3a44;
-  box-shadow: var(--div-shadows);
+  border-top: 1px solid #3a3a44;
 }
 
 .chat-list--container p {
@@ -153,8 +155,15 @@
 }
 
 @media only screen and (max-width: 1200px) {
+
+  .home-search--container {
+    margin-top: 60px;
+    width: 100%;
+  }
+
   .home-contacts--container {
     width: 100%;
+    height: 100%;
     box-shadow: var(--div-shadows3);
   }
 
