@@ -6,8 +6,7 @@
   justify-content: flex-start;
   background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
   overflow: auto;
-  height: 100vh;
-  min-height: 1100px;
+  height: 100%;
 }
 
 .home-search--container {
