@@ -48,8 +48,8 @@ const Navbar = () => {
           <>
             <div onClick={() => console.log(`hola`)} className="contact-navbar--container">
               <img className="user-avatar-img" src={currentContact.avatarUrl || currentContact.avatar || "/default-avatar.png"} alt="User" />
-              <span>
-                <h3>{currentContact.name}</h3>
+              <span onClick={() => navigate("/ContactProfile")}>
+                <h3 >{currentContact.name}</h3>
                 <p>{currentContact.status}</p>
               </span>
             </div>
