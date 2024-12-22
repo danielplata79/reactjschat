@@ -46,7 +46,7 @@ const Navbar = () => {
       <span >
         {currentContact && location.pathname === "/Chat" ? (
           <>
-            <div onClick={() => console.log(`hola`)} className="contact-navbar--container">
+            <div className="contact-navbar--container">
               <img className="user-avatar-img" src={currentContact.avatarUrl || currentContact.avatar || "/default-avatar.png"} alt="User" />
               <span onClick={() => navigate("/ContactProfile")}>
                 <h3 >{currentContact.name}</h3>
