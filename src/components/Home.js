@@ -96,7 +96,7 @@ const Home = () => {
       }
 
       const newChatRef = await addDoc(chatCollectionRef, {
-        lastMessage: "last message",
+        lastMessage: "",
         timeStamp: Date.now(),
         participants: [currentUser.id, contact.id]
       })
