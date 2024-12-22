@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import React from "react";
 import { useContactStore } from "../lib/contactStore";
 import "./Profile.css";
 import { ReactComponent as StatusIcon } from './status2.svg';
-
-import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
-import { updateDoc } from "firebase/firestore";
-import { storage } from "../firebase";
 
 const Profile = () => {
   const { currentContact } = useContactStore();
