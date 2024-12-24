@@ -7,6 +7,7 @@ import Profile from "./components/Profile";
 import Home from "./components/Home";
 import NewContact from "./components/NewContact"
 import ContactProfile from "./components/ContactProfile"
+import ChatList from "./components/ChatList";
 
 import { auth } from "./firebase";
 import { useUserStore } from "../src/lib/userStore";
@@ -53,6 +54,7 @@ function App() {
               <Route path="/Profile" element={<Profile />} />
               <Route path="/NewContact" element={<NewContact />} />
               <Route path="/ContactProfile" element={<ContactProfile />} />
+              <Route path="/Chats" element={<ChatList />} />
               <Route path="*" element={<Navigate to="/Contacts" />} />
             </>
           )

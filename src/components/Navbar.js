@@ -18,6 +18,8 @@ const Navbar = () => {
     "/Profile": "Profile//",
     "/Contacts": "Contacts//",
     "/NewContact": "New Contact//",
+    "/ContactProfile": "Contact Profile//",
+    "/Chats": "Chats//",
   };
 
   const location = useLocation();
@@ -79,8 +81,8 @@ const Navbar = () => {
                 <hr />
                 <p>Profile</p>
               </button>
-              <button onClick={() => navigate("/Chat")}>
-                <img src="/chat-2-64.png" alt="Chat" />
+              <button onClick={() => navigate("/Chats")}>
+                <img src="/chat-2-64.png" alt="Chats" />
                 <hr />
                 <p>Chats</p>
               </button>
