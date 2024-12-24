@@ -10,36 +10,47 @@ import { useNavigate } from "react-router-dom";
 const ChatList = () => {
   const { currentUser } = useUserStore();
   const { fetchContactInfo } = useContactStore();
-  const [fetchedContacts, setFetchedContacts] = useState([]);
+  const [fetchedChats, setFetchedChats] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
 
   useEffect(() => {
-    const fetchContacts = async () => {
+    const fetchChats = async () => {
       try {
-        const userRef = doc(db, "users", currentUser.id);
-        const userDoc = await getDoc(userRef);
+        const userRef = collection(db, "users", currentUser.id, "privates");
+        const userDocs = await getDocs(userRef);
 
-        if (userDoc.exists()) {
-          const contactsDetails = [];
-          const userData = userDoc.data();
+        const fetchPromises = [];
 
-          for (const contactId of userData.contacts) {
-            const contactRef = doc(db, "users", contactId);
+        userDocs.forEach(async (chatDoc) => {
+          const chatData = chatDoc.data();
+
+          const fetchChatPromise = (async () => {
+            const contactRef = doc(db, "users", chatData.contactId);
             const contactDoc = await getDoc(contactRef);
+            const contactData = contactDoc.data();
 
-            contactsDetails.push({
-              id: contactId,
-              ...contactDoc.data(),
-            });
-          }
-          setFetchedContacts(contactsDetails);
-          setSearchResults(contactsDetails);
-        } else {
-          console.log(`Error fetching user data`);
-        }
+            const chatDetailsRef = doc(db, "chats", chatData.chatId);
+            const chatDetailsDoc = await getDoc(chatDetailsRef);
+            const chatDetailsData = chatDetailsDoc.data();
+
+            return {
+              chatId: chatDoc.id,
+              ...chatData,
+              avatarUrl: contactData.avatarUrl,
+              avatar: contactData.avatar,
+              lastMessage: chatDetailsData.lastMessage
+            };
+          })();
+
+          fetchPromises.push(fetchChatPromise);
+        });
+        const resolvedChats = await Promise.all(fetchPromises);
+
+        setFetchedChats(resolvedChats);
+        setSearchResults(resolvedChats);
       } catch (err) {
         console.log(err);
       } finally {
@@ -47,7 +58,7 @@ const ChatList = () => {
       }
 
     }
-    fetchContacts();
+    fetchChats();
   }, [currentUser.id]);
 
   const fuse = new Fuse(searchResults, {
@@ -59,7 +70,7 @@ const ChatList = () => {
     const query = e.target.value;
 
     if (query.trim() === "") {
-      setSearchResults(fetchedContacts);
+      setSearchResults(fetchedChats);
     } else {
       const results = fuse.search(query).map((result) => result.item);
 
@@ -156,24 +167,24 @@ const ChatList = () => {
       <div className="home-contacts--container">
 
         {searchResults.length > 0 ? (
-          searchResults.map((contact) => (
-            <div className="chat-list--container" key={contact.id}>
+          searchResults.map((chatInfo) => (
+            <div className="chat-list--container" key={chatInfo.chatId}>
               <span className="card-img--container">
                 <span>
                   <img
-                    src={contact.avatarUrl || contact.avatar || "./default-avatar.png"}
+                    src={chatInfo.avatarUrl || chatInfo.avatar || "./default-avatar.png"}
                     className="card-img"
                     alt="Contact"
                   />
                 </span>
               </span>
               <div className="card-info">
-                <h3>{contact.name}</h3>
-                <p>{contact.email}</p>
+                <h3>{chatInfo.name}</h3>
+                <p>{chatInfo.lastMessage}</p>
               </div>
               <div className="card-settings">
                 <button onClick={() => {
-                  handleChat(contact);
+                  handleChat();
                 }}>
                   <img src="chat-512-white.png" alt="More" />
                 </button>
@@ -183,7 +194,7 @@ const ChatList = () => {
         ) : (
           <div className="no-contacts--container">
             <img src="dust-68-white.png" alt="nocontacts" />
-            <p className="nocontacts-text">No contacts found!.. 😶</p>
+            <p className="nocontacts-text">No Chats found!.. 😶</p>
           </div>
         )
         }
