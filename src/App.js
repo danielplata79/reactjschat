@@ -55,7 +55,7 @@ function App() {
               <Route path="/NewContact" element={<NewContact />} />
               <Route path="/ContactProfile" element={<ContactProfile />} />
               <Route path="/Chats" element={<ChatList />} />
-              <Route path="*" element={<Navigate to="/Contacts" />} />
+              <Route path="*" element={<Navigate to="/Chats" />} />
             </>
           )
           }
