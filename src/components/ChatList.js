@@ -38,6 +38,7 @@ const ChatList = () => {
 
             return {
               chatId: chatDoc.id,
+              contactId: contactData.id,
               ...chatData,
               avatarUrl: contactData.avatarUrl,
               avatar: contactData.avatar,
@@ -76,6 +77,12 @@ const ChatList = () => {
 
       setSearchResults(results);
     }
+  }
+
+  const handleChat2 = async (chatInfo) => {
+    setIsLoading(true);
+    await fetchContactInfo(chatInfo.contactId, chatInfo.chatId);
+    navigate("/Chat");
   }
 
   const handleChat = async (contact) => {
@@ -184,7 +191,7 @@ const ChatList = () => {
               </div>
               <div className="card-settings">
                 <button onClick={() => {
-                  handleChat();
+                  handleChat2(chatInfo);
                 }}>
                   <img src="chat-512-white.png" alt="More" />
                 </button>
