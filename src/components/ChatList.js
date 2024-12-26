@@ -74,9 +74,9 @@ const ChatList = () => {
   }
 
   const handleChat = async (chatInfo) => {
-    setIsLoading(true);
+    //setIsLoading(true);
     await fetchContactInfo(chatInfo.contactId, chatInfo.chatId);
-    navigate("/Chat");
+    //navigate("/Chat");
   }
 
   useEffect(() => {
@@ -103,7 +103,7 @@ const ChatList = () => {
 
         {searchResults.length > 0 ? (
           searchResults.map((chatInfo) => (
-            <div className="chat-list--container" key={chatInfo.chatId}>
+            <div onClick={() => { handleChat(chatInfo) }} className="chat-list--container" key={chatInfo.chatId}>
               <span className="card-img--container">
                 <span>
                   <img
@@ -117,13 +117,7 @@ const ChatList = () => {
                 <h3>{chatInfo.name}</h3>
                 <p>{chatInfo.lastMessage}</p>
               </div>
-              <div className="card-settings">
-                <button onClick={() => {
-                  handleChat(chatInfo);
-                }}>
-                  <img src="chat-512-white.png" alt="More" />
-                </button>
-              </div>
+
             </div>
           ))
         ) : (

@@ -1,0 +1,57 @@
+.dashboard--main-container {
+  background: red;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.dashboard--chatlist-panel {
+  height: 100%;
+  width: 30%;
+  background: green;
+  box-shadow: var(--div-shadows2);
+}
+
+.dashboard--chatbox-panel {
+  height: 100%;
+  width: 70%;
+  background: blue;
+}
+
+.home-search--container {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.home-contacts--container {
+  width: 100%;
+}
+
+.chat-list--container {
+  cursor: pointer;
+  border-top: 1px solid #35353e;
+}
+
+.chat-list--container:hover {
+  background: #35353e;
+  color: black;
+}
+
+.card-info {
+  font-size: medium;
+}
+
+.home-search--container {
+  height: 120px;
+}
+
+.home-search--container input {
+  border-radius: 5px;
+  background: #35353e;
+  ;
+  width: 92%;
+}
+
+.home-search--container input::placeholder {
+  color: var(--sixth-col);
+}

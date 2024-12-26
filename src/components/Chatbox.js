@@ -20,7 +20,7 @@ const Chatbox = () => {
     if (currentContact) {
       setLoading(false);
     } else {
-      navigate("/Contacts");
+
     }
 
   }, [currentContact, chatId, navigate]);
