@@ -144,3 +144,19 @@
     box-shadow: none;
   }
 }
+
+/* NAVBAR LEFT */
+.nav-bar_left {
+  height: 100vh;
+  width: 55px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: none;
+  z-index: 1;
+
+  .user-avatar-container {
+    position: absolute;
+    bottom: 0;
+    margin-left: 5px;
+  }
+}

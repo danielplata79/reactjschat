@@ -1,5 +1,4 @@
 .dashboard--main-container {
-  background: red;
   height: 100%;
   width: 100%;
   display: flex;
@@ -12,6 +11,10 @@
   box-shadow: var(--div-shadows2);
 }
 
+.messages-wrapper {
+  margin-top: 0px;
+}
+
 .dashboard--chatbox-panel {
   height: 100%;
   width: 70%;
@@ -20,7 +23,7 @@
 
 .home-search--container {
   width: 100%;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 
 .home-contacts--container {
