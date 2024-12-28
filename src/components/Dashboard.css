@@ -37,6 +37,11 @@
     width: 85%;
     height: 52px;
     box-shadow: none;
+    color: var(--sixth-col)
+  }
+
+  input::placeholder {
+    color: var(--sixth-col);
   }
 }
 
@@ -51,11 +56,13 @@
   cursor: pointer;
   border-top: 1px solid #35353e;
   background: #2f2f37;
+  width: 90%;
 }
 
 .chat-list--container:hover {
   background: #484851;
   color: black;
+  border-radius: 30px;
 }
 
 .card-info {
@@ -95,5 +102,69 @@
     width: 50%;
     height: 55px;
     border-radius: 50px;
+  }
+}
+
+.nav-bar_left {
+  height: 100vh;
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: none;
+  z-index: 1;
+  background: #24242a;
+
+  .user-avatar-container {
+    position: absolute;
+    bottom: 0;
+    margin-left: 15px;
+    margin-bottom: 12px;
+  }
+
+  .logo-default--container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin-top: 15px;
+
+    img {
+      margin: auto;
+    }
+  }
+
+  .menu-items {
+    height: 400px;
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    background: #24242a;
+    justify-items: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    hr {
+      width: 60%;
+      color: var(--sixth-col);
+    }
+
+    .menu-item {
+      background: #24242a;
+      border: none;
+      color: var(--sixth-col);
+      margin-top: 10px;
+      padding: 8px;
+      width: 80%;
+
+      img {
+        height: 35px;
+        width: 35px;
+      }
+    }
+
+    .menu-item:hover {
+      background: #2f2f37;
+      border-radius: 10px;
+    }
   }
 }

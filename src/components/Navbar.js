@@ -64,9 +64,23 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <div onClick={() => navigate("/Contacts")} className="logo-default--container">
+            <div onClick={() => navigate("/Dashboard")} className="logo-default--container">
               <img src="/logodog2.png" alt="ReactJs logo" width={50} height={50} />
-              <h1>{currentTitle}</h1>
+            </div>
+            <div className="menu-items">
+              <hr />
+              <button onClick={() => navigate("/Dashboard")} className="menu-item">
+                <img src="/chat-64-white.png" alt="Profile" />
+                <p>Chats</p>
+              </button>
+              <button onClick={() => navigate("/Dashboard")} className="menu-item">
+                <img src="/group-chats-white.png" alt="Profile" />
+                <p>Groups</p>
+              </button>
+              <button onClick={() => navigate("/Contacts")} className="menu-item">
+                <img src="/folder-64-white.png" alt="Profile" />
+                <p>Contacts</p>
+              </button>
             </div>
           </>
         )}
