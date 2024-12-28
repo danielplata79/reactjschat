@@ -67,7 +67,7 @@ const SendMessage = ({ scroll }) => {
 
       <span className="send-message__buttons">
         <span className="send-message__buttons__img">
-          <img src="/photo-64.png" alt="upload-img" />
+          <img src="/clip-64-white.png" alt="upload-img" />
           <input type="file"
             onChange={(e) => {
               setImg(e.target.files[0])

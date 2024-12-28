@@ -20,6 +20,7 @@ const Navbar = () => {
     "/NewContact": "New Contact//",
     "/ContactProfile": "Contact Profile//",
     "/Chats": "Chats//",
+    "/Dashboard": "Dashboard//"
   };
 
   const location = useLocation();

@@ -50,7 +50,6 @@
 
 .send-message> :is(input, button):focus {
   outline: none;
-  border-bottom: 1px solid #7cc5d9;
 }
 
 
