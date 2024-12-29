@@ -1,13 +1,22 @@
 .profile-component--container {
-  background: #313135;
+  background: #24242a;
   width: 100%;
   height: 100vh;
   min-height: 730px;
   color: lime;
   box-sizing: border-box;
   display: flex;
+}
+
+.profile-component--containers {
+  display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 100%;
   align-items: center;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  background: #313135;
 }
 
 .profile-component--main-block {
@@ -24,14 +33,12 @@
   display: flex;
   width: 100%;
   height: 300px;
-  margin-top: 60px;
   background: var(--gradient-color2);
-  background: rgb(49, 49, 53);
+  border-top-left-radius: 30px;
   background: linear-gradient(0deg, rgba(49, 49, 53, 1) 0%, rgba(136, 221, 160, 1) 100%);
 }
 
 .profile-component--img>span {
-  background: red;
   display: flex;
   margin: auto;
   width: 200px;

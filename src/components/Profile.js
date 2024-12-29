@@ -6,6 +6,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import "./Profile.css";
 import { ReactComponent as StatusIcon } from './status2.svg';
 
+import Navbar from "./Navbar";
+
 import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
 import { updateDoc } from "firebase/firestore";
 import { storage } from "../firebase";
@@ -48,39 +50,42 @@ const Profile = () => {
 
   return (
     <div className="profile-component--container">
-      <div className="profile-component--img">
-        <span>
-          <img src={currentUser.avatarUrl || currentUser.avatar || "/guest-500.png"} />
-          <span className="upload-image">
-            <input type="file"
-              onChange={(e) => {
-                updateAvatar(e)
-              }
-              } />
-            <img src="./img.png" alt="img" />
+      <Navbar />
+      <div className="profile-component--containers">
+        <div className="profile-component--img">
+          <span>
+            <img src={currentUser.avatarUrl || currentUser.avatar || "/guest-500.png"} />
+            <span className="upload-image">
+              <input type="file"
+                onChange={(e) => {
+                  updateAvatar(e)
+                }
+                } />
+              <img src="./img.png" alt="img" />
+            </span>
           </span>
-        </span>
 
-      </div >
-      <div className="profile-component--info">
-        <h1>{currentUser.name}</h1>
-        <div className="profile-component--info-data">
-          <span>
-            <span><StatusIcon style={{ fill: '#80D999', height: '30px', width: '30px' }} /> </span>
-            <p><strong className="strong--txt">Status: </strong> {currentUser.status}</p>
-          </span>
-          <span>
-            <span><img src="./email.png" alt="email" /></span>
-            <p><strong className="strong--txt">Email: </strong> {currentUser.email}</p>
-          </span>
-          <span>
-            <span><img src="./numsign.png" alt="codetag" /></span>
-            <p><strong className="strong--txt">CodeTag: </strong> {currentUser.codetag} </p>
-          </span>
-          <span>
-            <span><img src="./date.png" alt="date" /></span>
-            <p><strong className="strong--txt">Member Since: </strong> {currentUser.createdAt.toDate().toDateString()} </p>
-          </span>
+        </div >
+        <div className="profile-component--info">
+          <h1>{currentUser.name}</h1>
+          <div className="profile-component--info-data">
+            <span>
+              <span><StatusIcon style={{ fill: '#80D999', height: '30px', width: '30px' }} /> </span>
+              <p><strong className="strong--txt">Status: </strong> {currentUser.status}</p>
+            </span>
+            <span>
+              <span><img src="./email.png" alt="email" /></span>
+              <p><strong className="strong--txt">Email: </strong> {currentUser.email}</p>
+            </span>
+            <span>
+              <span><img src="./numsign.png" alt="codetag" /></span>
+              <p><strong className="strong--txt">CodeTag: </strong> {currentUser.codetag} </p>
+            </span>
+            <span>
+              <span><img src="./date.png" alt="date" /></span>
+              <p><strong className="strong--txt">Member Since: </strong> {currentUser.createdAt.toDate().toDateString()} </p>
+            </span>
+          </div>
         </div>
       </div>
     </div >

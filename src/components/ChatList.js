@@ -13,6 +13,7 @@ const ChatList = () => {
   const [fetchedChats, setFetchedChats] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeChatId, setActiveChatId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -90,6 +91,10 @@ const ChatList = () => {
 
   if (isLoading) return <div className="loadingstate"> <img src="/loadingspinner.gif" alt="Loading..." /> </div>;
 
+  const handleChatClick = (chatId) => {
+    setActiveChatId(chatId === activeChatId ? null : chatId);
+  }
+
 
   return (
     <div className="home--container">
@@ -103,9 +108,15 @@ const ChatList = () => {
 
         {searchResults.length > 0 ? (
           searchResults.map((chatInfo) => (
-            <div onClick={() => { handleChat(chatInfo) }} className="chat-list--container" key={chatInfo.chatId}>
-              <span className="card-img--container">
-                <span>
+            <div
+              onClick={() => {
+                handleChat(chatInfo);
+              }}
+              className={`chat-list--container ${activeChatId === chatInfo.chatId ? "_active" : ""}`}
+              key={chatInfo.chatId}
+            >
+              < span className="card-img--container" >
+                <span onClick={() => handleChatClick(chatInfo.chatId)}>
                   <img
                     src={chatInfo.avatarUrl || chatInfo.avatar || "./default-avatar.png"}
                     className="card-img"
@@ -113,7 +124,7 @@ const ChatList = () => {
                   />
                 </span>
               </span>
-              <div className="card-info">
+              <div onClick={() => handleChatClick(chatInfo.chatId)} className="card-info">
                 <h3>{chatInfo.name}</h3>
                 <p>{chatInfo.lastMessage}</p>
               </div>
@@ -128,8 +139,8 @@ const ChatList = () => {
         )
         }
 
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

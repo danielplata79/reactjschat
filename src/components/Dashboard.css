@@ -11,8 +11,8 @@
 .dashboard--chatlist-panel {
   height: 100%;
   width: 40%;
-  border-radius: 100px;
   z-index: 1;
+  border-right: 1px solid #484851;
 }
 
 .messages-wrapper {
@@ -57,6 +57,22 @@
   border-top: 1px solid #35353e;
   background: #2f2f37;
   width: 90%;
+
+  .card-img--container span {
+    height: 65px;
+    width: 65px;
+    border-radius: 10px;
+
+    img {
+      border-radius: 15px;
+      box-shadow: none;
+    }
+  }
+}
+
+.chat-list--container._active {
+  background: #484851;
+  border-radius: 30px;
 }
 
 .chat-list--container:hover {
