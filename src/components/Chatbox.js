@@ -62,21 +62,33 @@ const Chatbox = () => {
 
   return (
     <main className="chat-box">
-      <div className="messages-wrapper" ref={scrollRef}>
-        {loading ? (
-          <div className="loadingstate">
-            <img src="/loadingspinner.gif" alt="Loading..." />
-          </div>
-        ) : (
-          <>
-            {messages.map((message) => (
-              <MessageBubble key={message.id} message={message} />
-            ))}
-          </>
-        )}
-      </div>
+
+      {currentContact && (
+        <div className="contact-navbar--container">
+          <img className="user-avatar-img" src={currentContact.avatarUrl || currentContact.avatar || "/default-avatar.png"} alt="User" />
+          <span onClick={() => navigate("/ContactProfile")}>
+            <h3 >{currentContact.name}</h3>
+            <p>{currentContact.status}</p>
+          </span>
+        </div>
+      )}
+
+      < div className="messages-wrapper" ref={scrollRef} >
+        {
+          loading ? (
+            <div className="loadingstate" >
+              <img src="/loadingspinner.gif" alt="Loading..." />
+            </div >
+          ) : (
+            <>
+              {messages.map((message) => (
+                <MessageBubble key={message.id} message={message} />
+              ))}
+            </>
+          )}
+      </div >
       <SendMessage />
-    </main>
+    </main >
   );
 
 };
