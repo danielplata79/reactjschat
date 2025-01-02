@@ -11,7 +11,6 @@
 .dashboard--chatlist-panel {
   height: 100%;
   width: 40%;
-  z-index: 1;
   border-right: 1px solid #484851;
 
   .home-search--container {
@@ -46,15 +45,16 @@
     border-top: 1px solid #35353e;
     background: #2f2f37;
     width: 90%;
+    height: 110px;
 
-    .card-img--container span {
-      height: 65px;
-      width: 65px;
+    .card-img--container {
       border-radius: 10px;
 
       img {
         border-radius: 15px;
         box-shadow: none;
+        height: 80px;
+        width: 80px;
       }
     }
   }
@@ -194,6 +194,117 @@
     .menu-item:hover {
       background: #2f2f37;
       border-radius: 10px;
+    }
+  }
+}
+
+
+/* Base layout */
+.dashboard--main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Panels */
+.dashboard--chatlist-panel {
+  flex: 1;
+  display: block;
+}
+
+.dashboard--chatbox-panel {
+  flex: 2;
+  display: block;
+}
+
+/* Desktop layout */
+@media (min-width: 769px) {
+  .dashboard--main-container {
+    flex-direction: row;
+  }
+
+  .dashboard--chatlist-panel,
+  .dashboard--chatbox-panel {
+    display: block;
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 1100px) {
+  .dashboard--main-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .dashboard--chatlist-panel {
+    display: block;
+    border-bottom-left-radius: 0px;
+  }
+
+  .dashboard--chatbox-panel {
+    display: none;
+  }
+
+  /* Show and hide classes */
+  .dashboard--chatlist-panel.hide {
+    display: none;
+  }
+
+  .dashboard--chatbox-panel.show {
+    display: block;
+  }
+
+  .contact-navbar--container {
+    background: #24242a !important;
+    height: 100px !important;
+  }
+
+  .nav-bar_left {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 0px;
+    z-index: 1;
+
+    hr {
+      display: none;
+    }
+
+    span {
+      width: 100%;
+      height: 100%;
+    }
+
+    .logo-default--container {
+      display: none;
+    }
+
+    .menu-items {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 100%;
+
+      margin-top: 0px;
+
+      .menu-item {
+
+        margin-top: 0px;
+      }
+    }
+
+    .user-avatar-container {
+      position: initial;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 30%;
+      margin-left: 0px;
+      margin-bottom: 0px;
     }
   }
 }

@@ -5,16 +5,13 @@ import { useContactStore } from "../lib/contactStore";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import Fuse from "fuse.js";
 import { db } from "../firebase";
-import { useNavigate } from "react-router-dom";
 
-const ChatList = () => {
+const ChatList = ({ onSelectChat }) => {
   const { currentUser } = useUserStore();
   const { fetchContactInfo } = useContactStore();
   const [fetchedChats, setFetchedChats] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeChatId, setActiveChatId] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchChats = async () => {
@@ -39,9 +36,8 @@ const ChatList = () => {
             ...chatData,
             avatarUrl: contactData.avatarUrl,
             avatar: contactData.avatar,
-            lastMessage: chatDetailsData.lastMessage
+            lastMessage: chatDetailsData.lastMessage,
           };
-
         });
         const resolvedChats = await Promise.all(chatDataPromises);
 
@@ -59,7 +55,7 @@ const ChatList = () => {
 
   const fuse = new Fuse(searchResults, {
     keys: ["name", "email"],
-    threshold: 0.3
+    threshold: 0.3,
   });
 
   const handleSearch = (e) => {
@@ -69,16 +65,14 @@ const ChatList = () => {
       setSearchResults(fetchedChats);
     } else {
       const results = fuse.search(query).map((result) => result.item);
-
       setSearchResults(results);
     }
-  }
+  };
 
   const handleChat = async (chatInfo) => {
-    //setIsLoading(true);
     await fetchContactInfo(chatInfo.contactId, chatInfo.chatId);
-    //navigate("/Chat");
-  }
+    onSelectChat(chatInfo.chatId); // Trigger the chatbox view in Dashboard
+  };
 
   useEffect(() => {
     const cardInfoElements = document.querySelectorAll(".card-info p");
@@ -89,46 +83,41 @@ const ChatList = () => {
     });
   }, [searchResults]);
 
-  if (isLoading) return <div className="loadingstate"> <img src="/loadingspinner.gif" alt="Loading..." /> </div>;
-
-  const handleChatClick = (chatId) => {
-    setActiveChatId(chatId === activeChatId ? null : chatId);
-  }
-
+  if (isLoading)
+    return (
+      <div className="loadingstate">
+        <img src="/loadingspinner.gif" alt="Loading..." />
+      </div>
+    );
 
   return (
     <div className="home--container">
-      <div className=" home-search--container ">
-        <input type="search"
+      <div className="home-search--container">
+        <input
+          type="search"
           onChange={handleSearch}
           placeholder="Search in your list of contacts..."
         />
       </div>
       <div className="home-contacts--container">
-
         {searchResults.length > 0 ? (
           searchResults.map((chatInfo) => (
             <div
-              onClick={() => {
-                handleChat(chatInfo);
-              }}
-              className={`chat-list--container ${activeChatId === chatInfo.chatId ? "_active" : ""}`}
+              onClick={() => handleChat(chatInfo)}
+              className="chat-list--container"
               key={chatInfo.chatId}
             >
-              < span className="card-img--container" >
-                <span onClick={() => handleChatClick(chatInfo.chatId)}>
-                  <img
-                    src={chatInfo.avatarUrl || chatInfo.avatar || "./default-avatar.png"}
-                    className="card-img"
-                    alt="Contact"
-                  />
-                </span>
+              <span className="card-img--container">
+                <img
+                  src={chatInfo.avatarUrl || chatInfo.avatar || "./default-avatar.png"}
+                  className="card-img"
+                  alt="Contact"
+                />
               </span>
-              <div onClick={() => handleChatClick(chatInfo.chatId)} className="card-info">
+              <div className="card-info">
                 <h3>{chatInfo.name}</h3>
                 <p>{chatInfo.lastMessage}</p>
               </div>
-
             </div>
           ))
         ) : (
@@ -136,12 +125,11 @@ const ChatList = () => {
             <img src="dust-68-white.png" alt="nocontacts" />
             <p className="nocontacts-text">No Chats found!.. 😶</p>
           </div>
-        )
-        }
-
-      </div >
-    </div >
+        )}
+      </div>
+    </div>
   );
 };
 
 export default ChatList;
+

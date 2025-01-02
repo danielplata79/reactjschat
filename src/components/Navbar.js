@@ -45,7 +45,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className={`nav-bar_left ${location.pathname === "/Contacts" || "/Chats" ? "_red" : ""}`}>
+    <nav className={`nav-bar_left ${location.pathname === "/Contacts" || "/Chats" ? "" : ""}`}>
       <span >
         {currentContact && location.pathname === "/Chat" ? (
           <>
