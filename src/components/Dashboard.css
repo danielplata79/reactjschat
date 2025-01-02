@@ -38,6 +38,9 @@
     width: 100%;
     border-bottom-left-radius: 40px;
     background: #2f2f37;
+    overflow-y: scroll;
+    height: 100%;
+    scroll-behavior: smooth;
   }
 
   .chat-list--container {
@@ -239,6 +242,16 @@
   .dashboard--chatlist-panel {
     display: block;
     border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    height: 92%;
+
+    .home-contacts--container {
+      border-bottom-left-radius: 0px;
+    }
+
+    .home-search--container {
+      border-top-left-radius: 0px;
+    }
   }
 
   .dashboard--chatbox-panel {
@@ -259,6 +272,38 @@
     height: 100px !important;
   }
 
+  /* RESPONSIVE CHATLIST */
+  .chat-list--container {
+    width: 100% !important;
+    min-height: 75px !important;
+    height: 75px !important;
+
+
+
+    .card-info {
+      font-size: smaller;
+      width: 88% !important;
+
+      p {
+        margin-top: 5px;
+      }
+    }
+
+    .card-img--container {
+      width: 90px !important;
+
+      img {
+        width: 50px !important;
+        height: 50px !important;
+      }
+    }
+  }
+
+  .home-search--container {
+    background: #24242a !important;
+  }
+
+  /* RESPONSIVE NAVBAR*/
   .nav-bar_left {
     position: absolute;
     bottom: 0;
@@ -291,8 +336,13 @@
       margin-top: 0px;
 
       .menu-item {
-
         margin-top: 0px;
+        font-size: revert;
+
+      }
+
+      .menu-item:hover {
+        border-radius: 0px;
       }
     }
 
@@ -306,5 +356,6 @@
       margin-left: 0px;
       margin-bottom: 0px;
     }
+
   }
 }
