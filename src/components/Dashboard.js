@@ -18,8 +18,9 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard--main-container">
-      {/* Conditionally render Navbar */}
-      {!selectedChat && <Navbar />}
+      <div className={`dashboard--navbar-container ${selectedChat ? "hide-navbar" : ""}`}>
+        <Navbar />
+      </div>
 
       <div className={`dashboard--chatlist-panel ${selectedChat ? "hide" : "show"}`}>
         <ChatList onSelectChat={handleSelectChat} />

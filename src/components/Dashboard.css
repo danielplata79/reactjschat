@@ -304,6 +304,11 @@
   }
 
   /* RESPONSIVE NAVBAR*/
+
+  .dashboard--navbar-container.hide-navbar {
+    display: none;
+  }
+
   .nav-bar_left {
     position: absolute;
     bottom: 0;
