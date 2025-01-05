@@ -13,12 +13,19 @@
   width: 40%;
   border-right: 1px solid #484851;
 
+  .home--container {
+    height: 100%;
+  }
+
   .home-search--container {
     width: 100%;
     margin-top: 0px;
     border-top-left-radius: 40px;
     background: #2f2f37;
-    height: 150px;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     input {
       border-radius: 5px;
@@ -26,7 +33,11 @@
       width: 85%;
       height: 52px;
       box-shadow: none;
-      color: var(--sixth-col)
+      color: var(--sixth-col);
+      outline: none;
+      border: none;
+      font-size: small;
+      padding-left: 15px;
     }
 
     input::placeholder {
@@ -36,19 +47,33 @@
 
   .home-contacts--container {
     width: 100%;
+    display: flex;
     border-bottom-left-radius: 40px;
     background: #2f2f37;
     overflow-y: scroll;
     height: 100%;
     scroll-behavior: smooth;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .chat-list--container {
+    display: flex;
     cursor: pointer;
     border-top: 1px solid #35353e;
     background: #2f2f37;
     width: 90%;
-    height: 110px;
+    min-height: 100px;
+
+    p {
+      color: #cfe4ea;
+    }
+
+    h3 {
+      color: var(--sixth-col);
+    }
 
     .card-img--container {
       border-radius: 10px;
