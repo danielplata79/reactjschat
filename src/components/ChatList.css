@@ -79,9 +79,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: red;
+      background: blue;
 
       img {
+        display: block;
         border-radius: 15px;
         box-shadow: none;
         height: 70px;
@@ -121,4 +122,66 @@
     font-size: medium;
   }
 
+}
+
+
+/* RESPONSIVE CHATLIST */
+@media (max-width: 1100px) {
+  .dashboard--chatlist-panel {
+    display: block;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    height: 100%;
+    width: 100% !important;
+
+    .home-contacts--container {
+      border-bottom-left-radius: 0px;
+      height: calc(85% - 70px);
+    }
+
+    .home-search--container {
+      border-top-left-radius: 0px;
+    }
+  }
+
+  .contact-navbar--container {
+    background: #24242a !important;
+    height: 100px !important;
+  }
+
+
+
+  .home-search--container {
+    background: #24242a !important;
+  }
+
+
+
+  .chat-list--container {
+    width: 100% !important;
+    min-height: 75px !important;
+    height: 75px !important;
+
+    .card-info {
+      font-size: smaller;
+      width: 88% !important;
+
+      p {
+        margin-top: 5px;
+      }
+    }
+
+    .card-img--container {
+      width: 70px !important;
+
+      img {
+        width: 50px !important;
+        height: 50px !important;
+      }
+    }
+  }
+
+  .chat-list--container:hover {
+    border-radius: 0px !important;
+  }
 }
