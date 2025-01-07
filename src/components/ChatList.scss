@@ -45,7 +45,7 @@
     overflow-y: scroll;
     height: 85%;
     scroll-behavior: smooth;
-
+    box-sizing: border-box;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -69,7 +69,7 @@
       text-wrap: nowrap;
     }
 
-    h3 {
+    h4 {
       color: var(--sixth-col);
     }
 
@@ -79,14 +79,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 90px;
+      width: 32%;
 
       img {
         display: block;
         border-radius: 15px;
         box-shadow: none;
-        height: 60px;
-        width: 60px;
+        height: 70px;
+        width: 70px;
         object-fit: cover;
       }
     }
@@ -96,13 +96,27 @@
       box-sizing: border-box;
       flex-direction: column;
       margin: auto;
-      width: 80%;
+      width: 55%;
       overflow: hidden;
       height: 100%;
       justify-content: center;
       position: relative;
       white-space: nowrap;
-      padding-left: 10px;
+      padding: 10px;
+    }
+
+    .card-info-details {
+      width: 18%;
+      overflow: initial;
+
+      h4 {
+        color: #848484;
+      }
+
+      p {
+        font-size: smaller;
+        color: lightskyblue;
+      }
     }
   }
 
@@ -156,13 +170,11 @@
 
 
   .chat-list--container {
+    min-height: 80px !important;
     width: 100% !important;
-    min-height: 75px !important;
-    height: 75px !important;
 
     .card-info {
       font-size: smaller;
-      width: 88% !important;
 
       p {
         margin-top: 5px;
@@ -170,11 +182,12 @@
     }
 
     .card-img--container {
-      width: 70px !important;
+      width: 25%;
+
 
       img {
-        width: 50px !important;
-        height: 50px !important;
+        width: 55px !important;
+        height: 55px !important;
       }
     }
   }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useUserStore } from "../lib/userStore";
-import { useContactStore } from "../lib/contactStore";
+import { useUserStore } from "../lib/userStore"; import { useContactStore } from "../lib/contactStore";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import Fuse from "fuse.js";
 import { db } from "../firebase";
@@ -118,6 +117,10 @@ const ChatList = ({ onSelectChat }) => {
               <div className="card-info">
                 <h4>{chatInfo.name}</h4>
                 <p>{chatInfo.lastMessage}</p>
+              </div>
+              <div className="card-info card-info-details">
+                <h4>3:40</h4>
+                <p>Seen</p>
               </div>
             </div>
           ))
