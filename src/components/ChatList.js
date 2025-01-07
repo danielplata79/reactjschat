@@ -11,6 +11,7 @@ const ChatList = ({ onSelectChat }) => {
   const [fetchedChats, setFetchedChats] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeChatId, setActiveChatId] = useState(null); // Track active chat
 
   useEffect(() => {
     const fetchChats = async () => {
@@ -70,6 +71,7 @@ const ChatList = ({ onSelectChat }) => {
 
   const handleChat = async (chatInfo) => {
     await fetchContactInfo(chatInfo.contactId, chatInfo.chatId);
+    setActiveChatId(chatInfo.chatId); // Set the active chat ID
     onSelectChat(chatInfo.chatId); // Trigger the chatbox view in Dashboard
   };
 
@@ -103,7 +105,7 @@ const ChatList = ({ onSelectChat }) => {
           searchResults.map((chatInfo) => (
             <div
               onClick={() => handleChat(chatInfo)}
-              className="chat-list--container"
+              className={`chat-list--container ${activeChatId === chatInfo.chatId ? "_active" : ""}`}
               key={chatInfo.chatId}
             >
               <span className="card-img--container">
