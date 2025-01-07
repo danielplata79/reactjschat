@@ -1,8 +1,7 @@
 .dashboard--chatlist-panel {
   height: 100%;
-  width: 40%;
+  width: 25%;
   border-right: 1px solid #484851;
-  flex: 1;
   display: block;
 
   .home--container {
@@ -115,7 +114,6 @@
 
   .chat-list--container:hover {
     background: #484851;
-    color: black;
     border-radius: 30px;
   }
 

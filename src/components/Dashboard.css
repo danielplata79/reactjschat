@@ -82,6 +82,7 @@
     border-bottom-left-radius: 0px;
     border-top-left-radius: 0px;
     height: 100%;
+    width: 100% !important;
 
     .home-contacts--container {
       border-bottom-left-radius: 0px;
@@ -95,6 +96,7 @@
 
   .dashboard--chatbox-panel {
     display: none;
+    width: 100% !important;
   }
 
   /* Show and hide classes */
@@ -145,7 +147,6 @@
   }
 
   /* RESPONSIVE NAVBAR*/
-
   .dashboard--navbar-container.hide-navbar {
     display: none;
   }
@@ -183,10 +184,9 @@
 
       .menu-item {
         margin-top: 0px;
-        font-size: revert;
 
         p {
-          font-size: revert;
+          font-size: smaller;
         }
       }
 

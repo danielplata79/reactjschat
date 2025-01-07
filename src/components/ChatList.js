@@ -114,7 +114,7 @@ const ChatList = ({ onSelectChat }) => {
                 />
               </span>
               <div className="card-info">
-                <h3>{chatInfo.name}</h3>
+                <h4>{chatInfo.name}</h4>
                 <p>{chatInfo.lastMessage}</p>
               </div>
             </div>
