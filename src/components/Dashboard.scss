@@ -77,22 +77,6 @@
     flex-direction: row;
   }
 
-  .dashboard--chatlist-panel {
-    display: block;
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
-    height: 100%;
-    width: 100% !important;
-
-    .home-contacts--container {
-      border-bottom-left-radius: 0px;
-      height: calc(85% - 70px);
-    }
-
-    .home-search--container {
-      border-top-left-radius: 0px;
-    }
-  }
 
   .dashboard--chatbox-panel {
     display: none;
@@ -108,43 +92,6 @@
     display: block;
   }
 
-  .contact-navbar--container {
-    background: #24242a !important;
-    height: 100px !important;
-  }
-
-  /* RESPONSIVE CHATLIST */
-  .chat-list--container {
-    width: 100% !important;
-    min-height: 75px !important;
-    height: 75px !important;
-
-    .card-info {
-      font-size: smaller;
-      width: 88% !important;
-
-      p {
-        margin-top: 5px;
-      }
-    }
-
-    .card-img--container {
-      width: 90px !important;
-
-      img {
-        width: 50px !important;
-        height: 50px !important;
-      }
-    }
-  }
-
-  .chat-list--container:hover {
-    border-radius: 0px !important;
-  }
-
-  .home-search--container {
-    background: #24242a !important;
-  }
 
   /* RESPONSIVE NAVBAR*/
   .dashboard--navbar-container.hide-navbar {

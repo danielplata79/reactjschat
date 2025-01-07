@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./SendMessage.css";
-import "./Chatbox.css";
+import "./Chatbox.scss";
 import { auth, db, storage } from "../firebase";
 import { addDoc, setDoc, doc, collection, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";

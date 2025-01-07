@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./SendMessage.css";
-import "./Chatbox.css";
 import MessageBubble from "./MessageBubble";
 import SendMessage from "./SendMessage";
 import { db } from "../firebase";

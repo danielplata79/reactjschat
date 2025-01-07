@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./Dashboard.css";
+import "./Dashboard.scss";
 import ChatList from "./ChatList";
-import "./ChatList.css";
+import "./ChatList.scss";
 import Chatbox from "./Chatbox";
-import "./Chatbox.css";
+import "./Chatbox.scss";
 import Navbar from "./Navbar";
 
 const Dashboard = () => {
