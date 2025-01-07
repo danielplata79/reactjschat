@@ -1,0 +1,126 @@
+.dashboard--chatlist-panel {
+  height: 100%;
+  width: 40%;
+  border-right: 1px solid #484851;
+  flex: 1;
+  display: block;
+
+  .home--container {
+    height: 100%;
+    background: #24242a;
+  }
+
+  .home-search--container {
+    width: 100%;
+    margin-top: 0px;
+    border-top-left-radius: 40px;
+    background: #2f2f37;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    input {
+      border-radius: 5px;
+      background: #484851;
+      width: 85%;
+      height: 52px;
+      box-shadow: none;
+      color: var(--sixth-col);
+      outline: none;
+      border: none;
+      font-size: small;
+      padding-left: 15px;
+    }
+
+    input::placeholder {
+      color: var(--sixth-col);
+    }
+  }
+
+  .home-contacts--container {
+    width: 100%;
+    display: flex;
+    border-bottom-left-radius: 40px;
+    background: #2f2f37;
+    overflow-y: scroll;
+    height: 85%;
+    scroll-behavior: smooth;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .chat-list--container {
+    display: flex;
+    cursor: pointer;
+    border-top: 1px solid #35353e;
+    background: #2f2f37;
+    width: 90%;
+    min-height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+
+    p {
+      color: #cfe4ea;
+      display: inline-block;
+      white-space: nowrap;
+      animation: none;
+      text-wrap: nowrap;
+    }
+
+    h3 {
+      color: var(--sixth-col);
+    }
+
+    .card-img--container {
+      border-radius: 10px;
+      height: 100%;
+      display: flex;
+      margin: auto;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        border-radius: 15px;
+        box-shadow: none;
+        height: 70px;
+        width: 70px;
+        object-fit: cover;
+      }
+    }
+
+    .card-info {
+      display: flex;
+      box-sizing: border-box;
+      flex-direction: column;
+      margin: auto;
+      width: 60%;
+      overflow: hidden;
+      height: 100%;
+      justify-content: center;
+      position: relative;
+      white-space: nowrap;
+      padding: 20px;
+
+
+    }
+  }
+
+  .chat-list--container._active {
+    background: #484851;
+    border-radius: 30px;
+  }
+
+  .chat-list--container:hover {
+    background: #484851;
+    color: black;
+    border-radius: 30px;
+  }
+
+  .card-info {
+    font-size: medium;
+  }
+
+}

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Home.css";
 import { useUserStore } from "../lib/userStore";
 import { useContactStore } from "../lib/contactStore";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";

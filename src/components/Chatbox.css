@@ -1,1 +1,57 @@
+.dashboard--chatbox-panel {
+  height: 100%;
+  width: 70%;
+  flex: 2;
+  display: block;
 
+  .contact-navbar--container {
+    height: 120px;
+    background: #2f2f37;
+
+    img {
+      margin-left: 20px;
+    }
+
+    span {
+      justify-content: center;
+
+      h3 {
+        color: var(--sixth-col);
+      }
+    }
+  }
+
+  .messages-wrapper {
+    margin-top: 0px;
+    background: #2f2f37;
+  }
+
+  .send-message {
+    background: #2f2f37;
+    box-shadow: none;
+
+    .form-input__input {
+      background: #2f2f37;
+      color: var(--sixth-col);
+      box-shadow: none;
+      font-size: inherit;
+    }
+  }
+
+  .send-message__buttons {
+    width: 150px;
+
+    .send-message__buttons__img {
+      background: #2f2f37;
+      width: 40%;
+      margin-right: 10px;
+    }
+
+    button {
+      background: var(--third-col);
+      width: 50%;
+      height: 55px;
+      border-radius: 50px;
+    }
+  }
+}

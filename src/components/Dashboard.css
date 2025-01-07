@@ -1,167 +1,9 @@
-.home--container {
-  background: #24242a;
-}
-
 .dashboard--main-container {
   height: 100%;
   width: 100%;
   display: flex;
-}
-
-.dashboard--chatlist-panel {
-  height: 100%;
-  width: 40%;
-  border-right: 1px solid #484851;
-
-  .home--container {
-    height: 100%;
-  }
-
-  .home-search--container {
-    width: 100%;
-    margin-top: 0px;
-    border-top-left-radius: 40px;
-    background: #2f2f37;
-    height: 15%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    input {
-      border-radius: 5px;
-      background: #484851;
-      width: 85%;
-      height: 52px;
-      box-shadow: none;
-      color: var(--sixth-col);
-      outline: none;
-      border: none;
-      font-size: small;
-      padding-left: 15px;
-    }
-
-    input::placeholder {
-      color: var(--sixth-col);
-    }
-  }
-
-  .home-contacts--container {
-    width: 100%;
-    display: flex;
-    border-bottom-left-radius: 40px;
-    background: #2f2f37;
-    overflow-y: scroll;
-    height: 85%;
-    scroll-behavior: smooth;
-
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-
-  .chat-list--container {
-    display: flex;
-    cursor: pointer;
-    border-top: 1px solid #35353e;
-    background: #2f2f37;
-    width: 90%;
-    min-height: 100px;
-    margin-left: auto;
-    margin-right: auto;
-
-    p {
-      color: #cfe4ea;
-    }
-
-    h3 {
-      color: var(--sixth-col);
-    }
-
-    .card-img--container {
-      border-radius: 10px;
-
-      img {
-        border-radius: 15px;
-        box-shadow: none;
-        height: 80px;
-        width: 80px;
-      }
-    }
-  }
-
-  .chat-list--container._active {
-    background: #484851;
-    border-radius: 30px;
-  }
-
-  .chat-list--container:hover {
-    background: #484851;
-    color: black;
-    border-radius: 30px;
-  }
-
-  .card-info {
-    font-size: medium;
-  }
-
-}
-
-
-
-.dashboard--chatbox-panel {
-  height: 100%;
-  width: 70%;
-
-  .contact-navbar--container {
-    height: 120px;
-    background: #2f2f37;
-
-    img {
-      margin-left: 20px;
-    }
-
-    span {
-      justify-content: center;
-
-      h3 {
-        color: var(--sixth-col);
-      }
-    }
-  }
-
-  .messages-wrapper {
-    margin-top: 0px;
-    background: #2f2f37;
-  }
-
-  .send-message {
-    background: #2f2f37;
-    box-shadow: none;
-
-    .form-input__input {
-      background: #2f2f37;
-      color: var(--sixth-col);
-      box-shadow: none;
-      font-size: inherit;
-    }
-  }
-
-  .send-message__buttons {
-    width: 150px;
-
-    .send-message__buttons__img {
-      background: #2f2f37;
-      width: 40%;
-      margin-right: 10px;
-    }
-
-    button {
-      background: var(--third-col);
-      width: 50%;
-      height: 55px;
-      border-radius: 50px;
-    }
-  }
+  height: 100vh;
+  flex-direction: row;
 }
 
 .nav-bar_left {
@@ -228,38 +70,7 @@
   }
 }
 
-
-/* Base layout */
-.dashboard--main-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-/* Panels */
-.dashboard--chatlist-panel {
-  flex: 1;
-  display: block;
-}
-
-.dashboard--chatbox-panel {
-  flex: 2;
-  display: block;
-}
-
-/* Desktop layout */
-@media (min-width: 769px) {
-  .dashboard--main-container {
-    flex-direction: row;
-  }
-
-  .dashboard--chatlist-panel,
-  .dashboard--chatbox-panel {
-    display: block;
-  }
-}
-
-/* Mobile layout */
+/* MOBILE */
 @media (max-width: 1100px) {
   .dashboard--main-container {
     display: flex;
@@ -374,6 +185,9 @@
         margin-top: 0px;
         font-size: revert;
 
+        p {
+          font-size: revert;
+        }
       }
 
       .menu-item:hover {
