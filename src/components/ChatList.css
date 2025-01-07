@@ -77,9 +77,9 @@
       border-radius: 10px;
       height: 100%;
       display: flex;
-      margin: auto;
       justify-content: center;
       align-items: center;
+      background: red;
 
       img {
         border-radius: 15px;
