@@ -1,10 +1,9 @@
 .chat-bubble {
   border-radius: 20px 20px 20px 0;
   padding: 15px;
-  background: #24242ac2;
+  background-color: #2e333d;
   width: max-content;
   max-width: calc(100% - 50px);
-  box-shadow: -2px 2px 1px 1px #00000045;
   display: flex;
   align-items: flex-start;
   margin-bottom: 20px;
@@ -22,8 +21,7 @@
 .chat-bubble.right {
   margin-left: auto;
   border-radius: 20px 20px 0 20px;
-  background-color: #24242ac2;
-  box-shadow: 2px 1px 1px #00000045;
+  background-color: #2e333d;
   color: lightskyblue;
   align-self: flex-end;
 }

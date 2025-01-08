@@ -13,7 +13,7 @@
   flex-direction: column;
   box-shadow: none;
   z-index: 1;
-  background: #24242a;
+  background: #131313;
 
   .user-avatar-container {
     position: absolute;
@@ -39,7 +39,7 @@
     display: flex;
     margin-top: 20px;
     flex-direction: column;
-    background: #24242a;
+    background: #131313;
     justify-items: center;
     align-items: center;
     box-sizing: border-box;
@@ -50,7 +50,7 @@
     }
 
     .menu-item {
-      background: #24242a;
+      background: #131313;
       border: none;
       color: var(--sixth-col);
       margin-top: 10px;

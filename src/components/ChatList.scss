@@ -1,19 +1,19 @@
 .dashboard--chatlist-panel {
   height: 100%;
-  width: 25%;
-  border-right: 1px solid #484851;
+  width: 28%;
+  min-width: 360px;
   display: block;
 
   .home--container {
     height: 100%;
-    background: #24242a;
+    background: #131313;
   }
 
   .home-search--container {
     width: 100%;
     margin-top: 0px;
     border-top-left-radius: 40px;
-    background: #2f2f37;
+    background: #202329;
     height: 15%;
     display: flex;
     align-items: center;
@@ -21,7 +21,7 @@
 
     input {
       border-radius: 5px;
-      background: #484851;
+      background: #2e333d;
       width: 85%;
       height: 52px;
       box-shadow: none;
@@ -41,7 +41,7 @@
     width: 100%;
     display: flex;
     border-bottom-left-radius: 40px;
-    background: #2f2f37;
+    background: #202329;
     overflow-y: scroll;
     height: 85%;
     scroll-behavior: smooth;
@@ -54,8 +54,8 @@
   .chat-list--container {
     display: flex;
     cursor: pointer;
-    border-top: 1px solid #35353e;
-    background: #2f2f37;
+    border-top: 1px solid #2e333d;
+    background: #202329;
     width: 90%;
     min-height: 100px;
     margin-left: auto;
@@ -126,7 +126,7 @@
   }
 
   .chat-list--container:hover {
-    background: #484851;
+    background: #2e333d;
     border-radius: 30px;
   }
 
