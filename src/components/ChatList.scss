@@ -67,10 +67,12 @@
       white-space: nowrap;
       animation: none;
       text-wrap: nowrap;
+      overflow: clip;
     }
 
     h4 {
       color: var(--sixth-col);
+      overflow: clip;
     }
 
     .card-img--container {
@@ -102,12 +104,14 @@
       justify-content: center;
       position: relative;
       white-space: nowrap;
-      padding: 10px;
+      padding: 14px;
+      padding-left: 10px;
     }
 
     .card-info-details {
       width: 18%;
       overflow: initial;
+      align-items: center;
 
       h4 {
         color: #848484;

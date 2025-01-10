@@ -36,6 +36,7 @@ const ChatList = ({ onSelectChat }) => {
             avatarUrl: contactData.avatarUrl,
             avatar: contactData.avatar,
             lastMessage: chatDetailsData.lastMessage,
+            createdAt: chatDetailsData.createdAt,
           };
         });
         const resolvedChats = await Promise.all(chatDataPromises);
@@ -119,7 +120,7 @@ const ChatList = ({ onSelectChat }) => {
                 <p>{chatInfo.lastMessage}</p>
               </div>
               <div className="card-info card-info-details">
-                <h4>3:40</h4>
+                <h4>{chatInfo.createdAt.toDate().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }) || ""}</h4>
                 <p>Seen</p>
               </div>
             </div>

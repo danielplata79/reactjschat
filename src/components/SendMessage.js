@@ -51,6 +51,7 @@ const SendMessage = ({ scroll }) => {
 
       await setDoc(doc(db, "chats", chatId), {
         lastMessage: message,
+        createdAt: serverTimestamp()
       }
       )
     };

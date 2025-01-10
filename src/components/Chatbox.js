@@ -24,7 +24,6 @@ const Chatbox = () => {
     if (!chatId) {
       return;
     }
-    setLoading(true);
 
     const q = query(
       collection(db, "messages", chatId, "messages"),
@@ -34,14 +33,15 @@ const Chatbox = () => {
     const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
       const fetchedMessages = [];
       QuerySnapshot.forEach((doc) => {
-        fetchedMessages.push({ ...doc.data(), id: doc.id });
+        fetchedMessages.push({
+          ...doc.data(),
+          id: doc.id
+        });
       });
-
 
       setMessages(fetchedMessages);
     });
 
-    setLoading(false);
     return () => unsubscribe();
   }, [chatId]);
 
