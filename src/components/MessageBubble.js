@@ -28,7 +28,7 @@ const MessageBubble = ({ message }) => {
             <img src={message.img} className="message-img" onClick={handleImgClick} />
             <p className="user-message"> {message.text} </p>
             {message.createdAt && (
-              <p>{message.createdAt.toDate().toDateString()}</p>
+              <p>{message.createdAt.toDate().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })}</p>
             )}
           </div>
         </div>
