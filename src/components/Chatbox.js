@@ -17,26 +17,20 @@ const Chatbox = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (currentContact) {
-      setLoading(false);
-    } else {
-
-    }
-
-  }, [currentContact, chatId, navigate]);
-
+    currentContact ? setLoading(false) : setLoading(true);
+  })
 
   useEffect(() => {
     if (!chatId) {
       return;
     }
+    setLoading(true);
 
     const q = query(
       collection(db, "messages", chatId, "messages"),
       orderBy("createdAt", "desc"),
       limit(130)
     );
-
     const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
       const fetchedMessages = [];
       QuerySnapshot.forEach((doc) => {
@@ -47,6 +41,7 @@ const Chatbox = () => {
       setMessages(fetchedMessages);
     });
 
+    setLoading(false);
     return () => unsubscribe();
   }, [chatId]);
 
@@ -63,31 +58,37 @@ const Chatbox = () => {
   return (
     <main className="chat-box">
 
-      {currentContact && (
-        <div className="contact-navbar--container">
-          <img className="user-avatar-img" src={currentContact.avatarUrl || currentContact.avatar || "/default-avatar.png"} alt="User" />
-          <span onClick={() => navigate("/ContactProfile")}>
-            <h3 >{currentContact.name}</h3>
-            <p>{currentContact.status}</p>
-          </span>
+      {currentContact ? (
+        <>
+          <div className="contact-navbar--container">
+            <img className="user-avatar-img" src={currentContact.avatarUrl || currentContact.avatar || "/default-avatar.png"} alt="User" />
+            <span onClick={() => navigate("/ContactProfile")}>
+              <h3 >{currentContact.name}</h3>
+              <p>{currentContact.status}</p>
+            </span>
+          </div>
+          <div className="messages-wrapper" ref={scrollRef} >
+            {
+              loading ? (
+                <div className="loadingstate" >
+                  <img src="/loadingspinner.gif" alt="Loading..." />
+                </div >
+              ) : (
+                <>
+                  {messages.map((message) => (
+                    <MessageBubble key={message.id} message={message} />
+                  ))}
+                </>
+              )}
+          </div >
+          <SendMessage />
+        </>
+      ) : (
+        <div className="chatbox-default-message">
+          <img src="/logodog2.png" alt="ReactJs logo" width={50} height={50} />
+          <h1>OpenRChat//</h1>
         </div>
       )}
-
-      < div className="messages-wrapper" ref={scrollRef} >
-        {
-          loading ? (
-            <div className="loadingstate" >
-              <img src="/loadingspinner.gif" alt="Loading..." />
-            </div >
-          ) : (
-            <>
-              {messages.map((message) => (
-                <MessageBubble key={message.id} message={message} />
-              ))}
-            </>
-          )}
-      </div >
-      <SendMessage />
     </main >
   );
 

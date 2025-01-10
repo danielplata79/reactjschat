@@ -3,6 +3,24 @@
   width: 75%;
   display: block;
 
+  .chat-box {
+    background: #202329;
+
+    .chatbox-default-message {
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      height: 50px;
+      justify-items: center;
+      align-items: center;
+
+      h1 {
+        margin-top: 10px;
+        color: #fff;
+      }
+    }
+  }
+
   .contact-navbar--container {
     height: 120px;
     background: #202329;
