@@ -81,7 +81,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 32%;
+      width: 25%;
 
       img {
         display: block;
@@ -98,23 +98,23 @@
       box-sizing: border-box;
       flex-direction: column;
       margin: auto;
-      width: 55%;
+      width: 50%;
       overflow: hidden;
       height: 100%;
       justify-content: center;
       position: relative;
       white-space: nowrap;
-      padding: 14px;
-      padding-left: 10px;
+      padding: 5px;
     }
 
     .card-info-details {
-      width: 18%;
+      width: 25%;
       overflow: initial;
       align-items: center;
 
       h4 {
         color: #848484;
+        font-size: small;
       }
 
       p {
