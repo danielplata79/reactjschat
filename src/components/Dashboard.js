@@ -5,6 +5,7 @@ import "./ChatList.scss";
 import Chatbox from "./Chatbox";
 import "./Chatbox.scss";
 import Navbar from "./Navbar";
+import Home from "./Home";
 
 const Dashboard = () => {
   const [selectedChat, setSelectedChat] = useState(null);
@@ -25,6 +26,7 @@ const Dashboard = () => {
 
       <div className={`dashboard--chatlist-panel ${selectedChat ? "hide" : "show"}`}>
         <ChatList onSelectChat={handleSelectChat} />
+        <Home onSelectChat={handleSelectChat} />
       </div>
 
       <div className={`dashboard--chatbox-panel ${selectedChat ? "show" : "hide"}`}>

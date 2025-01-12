@@ -5,7 +5,6 @@ import { useContactStore } from "../lib/contactStore";
 import { doc, addDoc, query, getDoc, collection, getDocs, where } from "firebase/firestore";
 import Fuse from "fuse.js";
 import { db } from "../firebase";
-import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { currentUser } = useUserStore();
@@ -13,7 +12,6 @@ const Home = () => {
   const [fetchedContacts, setFetchedContacts] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -70,7 +68,6 @@ const Home = () => {
   const handleChat = async (contact) => {
 
     try {
-      setIsLoading(true);
       // Chat Collection reference
       const chatCollectionRef = collection(db, "chats");
 
@@ -91,7 +88,6 @@ const Home = () => {
       if (existingChat) {
         await fetchContactInfo(contact.id, chatId);
 
-        navigate('/Chat');
         return;
       }
 
@@ -126,7 +122,6 @@ const Home = () => {
 
       await fetchContactInfo(contact.id, chatId);
 
-      navigate('/Chat');
     } catch (err) {
       console.log(err);
     }
@@ -157,7 +152,7 @@ const Home = () => {
 
         {searchResults.length > 0 ? (
           searchResults.map((contact) => (
-            <div className="chat-list--container" key={contact.id}>
+            <div onClick={() => handleChat(contact)} className="chat-list--container" key={contact.id}>
               <span className="card-img--container">
                 <span>
                   <img
@@ -168,15 +163,8 @@ const Home = () => {
                 </span>
               </span>
               <div className="card-info">
-                <h3>{contact.name}</h3>
+                <h4>{contact.name}</h4>
                 <p>{contact.email}</p>
-              </div>
-              <div className="card-settings">
-                <button onClick={() => {
-                  handleChat(contact);
-                }}>
-                  <img src="chat-512-white.png" alt="More" />
-                </button>
               </div>
             </div>
           ))

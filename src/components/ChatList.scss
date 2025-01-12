@@ -4,6 +4,21 @@
   min-width: 400px;
   display: block;
 
+  .no-contacts--container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+
+    img {
+      height: 50px;
+      width: 50px;
+      margin-bottom: 15px;
+    }
+  }
+
   .home--container {
     height: 100%;
     background: #131313;
