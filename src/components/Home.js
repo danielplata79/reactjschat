@@ -143,10 +143,21 @@ const Home = () => {
   return (
     <div className="home--container">
       <div className=" home-search--container ">
-        <input type="search"
-          onChange={handleSearch}
-          placeholder="Search in your list of contacts..."
-        />
+        <div>
+          <h1>Contacts</h1>
+          <span>
+            <button><img src="./showmore.png" alt="More" /></button>
+            <button><img src="./showmore.png" alt="More" /></button>
+          </span>
+        </div>
+        <span>
+          <input
+            type="search"
+            onChange={handleSearch}
+            placeholder="Search in your list of contacts..."
+          />
+        </span>
+
       </div>
       <div className="home-contacts--container">
 

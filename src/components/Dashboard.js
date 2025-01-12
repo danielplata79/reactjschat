@@ -9,7 +9,7 @@ import Home from "./Home";
 
 const Dashboard = () => {
   const [selectedChat, setSelectedChat] = useState(null);
-  const [selectedPanel, setSelectedPanel] = useState("ChatList");
+  const [selectedPanel, setSelectedPanel] = useState("Chats");
 
   const handleSelectChat = (chatId) => {
     setSelectedChat(chatId); // Show Chatbox
