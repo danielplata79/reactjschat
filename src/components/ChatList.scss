@@ -216,3 +216,15 @@
     border-radius: 0px !important;
   }
 }
+
+.active-panel {
+  height: 100%;
+
+  &.show {
+    display: block;
+  }
+
+  &.hide {
+    display: none;
+  }
+}

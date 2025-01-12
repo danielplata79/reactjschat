@@ -7,7 +7,7 @@ import { useUserStore } from "../lib/userStore";
 import { useContactStore } from "../lib/contactStore";
 import { useLocation } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ activePanel }) => {
   const navigate = useNavigate();
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const { currentUser, fetchUserInfo } = useUserStore();
@@ -69,7 +69,13 @@ const Navbar = () => {
             </div>
             <div className="menu-items">
               <hr />
-              <button onClick={() => navigate("/Dashboard")} className="menu-item">
+              <button onClick={() => {
+                location.pathname === "/Profile" ? (
+                  navigate("/Dashboard")
+                ) : (
+                  activePanel("Chats")
+                )
+              }} className="menu-item">
                 <img src="/chat-64-white.png" alt="Profile" />
                 <p>Chats</p>
               </button>
@@ -77,7 +83,13 @@ const Navbar = () => {
                 <img src="/group-chats-white.png" alt="Profile" />
                 <p>Groups</p>
               </button>
-              <button onClick={() => navigate("/Contacts")} className="menu-item">
+              <button onClick={() => {
+                location.pathname === "/Profile" ? (
+                  navigate("/Dashboard")
+                ) : (
+                  activePanel("Contacts")
+                )
+              }} className="menu-item">
                 <img src="/folder-64-white.png" alt="Profile" />
                 <p>Contacts</p>
               </button>

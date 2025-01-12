@@ -9,6 +9,7 @@ import Home from "./Home";
 
 const Dashboard = () => {
   const [selectedChat, setSelectedChat] = useState(null);
+  const [selectedPanel, setSelectedPanel] = useState("ChatList");
 
   const handleSelectChat = (chatId) => {
     setSelectedChat(chatId); // Show Chatbox
@@ -21,12 +22,16 @@ const Dashboard = () => {
   return (
     <div className="dashboard--main-container">
       <div className={`dashboard--navbar-container ${selectedChat ? "hide-navbar" : ""}`}>
-        <Navbar />
+        <Navbar activePanel={setSelectedPanel} />
       </div>
 
       <div className={`dashboard--chatlist-panel ${selectedChat ? "hide" : "show"}`}>
-        <ChatList onSelectChat={handleSelectChat} />
-        <Home onSelectChat={handleSelectChat} />
+        <div className={`active-panel ${selectedPanel === "Chats" ? "show" : "hide"}`}>
+          <ChatList onSelectChat={handleSelectChat} />
+        </div>
+        <div className={`active-panel ${selectedPanel === "Contacts" ? "show" : "hide"}`}>
+          <Home onSelectChat={handleSelectChat} />
+        </div>
       </div>
 
       <div className={`dashboard--chatbox-panel ${selectedChat ? "show" : "hide"}`}>
