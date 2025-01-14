@@ -24,6 +24,20 @@
     background: #131313;
   }
 
+  .contacts--container {
+
+    .chat-list--container {
+      .card-img--container {
+        width: 25%;
+      }
+
+      .card-info {
+        width: 75%;
+        padding: 10px;
+      }
+    }
+  }
+
   .home-search--container {
     width: 100%;
     margin-top: 0px;
@@ -72,13 +86,13 @@
 
       h1 {
         display: block;
-        width: 70%;
+        width: 72%;
         color: var(--sixth-col);
         padding-left: 10px;
       }
 
       span {
-        width: 30%;
+        width: 28%;
         height: 100%;
 
         button {
@@ -89,6 +103,11 @@
           justify-content: center;
           background: none;
           border: none;
+
+          img {
+            height: 30px;
+            width: 30px;
+          }
         }
       }
     }

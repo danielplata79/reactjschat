@@ -141,12 +141,12 @@ const Home = () => {
 
 
   return (
-    <div className="home--container">
+    <div className="home--container contacts--container">
       <div className=" home-search--container ">
         <div>
           <h1>Contacts</h1>
           <span>
-            <button><img src="./showmore.png" alt="More" /></button>
+            <button><img src="./addnewuser2.png" alt="More" /></button>
             <button><img src="./showmore.png" alt="More" /></button>
           </span>
         </div>
