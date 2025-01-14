@@ -89,14 +89,14 @@ const Login = () => {
         })
 
         fetchUserInfo(user.uid);
-        navigate("/Contacts");
+        navigate("/Dashboard");
       }
 
       else {
         console.log("User Already Exists");
       }
 
-      navigate("/Chat");
+      navigate("/Dashboard");
     } catch (error) {
       console.log(error);
     }
