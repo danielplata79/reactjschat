@@ -129,7 +129,10 @@ const ChatList = ({ onSelectChat }) => {
                 <p>{chatInfo.lastMessage}</p>
               </div>
               <div className="card-info card-info-details">
-                <h4>{chatInfo.createdAt.toDate().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }) || ""}</h4>
+                {
+                  chatInfo.createdAt && (
+                    <h4>{chatInfo.createdAt.toDate().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }) || ""}</h4>
+                  )}
                 <p>Seen</p>
               </div>
             </div>

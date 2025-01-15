@@ -228,20 +228,28 @@
     min-width: 100%;
 
     .home--container {
-      background: #202329;
+      background: #0c0c0c;
     }
 
     .home-contacts--container {
       border-bottom-left-radius: 0px;
-      height: calc(77% - 70px);
+      height: 77%;
+      background: #0c0c0c;
     }
 
     .home-search--container {
       border-top-left-radius: 0px;
       height: 23%;
+      background: #161616;
+      border-bottom-right-radius: 20px;
+      border-bottom-left-radius: 20px;
 
       span {
         height: 60%;
+
+        input {
+          background: #1C1C1C !important;
+        }
       }
 
       div {
@@ -256,21 +264,17 @@
     height: 100px !important;
   }
 
-
-
   .home-search--container {
-    background: #24242a !important;
-
     div {
       padding-top: 0px;
     }
   }
 
-
-
   .chat-list--container {
     min-height: 80px !important;
     width: 100% !important;
+    border-top: 0px !important;
+    background: #0c0c0c !important;
 
     .card-info {
       font-size: smaller;
@@ -293,6 +297,7 @@
 
   .chat-list--container:hover {
     border-radius: 0px !important;
+    background: #1C1C1C !important;
   }
 }
 
