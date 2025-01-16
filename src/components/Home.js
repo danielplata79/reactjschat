@@ -6,7 +6,7 @@ import { doc, addDoc, query, getDoc, collection, getDocs, where } from "firebase
 import Fuse from "fuse.js";
 import { db } from "../firebase";
 
-const Home = () => {
+const Home = ({ onSelectChat }) => {
   const { currentUser } = useUserStore();
   const { fetchContactInfo } = useContactStore();
   const [fetchedContacts, setFetchedContacts] = useState([]);
@@ -69,6 +69,7 @@ const Home = () => {
 
     try {
       // Chat Collection reference
+      onSelectChat(null);
       const chatCollectionRef = collection(db, "chats");
 
       const q = query(chatCollectionRef, where("participants", "array-contains", currentUser.id));
@@ -87,6 +88,7 @@ const Home = () => {
 
       if (existingChat) {
         await fetchContactInfo(contact.id, chatId);
+        onSelectChat(chatId);
 
         return;
       }
@@ -96,7 +98,6 @@ const Home = () => {
         timeStamp: Date.now(),
         participants: [currentUser.id, contact.id]
       })
-
       console.log(`Creted Chat collection document! ${newChatRef.id}`);
 
       // User Chat reference
@@ -121,6 +122,7 @@ const Home = () => {
       console.log(`Created Contact Chat collection document!`);
 
       await fetchContactInfo(contact.id, chatId);
+      onSelectChat(chatId);
 
     } catch (err) {
       console.log(err);
