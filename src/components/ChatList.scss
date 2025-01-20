@@ -43,7 +43,7 @@
     margin-top: 0px;
     border-top-left-radius: 40px;
     background: #202329;
-    height: 20%;
+    height: 17%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,7 +119,7 @@
     border-bottom-left-radius: 40px;
     background: #202329;
     overflow-y: scroll;
-    height: 80%;
+    height: 83%;
     scroll-behavior: smooth;
     box-sizing: border-box;
     flex-direction: column;
@@ -144,6 +144,7 @@
       animation: none;
       text-wrap: nowrap;
       overflow: clip;
+      margin-top: 7px;
     }
 
     h4 {
@@ -195,7 +196,7 @@
 
       p {
         font-size: smaller;
-        color: lightskyblue;
+        color: orange;
       }
     }
   }
