@@ -8,10 +8,10 @@ const ChatboxDetails = () => {
       <h1>Chat Details</h1>
 
       <div className="chatboxdetails--action-buttons">
-        <button><img src="./folder-64-white.png" /></button>
-        <button><img src="./folder-64-white.png" /></button>
-        <button><img src="./folder-64-white.png" /></button>
-        <button><img src="./folder-64-white.png" /></button>
+        <button><img src="./bell-50.png" /></button>
+        <button><img src="./pin-64.png" /></button>
+        <button><img src="./remove-50.png" /></button>
+        <button><img src="./block-user-48.png" /></button>
       </div>
 
       <span>
@@ -41,15 +41,7 @@ const ChatboxDetails = () => {
       <div className="chatboxdetails--sharedfiles">
         <div className="sharedfiles--file">
           <span>
-            <img src="./folder-64-white.png" />
-          </span>
-          <p>This is a large title which container the name of the file
-            This is a large title which container the name of the
-          </p>
-        </div>
-        <div className="sharedfiles--file">
-          <span>
-            <img src="./folder-64-white.png" />
+            <img src="./pdf-50.png" />
           </span>
           <p>This is a large title which container the name of the file
             This is a large title which container the name of the
@@ -58,7 +50,7 @@ const ChatboxDetails = () => {
 
         <div className="sharedfiles--file">
           <span>
-            <img src="./folder-64-white.png" />
+            <img src="./pdf-50.png" />
           </span>
           <p>This is a large title which container the name of the file
             This is a large title which container the name of the
@@ -67,7 +59,7 @@ const ChatboxDetails = () => {
 
         <div className="sharedfiles--file">
           <span>
-            <img src="./folder-64-white.png" />
+            <img src="./pdf-50.png" />
           </span>
           <p>This is a large title which container the name of the file
             This is a large title which container the name of the
@@ -88,7 +80,7 @@ const ChatboxDetails = () => {
       <div className="chatboxdetails--sharedfiles">
         <div className="sharedfiles--file">
           <span>
-            <img src="./folder-64-white.png" />
+            <img src="./www-50.png" />
           </span>
           <p>This is a large title which container the name of the file
             This is a large title which container the name of the
@@ -97,7 +89,7 @@ const ChatboxDetails = () => {
 
         <div className="sharedfiles--file">
           <span>
-            <img src="./folder-64-white.png" />
+            <img src="./www-50.png" />
           </span>
           <p>This is a large title which container the name of the file
             This is a large title which container the name of the
@@ -106,7 +98,7 @@ const ChatboxDetails = () => {
 
         <div className="sharedfiles--file">
           <span>
-            <img src="./folder-64-white.png" />
+            <img src="./www-50.png" />
           </span>
           <p>This is a large title which container the name of the file
             This is a large title which container the name of the
