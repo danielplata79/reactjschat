@@ -1,10 +1,20 @@
 .dashboard--chatbox-panel {
   height: 100%;
   width: 75%;
-  display: block;
+  display: flex;
+  background: #131313;
 
   .chat-box {
     background: #202329;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
 
     .chatbox-default-message {
       margin: auto;
@@ -24,6 +34,7 @@
   .contact-navbar--container {
     height: 120px;
     background: #202329;
+    border-top-right-radius: 40px;
 
     img {
       margin-left: 20px;

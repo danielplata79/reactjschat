@@ -6,6 +6,7 @@ import Chatbox from "./Chatbox";
 import "./Chatbox.scss";
 import Navbar from "./Navbar";
 import Home from "./Home";
+import ChatboxDetails from "./ChatboxDetails";
 
 const Dashboard = () => {
   const [selectedChat, setSelectedChat] = useState(null);
@@ -38,6 +39,7 @@ const Dashboard = () => {
 
       <div className={`dashboard--chatbox-panel ${selectedChat ? "show" : "hide"}`}>
         <Chatbox onBack={handleBackToChatList} />
+        <ChatboxDetails />
       </div>
     </div>
   );
