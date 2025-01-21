@@ -74,34 +74,31 @@
     }
 
     div {
-      width: 100%;
+      width: 85%;
       height: 30%;
       display: flex;
       align-items: center;
       box-sizing: border-box;
-      padding: 15px;
-      padding-top: 50px;
-
+      padding-top: 35px;
 
       h1 {
         display: block;
-        width: 72%;
         color: var(--sixth-col);
-        padding-left: 10px;
       }
 
       span {
-        width: 28%;
         height: 100%;
+        width: 100px;
+        margin-left: auto;
 
         button {
-          width: 50%;
           height: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
           background: none;
           border: none;
+          margin-left: auto;
 
           img {
             height: 25px;
@@ -233,7 +230,7 @@
 
     .home-contacts--container {
       border-bottom-left-radius: 0px;
-      height: 100%;
+      height: calc(100% - 230px);
       background: #0c0c0c;
     }
 
