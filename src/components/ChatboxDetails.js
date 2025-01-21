@@ -38,7 +38,7 @@ const ChatboxDetails = () => {
         </span>
       </span>
 
-      <div className="chatbox--sharedfiles">
+      <div className="chatboxdetails--sharedfiles">
         <div className="sharedfiles--file">
           <span>
             <img src="./folder-64-white.png" />
@@ -74,6 +74,44 @@ const ChatboxDetails = () => {
           </p>
         </div>
 
+      </div>
+
+      <span>
+        <h2>Shared Links</h2>
+        <p>83</p>
+        <span>
+          <p>See all</p>
+        </span>
+      </span>
+
+
+      <div className="chatboxdetails--sharedfiles">
+        <div className="sharedfiles--file">
+          <span>
+            <img src="./folder-64-white.png" />
+          </span>
+          <p>This is a large title which container the name of the file
+            This is a large title which container the name of the
+          </p>
+        </div>
+
+        <div className="sharedfiles--file">
+          <span>
+            <img src="./folder-64-white.png" />
+          </span>
+          <p>This is a large title which container the name of the file
+            This is a large title which container the name of the
+          </p>
+        </div>
+
+        <div className="sharedfiles--file">
+          <span>
+            <img src="./folder-64-white.png" />
+          </span>
+          <p>This is a large title which container the name of the file
+            This is a large title which container the name of the
+          </p>
+        </div>
       </div>
     </div >
   )
