@@ -25,9 +25,10 @@
 
 html,
 body {
-  font-size: 16px;
   background: #24242a;
   user-select: none;
+  scrollbar-width: thin;
+
 }
 
 button,
