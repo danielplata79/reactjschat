@@ -22,7 +22,7 @@ const SendMessage = ({ scroll }) => {
     const { uid, displayName, photoURL } = auth.currentUser;
 
     if (img) {
-      const storageRef = ref(storage, uuidv4());
+      const storageRef = ref(storage, `chats/privates/${chatId}/${uuidv4()}`);
       await uploadBytes(storageRef, img);
 
       const url = await getDownloadURL(storageRef);

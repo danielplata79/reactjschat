@@ -13,14 +13,15 @@ const Chatbox = () => {
   const scrollRef = useRef(null);
   const { currentUser } = useUserStore();
   const [loading, setLoading] = useState(true);
-  const { currentContact, chatId } = useContactStore();
+  const { currentContact, chatId, isLoading } = useContactStore();
   const navigate = useNavigate();
 
   useEffect(() => {
-    currentContact ? setLoading(false) : setLoading(true);
+    //currentContact ? setLoading(false) : setLoading(true);
   })
 
   useEffect(() => {
+    setLoading(true);
     if (!chatId) {
       return;
     }
@@ -42,6 +43,7 @@ const Chatbox = () => {
       setMessages(fetchedMessages);
     });
 
+    setLoading(false);
     return () => unsubscribe();
   }, [chatId]);
 

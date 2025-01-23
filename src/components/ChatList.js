@@ -97,7 +97,7 @@ const ChatList = ({ onSelectChat }) => {
         <div>
           <h1>Messages</h1>
           <span>
-            <button><img src="./more-50.png" alt="More" /></button>
+            <button><img src="./menu-vertical-30.png" alt="More" /></button>
           </span>
         </div>
         <span>
