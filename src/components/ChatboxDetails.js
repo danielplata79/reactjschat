@@ -1,7 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ChatboxDetails.scss";
+import { useContactStore } from "../lib/contactStore";
+import { getDownloadURL, listAll, ref } from "firebase/storage";
+import { storage } from "../firebase";
 
 const ChatboxDetails = () => {
+  const { currentContact, chatId } = useContactStore();
+
+  const fetchChatImages = async () => {
+    const chatImgRef = ref(storage, `chats/privates/${chatId}`);
+
+    try {
+      const result = await listAll(chatImgRef);
+      const urls = await Promise.all(
+        result.items.map(async (images) => {
+          const url = await getDownloadURL(images);
+          return url;
+        })
+      )
+
+      return urls;
+    } catch (err) {
+      console.error(err);
+      return [];
+    }
+  }
+
+  useEffect(() => {
+    try {
+      const displayImages = async () => {
+        const imageUrl = await fetchChatImages();
+        imageUrl.forEach((url) => {
+          console.log(url);
+        })
+      }
+      displayImages();
+    } catch (err) {
+      console.error(err);
+    }
+
+  }, [chatId]);
 
   return (
     <div className="chatboxdetails--container">
