@@ -6,6 +6,7 @@ import { storage } from "../firebase";
 
 const ChatboxDetails = () => {
   const { currentContact, chatId } = useContactStore();
+  const [imagesGallery, setImagesGallery] = useState(null);
 
   const fetchChatImages = async () => {
     const chatImgRef = ref(storage, `chats/privates/${chatId}`);
@@ -30,9 +31,7 @@ const ChatboxDetails = () => {
     try {
       const displayImages = async () => {
         const imageUrl = await fetchChatImages();
-        imageUrl.forEach((url) => {
-          console.log(url);
-        })
+        setImagesGallery(imageUrl);
       }
       displayImages();
     } catch (err) {
@@ -61,11 +60,16 @@ const ChatboxDetails = () => {
       </span>
 
       <div className="chatboxdetails--gallery">
-        <img src="description.png" />
-        <img src="description.png" />
-        <img src="description.png" />
-        <img src="description.png" />
-        <img src="description.png" />
+        {imagesGallery ? (
+          imagesGallery.map((imagesUrl) => (
+            <img src={imagesUrl} />
+          ))
+        ) : (
+          <img src="description.png" />
+        )
+        }
+
+
       </div>
 
       <span>
