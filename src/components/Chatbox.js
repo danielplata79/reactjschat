@@ -17,11 +17,6 @@ const Chatbox = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    //currentContact ? setLoading(false) : setLoading(true);
-  })
-
-  useEffect(() => {
-    setLoading(true);
     if (!chatId) {
       return;
     }
@@ -43,7 +38,6 @@ const Chatbox = () => {
       setMessages(fetchedMessages);
     });
 
-    setLoading(false);
     return () => unsubscribe();
   }, [chatId]);
 

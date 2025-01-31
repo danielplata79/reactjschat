@@ -35,7 +35,15 @@ function App() {
     }
   }, [fetchUserInfo]);
 
-  if (isLoading) return <div className="loadingstate"><img src="/loadingspinner.gif" /></div>
+  if (isLoading) return (
+    <div className="loader-container">
+      <span>
+        <img src="./logodog2.png" />
+        <h3>OpenRChat//</h3>
+        <div className="loader"> </div>
+      </span>
+    </div>
+  )
 
   return (
     <div className="App">
