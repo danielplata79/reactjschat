@@ -53,7 +53,15 @@ const ChatboxDetails = () => {
 
       <span>
         <h2>Gallery</h2>
-        <p>15</p>
+        <p>
+          {
+            imagesGallery ? (
+              imagesGallery.length
+            ) : (
+              0
+            )
+          }
+        </p>
         <span>
           <p>See all</p>
         </span>
