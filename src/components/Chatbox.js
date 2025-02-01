@@ -38,6 +38,8 @@ const Chatbox = () => {
       setMessages(fetchedMessages);
     });
 
+    setLoading(false);
+
     return () => unsubscribe();
   }, [chatId]);
 

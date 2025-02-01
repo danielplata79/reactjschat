@@ -36,7 +36,7 @@ function App() {
   }, [fetchUserInfo]);
 
   if (isLoading) return (
-    <div className="loader-container">
+    <div className="loader-main-container">
       <span>
         <img src="./logodog2.png" />
         <h3>OpenRChat//</h3>
