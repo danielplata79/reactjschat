@@ -6,6 +6,7 @@ import { updateDoc, setDoc, query, where, collection, getDocs, arrayUnion } from
 import { ref } from "firebase/storage";
 import { doc } from "firebase/firestore";
 import { getDoc } from "firebase/firestore";
+import Navbar from "./Navbar";
 
 
 const NewContact = () => {
@@ -64,6 +65,8 @@ const NewContact = () => {
 
   return (
     <div className="NewContact-container">
+
+      <Navbar />
       <div className="main-block">
 
         <div className="search--container">

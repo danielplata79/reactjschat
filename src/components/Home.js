@@ -5,8 +5,10 @@ import { useContactStore } from "../lib/contactStore";
 import { doc, addDoc, query, getDoc, collection, getDocs, where } from "firebase/firestore";
 import Fuse from "fuse.js";
 import { db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const Home = ({ onSelectChat }) => {
+  const navigate = useNavigate();
   const { currentUser } = useUserStore();
   const { fetchContactInfo } = useContactStore();
   const [fetchedContacts, setFetchedContacts] = useState([]);
@@ -148,7 +150,7 @@ const Home = ({ onSelectChat }) => {
         <div>
           <h1>Contacts</h1>
           <span>
-            <button><img src="./addnewuser2.png" alt="More" /></button>
+            <button onClick={() => { navigate("/NewContact") }}><img src="./addnewuser2.png" alt="More" /></button>
             <button><img src="./showmore.png" alt="More" /></button>
           </span>
         </div>

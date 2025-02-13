@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useUserStore } from "../lib/userStore"; import { useContactStore } from "../lib/contactStore";
-import { doc, getDoc, collection, getDocs } from "firebase/firestore";
+import { useUserStore } from "../lib/userStore";
+import { useContactStore } from "../lib/contactStore";
+import { doc, getDoc, collection, onSnapshot } from "firebase/firestore";
 import Fuse from "fuse.js";
 import { db } from "../firebase";
 
@@ -13,46 +14,53 @@ const ChatList = ({ onSelectChat }) => {
   const [activeChatId, setActiveChatId] = useState(null); // Track active chat
 
   useEffect(() => {
-    const fetchChats = async () => {
-      try {
-        const userRef = collection(db, "users", currentUser.id, "privates");
-        const userDocs = await getDocs(userRef);
+    if (!currentUser?.id) return;
 
-        const chatDataPromises = userDocs.docs.map(async (chatDoc) => {
-          const chatData = chatDoc.data();
+    const userRef = collection(db, "users", currentUser.id, "privates");
 
-          const contactRef = doc(db, "users", chatData.contactId);
-          const contactDoc = await getDoc(contactRef);
-          const contactData = contactDoc.data();
+    // Real-time listener for chat updates
+    const unsubscribe = onSnapshot(userRef, async (userSnapshot) => {
+      const chatDataPromises = userSnapshot.docs.map(async (chatDoc) => {
+        const chatData = chatDoc.data();
 
-          const chatDetailsRef = doc(db, "chats", chatData.chatId);
-          const chatDetailsDoc = await getDoc(chatDetailsRef);
-          const chatDetailsData = chatDetailsDoc.data();
+        // Fetch contact details
+        const contactRef = doc(db, "users", chatData.contactId);
+        const contactDoc = await getDoc(contactRef);
+        const contactData = contactDoc.data();
 
-          return {
-            chatId: chatDoc.id,
-            contactId: contactData.id,
-            ...chatData,
-            avatarUrl: contactData.avatarUrl,
-            avatar: contactData.avatar,
-            lastMessage: chatDetailsData.lastMessage,
-            createdAt: chatDetailsData.createdAt,
-          };
-        });
-        const resolvedChats = await Promise.all(chatDataPromises);
+        // Fetch chat details in real-time
+        const chatDetailsRef = doc(db, "chats", chatData.chatId);
+        const chatDetailsSnapshot = await getDoc(chatDetailsRef);
+        const chatDetailsData = chatDetailsSnapshot.data();
 
-        setFetchedChats(resolvedChats);
-        setSearchResults(resolvedChats);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+        // Ensure message status is stored per user
+        const userMessageStatus = chatDetailsData?.messageStatus?.[currentUser.id] || {
+          messageCounter: 0,
+          messageSeen: true,
+        };
 
-    fetchChats();
+        return {
+          chatId: chatData.chatId,
+          contactId: contactData.id,
+          ...chatData,
+          avatarUrl: contactData.avatarUrl,
+          avatar: contactData.avatar,
+          lastMessage: chatDetailsData.lastMessage,
+          messageStatus: userMessageStatus,
+          createdAt: chatDetailsData.createdAt,
+        };
+      });
+
+      const resolvedChats = await Promise.all(chatDataPromises);
+      setFetchedChats(resolvedChats);
+      setSearchResults(resolvedChats);
+      setIsLoading(false);
+    });
+
+    return () => unsubscribe(); // Cleanup listener when unmounting
   }, [currentUser.id]);
 
+  // Fuse.js for searching contacts
   const fuse = new Fuse(searchResults, {
     keys: ["name", "email"],
     threshold: 0.3,
@@ -60,22 +68,17 @@ const ChatList = ({ onSelectChat }) => {
 
   const handleSearch = (e) => {
     const query = e.target.value;
-
-    if (query.trim() === "") {
-      setSearchResults(fetchedChats);
-    } else {
-      const results = fuse.search(query).map((result) => result.item);
-      setSearchResults(results);
-    }
+    setSearchResults(query.trim() === "" ? fetchedChats : fuse.search(query).map((result) => result.item));
   };
 
   const handleChat = async (chatInfo) => {
     await fetchContactInfo(chatInfo.contactId, chatInfo.chatId);
-    setActiveChatId(chatInfo.chatId); // Set the active chat ID
-    onSelectChat(chatInfo.chatId); // Trigger the chatbox view in Dashboard
+    setActiveChatId(chatInfo.chatId); // Set active chat
+    onSelectChat(chatInfo.chatId); // Open chat in UI
   };
 
   useEffect(() => {
+    // Animates long text
     const cardInfoElements = document.querySelectorAll(".card-info p");
     cardInfoElements.forEach((el) => {
       if (el.scrollWidth > el.clientWidth) {
@@ -132,7 +135,7 @@ const ChatList = ({ onSelectChat }) => {
                   chatInfo.createdAt && (
                     <h4>{chatInfo.createdAt.toDate().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }) || ""}</h4>
                   )}
-                <p>Seen</p>
+                <p>{chatInfo.messageStatus.messageCounter}</p>
               </div>
             </div>
           ))

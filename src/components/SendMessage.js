@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./SendMessage.css";
 import "./Chatbox.scss";
 import { auth, db, storage } from "../firebase";
-import { addDoc, setDoc, doc, collection, serverTimestamp } from "firebase/firestore";
+import { addDoc, setDoc, doc, collection, serverTimestamp, increment } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { useContactStore } from "../lib/contactStore";
@@ -51,9 +51,18 @@ const SendMessage = ({ scroll }) => {
 
       await setDoc(doc(db, "chats", chatId), {
         lastMessage: message,
-        createdAt: serverTimestamp()
-      }
-      )
+        createdAt: serverTimestamp(),
+        messageStatus: {
+          [currentUser.id]: {
+            messageCounter: 0,
+            messageSeen: true
+          },
+          [currentContact.id]: {
+            messageCounter: increment(1),
+            messageSeen: false
+          }
+        }
+      }, { merge: true });
     };
 
     setMessage("");
